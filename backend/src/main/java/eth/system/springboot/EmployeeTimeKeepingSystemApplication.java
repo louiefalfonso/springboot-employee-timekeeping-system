@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class SpringBootApplication {
+public class EmployeeTimeKeepingSystemApplication {
 
 	@Bean
 	public ModelMapper modelMapper(){
@@ -14,7 +14,8 @@ public class SpringBootApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootApplication.class, args);
+
+		SpringApplication.run(EmployeeTimeKeepingSystemApplication.class, args);
 	}
 
 }
