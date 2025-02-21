@@ -1,4 +1,4 @@
-# Frontend
+# Full Stack Spring Boot 3 & Angular 19 Web Application for Employee & Time Keeping System
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
 
