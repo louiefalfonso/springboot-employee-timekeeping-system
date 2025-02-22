@@ -1,6 +1,7 @@
 package eth.system.springboot.service.impl;
 
 import eth.system.springboot.dto.EmployeeDto;
+import eth.system.springboot.entity.Department;
 import eth.system.springboot.entity.Employee;
 import eth.system.springboot.repository.EmployeeRepository;
 import eth.system.springboot.service.EmployeeService;
@@ -61,26 +62,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     // REST API - Delete Employee
     @Override
     public void deleteEmployee(Long employeeId) {
-        Employee employee = employeeRepository.findById(employeeId)
+        Employee employee = employeeRepository.findAllById(employeeId)
                 .orElseThrow(()-> new RuntimeException("Employee doesn't exist with given id:" + employeeId));
-        employee.setDeleted(true);
-        employeeRepository.save(employee);
-    }
-
-    // REST API - Get All Deleted Employees
-    @Override
-    public List<EmployeeDto> getAllDeletedEmployees() {
-        List<Employee> deletedEmployees = employeeRepository.findByDeletedId(true);
-        return deletedEmployees.stream().map(employee -> modelMapper
-                .map(employee, EmployeeDto.class))
-                .collect(Collectors.toList());
-    }
-
-    // REST API - Get Deleted Employee By ID
-    @Override
-    public EmployeeDto getDeletedEmployeedById(Long id) {
-        Employee employee = employeeRepository.findByIdAndDeleted(id, true)
-                .orElseThrow(()-> new RuntimeException("Deleted Employee doesn't exist with a given Id:" + id));
-        return modelMapper.map(employee, EmployeeDto.class);
+        employeeRepository.deleteById(employeeId);
     }
 }

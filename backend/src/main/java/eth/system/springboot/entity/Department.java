@@ -1,10 +1,13 @@
 package eth.system.springboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -23,4 +26,8 @@ public class Department {
     private String managerName;
 
     private String location;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employees;
 }

@@ -14,26 +14,26 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "leaveAbsences")
+@Table(name = "leave-absences")
 public class LeaveAbsence {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long employeeId;
-
-    private String leaveType;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
     private Date startDate;
-    // (e.g., Sick Leave, Vacation, Personal Leave)
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
     private Date endDate;
 
-    private String status;
-    // (e.g., Approved, Pending, Rejected)
+    private String leaveType; // (e.g., Sick Leave, Vacation, Personal Leave)
+
+    private String status; // (e.g., Approved, Pending, Rejected)
 
     private String reasonForLeave;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 }

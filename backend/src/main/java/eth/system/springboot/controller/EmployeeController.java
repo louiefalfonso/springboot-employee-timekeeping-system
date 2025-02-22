@@ -64,19 +64,5 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
         return ResponseEntity.ok("Employee Deleted Successfully");
     }
-
-    //GET - Get All Deleted Employees REST API
-    @GetMapping("/deleted")
-    public ResponseEntity<List<EmployeeDto>> getAllDeletedEmployees(){
-        List<EmployeeDto> deletedEmployees = employeeService.getAllDeletedEmployees();
-        return ResponseEntity.ok(deletedEmployees);
-    }
-
-    //GET - Get Deleted Employee By ID REST API
-    @GetMapping("/deleted/{id}")
-    public ResponseEntity<EmployeeDto> getDeletedEmployeedById(@PathVariable ("id") Long id){
-        EmployeeDto deletedEmployee = employeeService.getDeletedEmployeedById(id);
-        return ResponseEntity.ok(deletedEmployee);
-    }
 }
 
