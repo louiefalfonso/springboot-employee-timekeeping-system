@@ -21,13 +21,14 @@ public class Attendance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long employeeId;
+    private String status; // (e.g., Present, Absent, Late)
+
+    private String reasonForAbsence;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
     private Date date;
 
-    private String status;
-    // (e.g., Present, Absent, Late)
-
-    private String reasonForAbsence;
+    @ManyToOne
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 }

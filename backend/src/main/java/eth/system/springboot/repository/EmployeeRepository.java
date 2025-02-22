@@ -10,7 +10,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     Optional<Employee> findAllById(Long EmployeeId);
 
-    List<Employee> findByDeletedId(boolean deleted);
-
     Optional<Employee> findByIdAndDeleted (Long id, boolean deleted);
+
+    List<Employee> findByDeleted(boolean deleted);
 }
