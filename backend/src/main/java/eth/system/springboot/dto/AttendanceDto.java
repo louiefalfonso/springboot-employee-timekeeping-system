@@ -1,5 +1,6 @@
 package eth.system.springboot.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import eth.system.springboot.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +20,7 @@ public class AttendanceDto {
 
     private String reasonForAbsence;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
     private Date date;
 
     private Employee employee;
