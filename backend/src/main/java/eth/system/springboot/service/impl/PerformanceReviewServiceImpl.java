@@ -43,6 +43,25 @@ public class PerformanceReviewServiceImpl implements PerformanceReviewService {
                .collect(Collectors.toList());
     }
 
+    // REST API - Update Performance Review
+    @Override
+    public PerformanceReviewDto updatePerformanceReview(Long pReviewId, PerformanceReviewDto updatePerformanceReview) {
+       PerformanceReview performanceReview = performanceReviewRepository.findAllById(pReviewId)
+               .orElseThrow(()-> new RuntimeException("Performance Review doesn't exist with a given Id:" + pReviewId));
+       performanceReview.setReviewDate(updatePerformanceReview.getReviewDate());
+       performanceReview.setComments(updatePerformanceReview.getComments());
+       performanceReview.setRating(updatePerformanceReview.getRating());
+       performanceReview.setEmployee(updatePerformanceReview.getEmployee());
 
+       PerformanceReview updatePerformanceReviewObj = performanceReviewRepository.save(performanceReview);
+       return modelMapper.map(updatePerformanceReviewObj, PerformanceReviewDto.class);
+    }
 
+    // REST API - Delete Performance Review
+    @Override
+    public void deletePerformanceReview(Long pReviewId) {
+        PerformanceReview performanceReview = performanceReviewRepository.findAllById(pReviewId)
+                .orElseThrow(()-> new RuntimeException("Performance Review doesn't exist with a given Id:" + pReviewId));
+        performanceReviewRepository.deleteById(pReviewId);
+    }
 }
