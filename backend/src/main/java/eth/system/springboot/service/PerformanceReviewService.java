@@ -12,10 +12,7 @@ public interface PerformanceReviewService {
 
     List<PerformanceReviewDto> getAllPerformanceReviews();
 
+    PerformanceReviewDto updatePerformanceReview(Long pReviewId, PerformanceReviewDto updatePerformanceReview);
 
-    /*
-    EmployeeDto updateEmployee(Long employeeId, EmployeeDto updateEmployee);
-
-    void deleteEmployee(Long employeeId);
-     */
+    void deletePerformanceReview(Long pReviewId);
 }

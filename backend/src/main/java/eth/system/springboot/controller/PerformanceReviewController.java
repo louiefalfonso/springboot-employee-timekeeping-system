@@ -42,4 +42,27 @@ public class PerformanceReviewController {
         return ResponseEntity.ok(performanceReviews);
     }
 
+
+    //UPDATE - Update Performance Review REST API
+    @PutMapping("{id}")
+    public ResponseEntity<PerformanceReview> updatePerformanceReview(@PathVariable ("id") long id,
+                                                                     @RequestBody PerformanceReview pReviewDetails){
+        PerformanceReview updatePerformanceReview = performanceReviewRepository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Performance Review does not exist with id: " + id));
+
+        updatePerformanceReview.setReviewDate(pReviewDetails.getReviewDate());
+        updatePerformanceReview.setRating(pReviewDetails.getRating());
+        updatePerformanceReview.setComments(pReviewDetails.getComments());
+        updatePerformanceReview.setEmployee(pReviewDetails.getEmployee());
+
+        performanceReviewRepository.save(updatePerformanceReview);
+        return ResponseEntity.ok(updatePerformanceReview);
+    }
+
+    //DELETE - Delete Performance Review REST API
+    @DeleteMapping("{id}")
+    public  ResponseEntity<String> deletePerformanceReview(@PathVariable ("id") Long pReviewId){
+        performanceReviewService.deletePerformanceReview(pReviewId);
+        return ResponseEntity.ok("Performance Review Deleted Successfully");
+    }
 }
