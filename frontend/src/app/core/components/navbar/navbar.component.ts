@@ -1,31 +1,22 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
+  constructor(private elementRef: ElementRef) { }
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
-
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.addMobileMenuToggle();
-    }
-  }
-
-  addMobileMenuToggle(): void {
-    const menuButton = document.querySelector('button[aria-controls="mobile-menu"]');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (menuButton && mobileMenu) {
-      menuButton.addEventListener('click', () => {
-        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-        menuButton.setAttribute('aria-expanded', (!isExpanded).toString());
-        mobileMenu.classList.toggle('hidden');
-      });
+  toggleMobileMenu() {
+    const mobileMenu = this.elementRef.nativeElement.querySelector('#mobile-menu');
+    const mobileMenuToggle = this.elementRef.nativeElement.querySelector('.mobile-menu-toggle');
+    if (mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.remove('hidden');
+      mobileMenuToggle.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileMenu.classList.add('hidden');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
     }
   }
 }
