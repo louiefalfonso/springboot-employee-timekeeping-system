@@ -1,5 +1,6 @@
 package eth.system.springboot.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import eth.system.springboot.entity.Attendance;
 import eth.system.springboot.entity.Department;
 import jakarta.persistence.JoinColumn;
@@ -9,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -26,6 +28,15 @@ public class EmployeeDto {
     private String employeeNumber;
 
     private String position;
+
+    private String emailAddress;
+
+    private String phoneNumber;
+
+    private String employeeStatus;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
+    private Date dateOfBirth;
 
     private Department department;
 

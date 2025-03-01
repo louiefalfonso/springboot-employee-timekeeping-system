@@ -1,5 +1,6 @@
 package eth.system.springboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -8,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -29,6 +31,15 @@ public class Employee {
     private String employeeNumber;
 
     private String position;
+
+    private String emailAddress;
+
+    private String phoneNumber;
+
+    private String employeeStatus;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
+    private Date dateOfBirth;
 
     @JsonIgnore
     @ManyToOne
