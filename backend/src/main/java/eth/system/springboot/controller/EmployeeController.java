@@ -52,6 +52,10 @@ public class EmployeeController {
         updateEmployee.setLastName(employeeDetails.getLastName());
         updateEmployee.setEmployeeNumber(employeeDetails.getEmployeeNumber());
         updateEmployee.setPosition(employeeDetails.getPosition());
+        updateEmployee.setEmailAddress(employeeDetails.getEmailAddress());
+        updateEmployee.setPhoneNumber(employeeDetails.getPhoneNumber());
+        updateEmployee.setEmployeeStatus(employeeDetails.getEmployeeStatus());
+        updateEmployee.setDateOfBirth(employeeDetails.getDateOfBirth());
         updateEmployee.setDepartment(employeeDetails.getDepartment());
 
         employeeRepository.save(updateEmployee);
