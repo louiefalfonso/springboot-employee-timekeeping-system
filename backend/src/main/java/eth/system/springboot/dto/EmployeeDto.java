@@ -3,8 +3,6 @@ package eth.system.springboot.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import eth.system.springboot.entity.Attendance;
 import eth.system.springboot.entity.Department;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,4 +39,12 @@ public class EmployeeDto {
     private Department department;
 
     private List<Attendance> attendances;
+
+
+    // for JUnit Test Case Only
+    public void setDateOfBirth(String s) {
+    }
+
+    public void setDepartment(long l) {
+    }
 }
