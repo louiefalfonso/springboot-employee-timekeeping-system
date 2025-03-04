@@ -249,4 +249,67 @@ public class EmployeeControllerUnitTests {
         verify(employeeRepository, times(1)).save(existingEmployee);
     }
 
+    @Test
+    @Order(8)
+    @DisplayName("Test 8: Update Employee - Not Found")
+    void updateEmployee_NotFound(){
+        // Arrange
+        long employeeId = 1L;
+        Employee updateEmployeeDetails = new Employee();
+        when(employeeRepository.findById(employeeId)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, ()-> employeeController.updateEmployee(employeeId, updateEmployeeDetails));
+
+        // Assert
+        assertEquals("Employee does not exist with id: " + employeeId, exception.getMessage());
+
+        // Verify
+        verify(employeeRepository, times(1)).findById(employeeId);
+        verify(employeeRepository, never()).save(any());
+
+    }
+
+    @Test
+    @Order(9)
+    @DisplayName("Test 9: Delete Employee - Success")
+    void deleteEmployee_Success(){
+
+        // Arange
+        Long employeeId = 1L;
+
+        // Mock the service method to do nothing (since it's a void method)
+        doNothing().when(employeeService).deleteEmployee(employeeId);
+
+        // Act
+        ResponseEntity<String> response = employeeController.deleteEmployee(employeeId);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Employee Deleted Successfully", response.getBody());
+
+        // Verify that the service method was called once
+        verify(employeeService, times(1)).deleteEmployee(employeeId);
+
+    }
+
+    @Test
+    @Order(10)
+    @DisplayName("Test 10: Delete Employee - Exception Thrown")
+    void deleteEmployee_ExceptionThrown(){
+
+        // Arrange
+        Long employeeId = 1L;
+
+        // Mock the service method to throw an exception
+        doThrow(new RuntimeException("Employee not found")).when(employeeService).deleteEmployee(employeeId);
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> employeeController.deleteEmployee(employeeId));
+
+        assertEquals("Employee not found", exception.getMessage());
+
+        // Verify that the service method was called once
+        verify(employeeService, times(1)).deleteEmployee(employeeId);
+    }
 }
