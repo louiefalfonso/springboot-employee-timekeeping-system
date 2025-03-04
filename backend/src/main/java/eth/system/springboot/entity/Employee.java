@@ -49,4 +49,6 @@ public class Employee {
     @JsonIgnore
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Attendance> attendances;
+
+
 }
