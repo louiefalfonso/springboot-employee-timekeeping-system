@@ -64,7 +64,27 @@ public class EmployeeServiceUnitTests {
 
     @Test
     @Order(2)
-    @DisplayName("Test 2: Get Employee By ID - Successfully")
+    @DisplayName("Test 2: Create New Employee - Not Found")
+    void createNewEmployee_NotFound() {
+        // Arrange
+        EmployeeDto employeeDto = new EmployeeDto();
+        employeeDto.setId(1L);
+
+        when(modelMapper.map(employeeDto, Employee.class)).thenThrow(new RuntimeException("Employee already exists with a given Id:1"));
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> employeeService.createNewEmployee(employeeDto));
+
+        assertEquals("Employee already exists with a given Id:1", exception.getMessage());
+
+        verify(modelMapper, times(1)).map(employeeDto, Employee.class);
+        verify(employeeRepository, never()).save(any());
+        verify(modelMapper, never()).map(any(), eq(EmployeeDto.class));
+    }
+
+    @Test
+    @Order(3)
+    @DisplayName("Test 3: Get Employee By ID - Successfully")
     void getEmployeeById_Success(){
         // Arrange
         Long employeeId = 1L;
@@ -86,8 +106,8 @@ public class EmployeeServiceUnitTests {
     }
 
     @Test
-    @Order(3)
-    @DisplayName("Test 3: Get Employee By ID - Not Found")
+    @Order(4)
+    @DisplayName("Test 4: Get Employee By ID - Not Found")
     void getEmployeeById_NotFound() {
         // Arrange
         Long employeeId = 1L;
@@ -103,8 +123,8 @@ public class EmployeeServiceUnitTests {
     }
 
     @Test
-    @Order(4)
-    @DisplayName("Test 4: Get All Employees - Successfully")
+    @Order(5)
+    @DisplayName("Test 5: Get All Employees - Successfully")
     void getAllEmployee_Success(){
 
         // Arrange
@@ -144,8 +164,8 @@ public class EmployeeServiceUnitTests {
     }
 
     @Test
-    @Order(5)
-    @DisplayName("Test 5: Get All Employees - No Employees")
+    @Order(6)
+    @DisplayName("Test 6: Get All Employees - No Employees")
     void getAllEmployees_NoEmployees() {
         // Arrange
         when(employeeRepository.findAll()).thenReturn(List.of());
@@ -161,8 +181,8 @@ public class EmployeeServiceUnitTests {
     }
 
     @Test
-    @Order(6)
-    @DisplayName("Test 6: Update Employee - Successfully")
+    @Order(7)
+    @DisplayName("Test 7: Update Employee - Successfully")
     void updateEmployee_Success() {
         // Arrange
         Long employeeId = 1L;
@@ -231,8 +251,8 @@ public class EmployeeServiceUnitTests {
     }
 
     @Test
-    @Order(7)
-    @DisplayName("Test 7: Update Employee - Not Found")
+    @Order(8)
+    @DisplayName("Test 8: Update Employee - Not Found")
     void updateEmployee_NotFound() {
         // Arrange
         Long employeeId = 999L;
@@ -250,8 +270,8 @@ public class EmployeeServiceUnitTests {
     }
 
     @Test
-    @Order(8)
-    @DisplayName("Test 8: Delete Employee - Successfully")
+    @Order(9)
+    @DisplayName("Test 9: Delete Employee - Successfully")
     void deleteEmployee_Success() {
         // Arrange
         Long employeeId = 1L;
@@ -266,8 +286,8 @@ public class EmployeeServiceUnitTests {
     }
 
     @Test
-    @Order(9)
-    @DisplayName("Test 8: Delete Employee - Not Found")
+    @Order(10)
+    @DisplayName("Test 10: Delete Employee - Not Found")
     void deleteEmployee_NotFound() {
         // Arrange
         Long employeeId = 1L;
@@ -280,6 +300,8 @@ public class EmployeeServiceUnitTests {
         verify(employeeRepository, never()).deleteById(employeeId);
         assert(exception.getMessage().contains("Employee doesn't exist with given id:" + employeeId));
     }
+
+
 
 }
 
