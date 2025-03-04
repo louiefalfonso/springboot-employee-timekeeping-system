@@ -22,6 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     // REST API - Create New Employee
     @Override
     public EmployeeDto createNewEmployee(EmployeeDto employeeDto) {
+
         Employee employee = modelMapper.map(employeeDto, Employee.class);
         Employee savedEmployee = employeeRepository.save(employee);
         return modelMapper.map(savedEmployee, EmployeeDto.class);
@@ -32,7 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeDto getEmployeeById(Long employeeId) {
        Employee employee = employeeRepository.findAllById(employeeId)
                .orElseThrow(()-> new RuntimeException("Employee doesn't exist with a given Id:" + employeeId));
-       return modelMapper.map(employeeId, EmployeeDto.class);
+       return modelMapper.map(employee, EmployeeDto.class);
     }
 
     // REST API - Get All Employees
