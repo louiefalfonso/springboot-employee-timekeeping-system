@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -161,6 +160,126 @@ public class EmployeeServiceUnitTests {
         verify(modelMapper, never()).map(any(Employee.class), eq(EmployeeDto.class));
     }
 
+    @Test
+    @Order(6)
+    @DisplayName("Test 6: Update Employee - Successfully")
+    void updateEmployee_Success() {
+        // Arrange
+        Long employeeId = 1L;
+        EmployeeDto updateEmployeeDto = new EmployeeDto();
+        updateEmployeeDto.setId(employeeId);
+        updateEmployeeDto.setFirstName("Claire Anne");
+        updateEmployeeDto.setLastName("Jones-Smith");
+        updateEmployeeDto.setEmployeeNumber("SYS-3543-2759");
+        updateEmployeeDto.setPosition("Marketing Associate II");
+        updateEmployeeDto.setEmailAddress("clairejones@gmail.com");
+        updateEmployeeDto.setPhoneNumber("07-3427-960453");
+        updateEmployeeDto.setEmployeeStatus("Full Time");
+
+        Employee existingEmployee = new Employee();
+        existingEmployee.setId(employeeId);
+        existingEmployee.setFirstName("Claire");
+        existingEmployee.setLastName("Jones-Smith");
+        existingEmployee.setEmployeeNumber("SYS-3543-2759");
+        existingEmployee.setPosition("Marketing Trainee");
+        existingEmployee.setEmailAddress("clairejones@gmail.com");
+        existingEmployee.setPhoneNumber("07-3427-960453");
+        existingEmployee.setEmployeeStatus("Contract");
+
+        Employee updatedEmployee = new Employee();
+        updatedEmployee.setId(employeeId);
+        updatedEmployee.setFirstName("Claire Anne");
+        updatedEmployee.setLastName("Jones-Smith");
+        updatedEmployee.setEmployeeNumber("SYS-3543-2759");
+        updatedEmployee.setPosition("Marketing Associate II");
+        updatedEmployee.setEmailAddress("clairejones@gmail.com");
+        updatedEmployee.setPhoneNumber("07-3427-960453");
+        updatedEmployee.setEmployeeStatus("Full Time");
+
+        EmployeeDto expectedEmployeeDto = new EmployeeDto();
+        expectedEmployeeDto.setId(employeeId);
+        expectedEmployeeDto.setFirstName("Claire Anne");
+        expectedEmployeeDto.setLastName("Jones-Smith");
+        expectedEmployeeDto.setEmployeeNumber("SYS-3543-2759");
+        expectedEmployeeDto.setPosition("Marketing Associate II");
+        expectedEmployeeDto.setEmailAddress("clairejones@gmail.com");
+        expectedEmployeeDto.setPhoneNumber("07-3427-960453");
+        expectedEmployeeDto.setEmployeeStatus("Full Time");
+
+
+        when(employeeRepository.findAllById(employeeId)).thenReturn(Optional.of(existingEmployee));
+        when(employeeRepository.save(existingEmployee)).thenReturn(updatedEmployee);
+        when(modelMapper.map(updatedEmployee, EmployeeDto.class)).thenReturn(expectedEmployeeDto);
+
+        // Act
+        EmployeeDto result = employeeService.updateEmployee(employeeId, updateEmployeeDto);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(employeeId, result.getId());
+        assertEquals("Claire Anne", result.getFirstName());
+        assertEquals("Jones-Smith", result.getLastName());
+        assertEquals("SYS-3543-2759", result.getEmployeeNumber());
+        assertEquals("Marketing Associate II", result.getPosition());
+        assertEquals("clairejones@gmail.com", result.getEmailAddress());
+        assertEquals("07-3427-960453", result.getPhoneNumber());
+        assertEquals("Full Time", result.getEmployeeStatus());
+
+        verify(employeeRepository, times(1)).findAllById(employeeId);
+        verify(employeeRepository, times(1)).save(existingEmployee);
+        verify(modelMapper, times(1)).map(updatedEmployee, EmployeeDto.class);
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("Test 7: Update Employee - Not Found")
+    void updateEmployee_NotFound() {
+        // Arrange
+        Long employeeId = 999L;
+        EmployeeDto updateEmployeeDto = new EmployeeDto();
+        when(employeeRepository.findAllById(employeeId)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> employeeService.updateEmployee(employeeId, updateEmployeeDto));
+
+        assertEquals("Employee doesn't exist with a given Id:" + employeeId, exception.getMessage());
+
+        verify(employeeRepository, times(1)).findAllById(employeeId);
+        verify(employeeRepository, never()).save(any());
+        verify(modelMapper, never()).map(any(), eq (EmployeeDto.class));
+    }
+
+    @Test
+    @Order(8)
+    @DisplayName("Test 8: Delete Employee - Successfully")
+    void deleteEmployee_Success() {
+        // Arrange
+        Long employeeId = 1L;
+        Employee employee = new Employee();
+        when(employeeRepository.findAllById(employeeId)).thenReturn(Optional.of(employee));
+
+        // Act
+        employeeService.deleteEmployee(employeeId);
+
+        // Assert
+        verify(employeeRepository, times(1)).deleteById(employeeId);
+    }
+
+    @Test
+    @Order(9)
+    @DisplayName("Test 8: Delete Employee - Not Found")
+    void deleteEmployee_NotFound() {
+        // Arrange
+        Long employeeId = 1L;
+        when(employeeRepository.findAllById(employeeId)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> employeeService.deleteEmployee(employeeId));
+
+        // Assert
+        verify(employeeRepository, never()).deleteById(employeeId);
+        assert(exception.getMessage().contains("Employee doesn't exist with given id:" + employeeId));
+    }
 
 }
 
