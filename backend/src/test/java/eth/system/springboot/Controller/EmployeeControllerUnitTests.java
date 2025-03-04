@@ -160,11 +160,11 @@ public class EmployeeControllerUnitTests {
         verify(employeeService, times(1)).getAllEmployees();
     }
 
-
     @Test
     @Order(5)
     @DisplayName("Test 5: Get Asset By Id - When Employee Exists")
     void getEmployeeById(){
+
         // Arrange
         Long employeeId = 1L;
         Employee mockEmployee = new Employee();
@@ -182,4 +182,71 @@ public class EmployeeControllerUnitTests {
         assertNotNull(response.getBody()); // Verify response body is not null
         assertEquals(mockEmployee, response.getBody()); // Verify the response body matches the mock employee
     }
+
+    @Test
+    @Order(6)
+    @DisplayName("Test 6: Get Employee By Id - When Employee Does Not Exist")
+    void getEmployeeById_WhenEmployeeDoesNotExist(){
+        // Arrange
+        Long employeeId = 999L;
+
+        // Mock the behavior of employeeRepository.findAllById() to return an empty Optional
+        when(employeeRepository.findAllById(employeeId)).thenReturn(Optional.empty());
+
+        // Act and Assert
+        RuntimeException exception = assertThrows(RuntimeException.class, ()-> employeeController.getEmployeeById(employeeId));
+
+        // Verify the exception message
+        assertEquals("Employee does not exist with Id:999", exception.getMessage());
+
+
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("Test 7: Update Employee - Success")
+    void updateEmployee_Success(){
+
+        // Arrange
+        long employeeId = 1L;
+        Employee existingEmployee = new Employee();
+        existingEmployee.setFirstName("Claire");
+        existingEmployee.setLastName("Jones");
+        existingEmployee.setEmployeeNumber("SYS-3543-2759");
+        existingEmployee.setPosition("Marketing Trainee");
+        existingEmployee.setEmailAddress("clairejones@gmail.com");
+        existingEmployee.setPhoneNumber("07-3427-960453");
+        existingEmployee.setEmployeeStatus("Contract");
+
+        Employee updateEmployeeDetails = new Employee();
+        updateEmployeeDetails.setFirstName("Claire Anne");
+        updateEmployeeDetails.setLastName("Jones");
+        updateEmployeeDetails.setEmployeeNumber("SYS-3543-2799");
+        updateEmployeeDetails.setPosition("Marketing Trainee 1");
+        updateEmployeeDetails.setEmailAddress("clairejones@gmail.com");
+        updateEmployeeDetails.setPhoneNumber("07-3427-960453");
+        updateEmployeeDetails.setEmployeeStatus("Full Time");
+
+        when(employeeRepository.findById(employeeId)).thenReturn(Optional.of(existingEmployee));
+        when(employeeRepository.save(existingEmployee)).thenReturn(existingEmployee);
+
+        // Act
+        ResponseEntity<Employee> response = employeeController.updateEmployee(employeeId, updateEmployeeDetails);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals("Claire Anne", response.getBody().getFirstName());
+        assertEquals("Jones", response.getBody().getLastName());
+        assertEquals("SYS-3543-2799", response.getBody().getEmployeeNumber());
+        assertEquals("Marketing Trainee 1", response.getBody().getPosition());
+        assertEquals("clairejones@gmail.com", response.getBody().getEmailAddress());
+        assertEquals("07-3427-960453", response.getBody().getPhoneNumber());
+        assertEquals("Full Time", response.getBody().getEmployeeStatus());
+
+        // Verify
+        verify(employeeRepository, times(1)).findById(employeeId);
+        verify(employeeRepository, times(1)).save(existingEmployee);
+    }
+
 }
