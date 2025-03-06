@@ -7,7 +7,6 @@ import { HeaderComponent } from '../../../core/components/header/header.componen
 import { Departement } from '../models/department.models';
 import { DepartmentService } from '../services/department.service';
 
-
 @Component({
   selector: 'app-department-list',
   imports: [RouterModule, CommonModule, HeaderComponent],
@@ -16,13 +15,11 @@ import { DepartmentService } from '../services/department.service';
 })
 export class DepartmentListComponent implements OnInit{
 
-  departments?: Observable<Departement[]>;
+  departments$?: Observable<Departement[]>;
 
   constructor( private departmentService: DepartmentService){}
 
   ngOnInit(): void {
-   this.departments = this.departmentService.getAllDepartments();
+   this.departments$ = this.departmentService.getAllDepartments();
   }
-  
-
 }
