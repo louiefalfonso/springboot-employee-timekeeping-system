@@ -1,6 +1,9 @@
 export interface Departement {
     id: string;
     departmentName: string;
-    managerName: string;
+    departmentCode: string;
+    departmentHead: string;
+    departmentAssistant: string;
     location: string;
+    contactNumber: string;
 }

@@ -23,9 +23,15 @@ public class Department {
 
     private String departmentName;
 
-    private String managerName;
+    private String departmentCode;
+
+    private String departmentHead;
+
+    private String departmentAssistant;
 
     private String location;
+
+    private String contactNumber;
 
     @JsonIgnore
     @OneToMany(mappedBy = "department")
