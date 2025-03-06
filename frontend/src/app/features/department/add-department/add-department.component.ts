@@ -34,7 +34,6 @@ export class AddDepartmentComponent implements OnDestroy{
     private http: HttpClient, 
     private router: Router) {
     this.model = {
-    id: '',
     departmentName: '',
     departmentCode: '',
     departmentHead: '',
@@ -51,12 +50,22 @@ export class AddDepartmentComponent implements OnDestroy{
       next: (response) => {
           this.alertMessage = 'Department Added Successfully';
           this.alertType = 'success';
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertType = '';
+            this.router.navigate(['/departments']);
+          }, 3000);
         },
         error: (error) => {
-          this.alertMessage = 'Error Adding this Department';
+          this.alertMessage = 'Error Adding This Department';
           this.alertType = 'danger';
         }
     });
+  }
+
+  // implement onGoBack
+  onGoBack(){
+    this.router.navigate(['/departments']);
   }
 
  // onDestroy
