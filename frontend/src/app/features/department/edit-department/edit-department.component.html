@@ -1,1 +1,68 @@
-<p>edit-department works!</p>
+<app-header title="Edit Department" />
+<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"> 
+    <!--alert display-->
+    <div *ngIf="alertMessage" [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'danger'}" class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"  role="alert">
+    <span class="font-medium">{{ alertMessage }}</span>
+    </div>
+    <div className="border-b border-gray-900/10 pb-12">
+        <!--Edit Department Content-->
+        <ng-container *ngIf="model; else notFound">
+            <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+                <div class="border-b border-gray-900/10 pb-12">
+                    <h2 class="text-base/7 font-semibold text-gray-900">Edit Department Information</h2>
+                    <p class="mt-1 text-sm/6 text-gray-600">Update Current Department Details</p>
+                    <div class="mt-7 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                    <div class="sm:col-span-3">
+                        <label for="first-name" class="block text-sm/6 font-medium text-gray-900">Department Name:</label>
+                        <div class="mt-2">
+                        <input type="text" name="departmentName" id="departmentName" [(ngModel)]="model.departmentName" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
+                        </div>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="first-name" class="block text-sm/6 font-medium text-gray-900">Department Code:</label>
+                        <div class="mt-2">
+                        <input type="text" name="departmentCode" id="departmentCode" [(ngModel)]="model.departmentCode" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
+                        </div>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="first-name" class="block text-sm/6 font-medium text-gray-900">Department Head:</label>
+                        <div class="mt-2">
+                        <input type="text" name="departmentHead" id="departmentHead" [(ngModel)]="model.departmentHead" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
+                        </div>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="first-name" class="block text-sm/6 font-medium text-gray-900">Department Assistant:</label>
+                        <div class="mt-2">
+                        <input type="text" name="departmentAssistant" id="departmentAssistant" [(ngModel)]="model.departmentAssistant" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
+                        </div>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="first-name" class="block text-sm/6 font-medium text-gray-900">Department Location:</label>
+                        <div class="mt-2">
+                        <input type="text" name="location" id="location" [(ngModel)]="model.location" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
+                        </div>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="first-name" class="block text-sm/6 font-medium text-gray-900">Contact Number:</label>
+                        <div class="mt-2">
+                        <input type="text" name="contactNumber" id="contactNumber" [(ngModel)]="model.contactNumber" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
+                        </div>
+                    </div>
+                    
+                    </div>
+                </div>
+                <div class="mt-6 flex items-center justify-start gap-x-3">
+                    <button type="submit" class="rounded-md bg-indigo-600 px-4 py-2 text-xs font-medium text-white shadow-md hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit Department</button>
+                    <button type="button" (click)="onDelete()" class="rounded-md bg-red-600 px-4 py-2 text-xs font-medium text-white shadow-md hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Delete Department</button>
+                    <button type="button" (click)="onGoBack()" class="rounded-md bg-gray-400 px-4 py-2 text-xs font-medium text-white shadow-md hover:bg-gray-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">Back</button>
+                </div>
+            </form>
+        </ng-container>
+        <!--Edit Department Content Not Found-->
+        <ng-template #notFound>
+            <div class="border-b border-gray-900/10 pb-12">
+                <h3>Department Not Found!</h3>
+            </div>
+        </ng-template>
+    </div>
+</div>

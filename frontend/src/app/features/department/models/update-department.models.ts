@@ -1,5 +1,4 @@
 export interface UpdateDepartmentRequest{
-    id: string;
     departmentName: string;
     departmentCode: string;
     departmentHead: string;

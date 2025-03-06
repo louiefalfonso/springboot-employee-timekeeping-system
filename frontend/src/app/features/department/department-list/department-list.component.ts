@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { HeaderComponent } from '../../../core/components/header/header.component';
-import { Departement } from '../models/department.models';
+import { Department } from '../models/department.models';
 import { DepartmentService } from '../services/department.service';
 
 @Component({
@@ -15,10 +15,13 @@ import { DepartmentService } from '../services/department.service';
 })
 export class DepartmentListComponent implements OnInit{
 
-  departments$?: Observable<Departement[]>;
+  // add a property to hold the list of departments
+  departments$?: Observable<Department[]>;
 
+  // add constructor
   constructor( private departmentService: DepartmentService){}
 
+  // implement ngOnInit
   ngOnInit(): void {
    this.departments$ = this.departmentService.getAllDepartments();
   }
