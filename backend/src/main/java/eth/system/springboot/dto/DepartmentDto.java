@@ -18,9 +18,15 @@ public class DepartmentDto {
 
     private String departmentName;
 
-    private String managerName;
+    private String departmentCode;
+
+    private String departmentHead;
+
+    private String departmentAssistant;
 
     private String location;
+
+    private String contactNumber;
 
     private List<Employee> employees;
 }

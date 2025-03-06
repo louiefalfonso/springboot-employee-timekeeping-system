@@ -49,8 +49,11 @@ public class DepartmentServiceImpl implements DepartmentService {
                 .orElseThrow(()-> new RuntimeException("Deparment doesn't exist with a given Id:" + departmentId));
 
         department.setDepartmentName(updateDepartment.getDepartmentName());
-        department.setManagerName(updateDepartment.getManagerName());
+        department.setDepartmentHead(updateDepartment.getDepartmentHead());
+        department.setDepartmentAssistant(updateDepartment.getDepartmentAssistant());
         department.setLocation(updateDepartment.getLocation());
+        department.setDepartmentCode(updateDepartment.getDepartmentCode());
+        department.setContactNumber(updateDepartment.getContactNumber());
 
         Department updateDepartmenrObj = departmentRepository.save(department);
         return modelMapper.map(updateDepartmenrObj, DepartmentDto.class);

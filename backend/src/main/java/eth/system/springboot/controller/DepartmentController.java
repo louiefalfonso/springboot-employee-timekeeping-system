@@ -50,8 +50,11 @@ public class DepartmentController {
                 .orElseThrow(()-> new RuntimeException("Department does not exist with id: " + id));
 
         updateDepartment.setDepartmentName(departmentDetails.getDepartmentName());
-        updateDepartment.setManagerName(departmentDetails.getManagerName());
+        updateDepartment.setDepartmentHead(departmentDetails.getDepartmentHead());
+        updateDepartment.setDepartmentAssistant(departmentDetails.getDepartmentAssistant());
         updateDepartment.setLocation(departmentDetails.getLocation());
+        updateDepartment.setDepartmentCode(departmentDetails.getDepartmentCode());
+        updateDepartment.setContactNumber(departmentDetails.getContactNumber());
 
         departmentRepository.save(updateDepartment);
         return ResponseEntity.ok(updateDepartment);
