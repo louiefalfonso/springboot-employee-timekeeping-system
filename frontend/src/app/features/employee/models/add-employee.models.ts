@@ -1,14 +1,11 @@
-import { Department } from "../../department/models/department.models";
-
-export interface Employee{
-  id: string;
+export interface AddEmployeeRequest {
   firstName: string;
   lastName: string;
   employeeNumber: string;
-  position: string;
+  positon: string;
   emailAddress: string;
   phoneNumber: string;
   employeeStatus : string;
   dateOfBirth: string;
-  departments: Department[]
+  departments: string[];
 }
