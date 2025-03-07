@@ -42,9 +42,10 @@ public class EmployeeDto {
 
 
     // for JUnit Test Case Only
-    public void setDateOfBirth(String s) {
+    /*public void setDateOfBirth(String s) {
     }
 
     public void setDepartment(long l) {
     }
+     */
 }
