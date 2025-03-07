@@ -20,6 +20,10 @@ export const routes: Routes = [
         component: AddEmployeeComponent
     },
     {
+        path:"employees/edit/:id",
+        component: EmployeeListComponent
+    },
+    {
         path:"departments",
         component: DepartmentListComponent
     },

@@ -21,6 +21,9 @@ export class EditDepartmentComponent implements OnInit, OnDestroy {
   id : string | null = null;
   model?: Department;
 
+  // add department object
+  department?: Department;
+
   // add subscriptions
   routeSubscription?: Subscription;
   getDepartmentSubscription?: Subscription
@@ -30,9 +33,6 @@ export class EditDepartmentComponent implements OnInit, OnDestroy {
   // add alertMessage and alertType
   alertMessage: string = '';
   alertType: string = '';
-
-  // add department object
-  department?: Department;
 
   // add constructor and inject the necessary services
   constructor(
@@ -103,58 +103,15 @@ export class EditDepartmentComponent implements OnInit, OnDestroy {
   // implement onDelete
   onDelete(): void {
   if (this.id) {
-    this.deleteDepartmentSubscription = this.departmentService.deleteDepartment(this.id)
-      .pipe(
-        catchError((error) => {
-          console.error(error);
-          this.alertMessage = 'An error occurred while deleting the department';
-          this.alertType = 'danger';
-          return throwError(() => error);
-        })
-      )
+      this.deleteDepartmentSubscription = this.departmentService.deleteDepartment(this.id)
       .subscribe({
-        next: (response: any) => {
-          if (typeof response === 'string') {
-            console.log('Response:', response);
-            this.alertMessage = 'Department Deleted Successfully';
-            this.alertType = 'success';
-          } else {
-            console.log('Response:', response);
-            this.alertMessage = 'Department Deleted Successfully';
-            this.alertType = 'success';
-          }
-          setTimeout(() => {
-            this.alertMessage = '';
-            this.alertType = '';
-            this.router.navigate(['/departments']);
-          }, 2000);
-        },
-        error: (error) => {
-          console.error(error);
-          if (error.status === 404) {
-            this.alertMessage = 'Department not found';
-          } else if (error.status === 500) {
-            this.alertMessage = 'Server-side error occurred';
-          } else {
-            this.alertMessage = 'An error occurred while deleting the department';
-          }
-          this.alertType = 'danger';
-          setTimeout(() => {
-            this.alertMessage = '';
-            this.alertType = '';
-            this.router.navigate(['/departments']);
-          }, 2000);
+        next: (response) => {
+          this.router.navigateByUrl('/departments');
         }
-      });
-  } else {
-    console.error('Invalid department ID');
-    this.alertMessage = 'Invalid department ID';
-    this.alertType = 'danger';
-  }
-}
-
-
-  
+      })
+    }
+ }   
+   
   // implement ngOnDestroy
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();

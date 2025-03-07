@@ -1,4 +1,4 @@
-import { Injectable, model } from '@angular/core';
+import { Injectable, } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -31,17 +31,16 @@ export class DepartmentService {
   }
 
   deleteDepartment(id: string): Observable<any> {
-  // Set the content type to 'text/plain'
-  const headers = new HttpHeaders({ 'Content-Type': 'text/plain'});
+    // Set the content type to 'text/plain'
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain'});
 
-  // Delete the department
-  return this.http.delete(`${environment.apiBaseUrl}/departments/${id}`, { headers, responseType: 'text' })
-    .pipe(
-      catchError((error) => {
-        console.error(error);
-        return throwError(() => error);
-      })
-    );
-}
-
+    // Delete the department
+    return this.http.delete(`${environment.apiBaseUrl}/departments/${id}`, { headers, responseType: 'text' })
+      .pipe(
+        catchError((error) => {
+          console.error(error);
+          return throwError(() => error);
+        })
+      );
+    }
 }
