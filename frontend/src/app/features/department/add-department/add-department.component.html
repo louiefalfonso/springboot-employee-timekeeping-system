@@ -2,7 +2,7 @@
 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
   <!--alert display-->
     <div *ngIf="alertMessage" [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'danger'}" class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"  role="alert">
-    <span class="font-medium">{{ alertMessage }}</span>
+      <span class="font-medium">{{ alertMessage }}</span>
     </div>
     <div className="border-b border-gray-900/10 pb-12">
       <form #form="ngForm" (ngSubmit)="onFormSubmit()">
