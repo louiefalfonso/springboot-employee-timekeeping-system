@@ -25,8 +25,5 @@ export class EmployeeListComponent implements OnInit {
   ngOnInit(): void {
     this.employees$ = this.employeeService.getAllEmployees();
   }
-
-  getDepartmentNames(employee: any): string {
-    return employee.departments.map((department: { departmentName: any; }) => department.departmentName).join(', ');
-  }
+ 
 }
