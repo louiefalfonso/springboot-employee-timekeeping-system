@@ -6,6 +6,6 @@ export interface AddEmployeeRequest {
   emailAddress: string;
   phoneNumber: string;
   employeeStatus : string;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   departments: string[];
 }

@@ -9,6 +9,6 @@ export interface Employee{
   emailAddress: string;
   phoneNumber: string;
   employeeStatus : string;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   departments: Department[]
 }

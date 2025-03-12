@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { catchError, Subscription, throwError } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'
@@ -58,7 +58,7 @@ export class EditDepartmentComponent implements OnInit, OnDestroy {
   }
 
    // implement onFormSubmit
-  onFormSubmit():void{
+  onFormSubmit():void {
     // convert this model to request model
     if(this.model && this.id){
       var updateDepartment: UpdateDepartmentRequest ={
@@ -96,7 +96,7 @@ export class EditDepartmentComponent implements OnInit, OnDestroy {
   }
 
   // implement onGoBack
-  onGoBack(){
+  onGoBack(): void{
     this.router.navigate(['/departments']);
   }
 

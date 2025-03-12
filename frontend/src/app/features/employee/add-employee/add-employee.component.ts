@@ -10,6 +10,7 @@ import { EmployeeService } from '../services/employee.service';
 import { Observable } from 'rxjs';
 import { Department } from '../../department/models/department.models';
 import { DepartmentService } from '../../department/services/department.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-employee',
@@ -32,7 +33,8 @@ export class AddEmployeeComponent implements OnDestroy, OnInit {
   constructor(
     private employeeService: EmployeeService,
     private departmentService: DepartmentService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient,
   ) {
     this.model = {
       firstName: '',
@@ -42,7 +44,7 @@ export class AddEmployeeComponent implements OnDestroy, OnInit {
       emailAddress: '',
       phoneNumber: '',
       employeeStatus : '',
-      dateOfBirth: '',
+      dateOfBirth: new Date(),
       departments: []
      }
   }

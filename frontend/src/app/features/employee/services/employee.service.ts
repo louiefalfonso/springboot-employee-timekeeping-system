@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddEmployeeRequest } from '../models/add-employee.models';
-import { Employee } from '../models/employee.models';
-
-import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
+
+import { Employee } from '../models/employee.models';
+import { environment } from '../../../../environments/environment';
+import { AddEmployeeRequest } from '../models/add-employee.models';
+import { UpdateEmployeeRequest } from '../models/update-employee.models';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,7 @@ export class EmployeeService {
     return this.http.get<Employee>(`${environment.apiBaseUrl}/employees/${id}`);
   }
 
-  updateEmployee(id: string, updateEmployeeRequest : Employee): Observable<Employee>{
+  updateEmployee(id: string, updateEmployeeRequest : UpdateEmployeeRequest): Observable<Employee>{
     return this.http.put<Employee>(`${environment.apiBaseUrl}/employees/${id}`, updateEmployeeRequest);
   }
 
