@@ -21,8 +21,7 @@
             <td class="px-6 py-2 whitespace-nowrap">{{ employee.emailAddress }}</td>
             <td class="px-6 py-2 whitespace-nowrap">{{ employee.employeeStatus }}</td>
             <td class="px-6 py-2 whitespace-nowrap">
-              <span *ngFor="let department of employee.departments">{{ department.departmentName || 'No department name' }}</span> 
-              
+              <span *ngFor="let department of departments$ | async">{{ department.departmentName }}</span> 
             </td>
             <td class="px-6 py-2 whitespace-nowrap text-center">
               <a [routerLink]="['/employees/edit', employee?.id]" class="inline-block rounded-sm bg-cyan-500 px-4 py-2 text-xs font-medium text-white hover:bg-cyan-600">

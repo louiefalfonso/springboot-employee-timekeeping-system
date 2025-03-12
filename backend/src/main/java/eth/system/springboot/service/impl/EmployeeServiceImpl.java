@@ -71,6 +71,4 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .orElseThrow(()-> new RuntimeException("Employee doesn't exist with given id:" + employeeId));
         employeeRepository.deleteById(employeeId);
     }
-
-
 }

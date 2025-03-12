@@ -8,6 +8,7 @@ import { Employee } from '../models/employee.models';
 import { EmployeeService } from '../services/employee.service';
 import { Department } from '../../department/models/department.models';
 import { DepartmentService } from '../../department/services/department.service';
+import { EmployeeWithDepartment } from '../models/employee-dept.model';
 
 @Component({
   selector: 'app-employee-list',
@@ -20,7 +21,7 @@ export class EmployeeListComponent implements OnInit {
   // add a property to hold the list of employees
   employees$?: Observable<Employee[]>;
   departments$? : Observable<Department[]>
-  employeesWithDepartment$?: Observable<Employee[]>;
+  employeesWithDepartments$?: Observable<EmployeeWithDepartment[]>;
 
   // add constructor
   constructor(
@@ -33,6 +34,7 @@ export class EmployeeListComponent implements OnInit {
     this.departments$ = this.departmentService.getAllDepartments();
     this.employees$ = this.employeeService.getAllEmployees();
 
+    
   }
 
  
