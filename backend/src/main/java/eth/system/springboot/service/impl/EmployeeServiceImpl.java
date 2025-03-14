@@ -1,8 +1,10 @@
 package eth.system.springboot.service.impl;
 
+import eth.system.springboot.dto.DepartmentDto;
 import eth.system.springboot.dto.EmployeeDto;
 import eth.system.springboot.entity.Department;
 import eth.system.springboot.entity.Employee;
+import eth.system.springboot.repository.DepartmentRepository;
 import eth.system.springboot.repository.EmployeeRepository;
 import eth.system.springboot.service.EmployeeService;
 import lombok.AllArgsConstructor;
@@ -44,25 +46,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .collect(Collectors.toList());
     }
 
-    // REST API - Update Employee
-    @Override
-    public EmployeeDto updateEmployee(Long employeeId, EmployeeDto updateEmployee) {
-        Employee employee = employeeRepository.findAllById(employeeId)
-                .orElseThrow(()-> new RuntimeException("Employee doesn't exist with a given Id:" + employeeId));
-
-        employee.setFirstName(updateEmployee.getFirstName());
-        employee.setLastName(updateEmployee.getLastName());
-        employee.setEmployeeNumber(updateEmployee.getEmployeeNumber());
-        employee.setPosition(updateEmployee.getPosition());
-        employee.setEmailAddress(updateEmployee.getEmailAddress());
-        employee.setPhoneNumber(updateEmployee.getPhoneNumber());
-        employee.setEmployeeStatus(updateEmployee.getEmployeeStatus());
-        employee.setDateOfBirth(updateEmployee.getDateOfBirth());
-        employee.setDepartment(updateEmployee.getDepartment());
-
-        Employee updateEmployeeObj = employeeRepository.save(employee);
-        return modelMapper.map(updateEmployeeObj, EmployeeDto.class);
-    }
 
     // REST API - Delete Employee
     @Override
@@ -71,4 +54,26 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .orElseThrow(()-> new RuntimeException("Employee doesn't exist with given id:" + employeeId));
         employeeRepository.deleteById(employeeId);
     }
+
+    // REST API - Update Employee
+    @Override
+    public EmployeeDto updateEmployee(Long employeeId, EmployeeDto updateEmployee) {
+
+        Employee employee = employeeRepository.findAllById(employeeId)
+                .orElseThrow(()-> new RuntimeException("Employee doesn't exist with a given Id:" + employeeId));
+
+        employee.setFirstName(updateEmployee.getFirstName());
+        employee.setLastName(updateEmployee.getLastName());
+        employee.setEmployeeNumber(updateEmployee.getEmployeeNumber());
+        employee.setPosition(updateEmployee.getEmployeeNumber());
+        employee.setEmailAddress(updateEmployee.getEmailAddress());
+        employee.setEmployeeStatus(updateEmployee.getEmployeeStatus());
+        employee.setPhoneNumber(updateEmployee.getPhoneNumber());
+        employee.setDateOfBirth(updateEmployee.getDateOfBirth());
+        employee.setDepartment(updateEmployee.getDepartment());
+
+        Employee updateEmployeeObj = employeeRepository.save(employee);
+        return modelMapper.map(updateEmployeeObj, EmployeeDto.class);
+    }
+
 }

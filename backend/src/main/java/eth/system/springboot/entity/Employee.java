@@ -41,14 +41,8 @@ public class Employee {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
     private Date dateOfBirth;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Attendance> attendances;
-
 
 }
