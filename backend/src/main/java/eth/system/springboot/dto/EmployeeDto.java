@@ -38,14 +38,4 @@ public class EmployeeDto {
 
     private Department department;
 
-    private List<Attendance> attendances;
-
-
-    // for JUnit Test Case Only
-    /*public void setDateOfBirth(String s) {
-    }
-
-    public void setDepartment(long l) {
-    }
-     */
 }

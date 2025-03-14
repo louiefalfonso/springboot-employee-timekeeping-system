@@ -1,9 +1,12 @@
 package eth.system.springboot.controller;
 import eth.system.springboot.dto.EmployeeDto;
+import eth.system.springboot.entity.Department;
 import eth.system.springboot.entity.Employee;
+import eth.system.springboot.repository.DepartmentRepository;
 import eth.system.springboot.repository.EmployeeRepository;
 import eth.system.springboot.service.EmployeeService;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,7 @@ public class EmployeeController {
 
     private EmployeeRepository employeeRepository;
     private EmployeeService employeeService;
+    private ModelMapper modelMapper;
 
     //POST - Create New Employee REST API
     @PostMapping
@@ -41,9 +45,17 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+
+    //DELETE - Delete Employee REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable ("id") Long employeeId){
+        employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.ok("Employee Deleted Successfully");
+    }
+
     //UPDATE - Update Employee REST API
     @PutMapping("{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long id,
+    public ResponseEntity<Employee> updateEmployee(@PathVariable ("id")long id,
                                                    @RequestBody Employee employeeDetails){
         Employee updateEmployee = employeeRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Employee does not exist with id: " + id));
@@ -56,17 +68,12 @@ public class EmployeeController {
         updateEmployee.setPhoneNumber(employeeDetails.getPhoneNumber());
         updateEmployee.setEmployeeStatus(employeeDetails.getEmployeeStatus());
         updateEmployee.setDateOfBirth(employeeDetails.getDateOfBirth());
-        updateEmployee.setDepartment(employeeDetails.getDepartment());
+        //updateEmployee.setDepartment(employeeDetails.getDepartment());
 
         employeeRepository.save(updateEmployee);
         return ResponseEntity.ok(updateEmployee);
+
     }
 
-    //DELETE - Delete Employee REST API
-    @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable ("id") Long employeeId){
-        employeeService.deleteEmployee(employeeId);
-        return ResponseEntity.ok("Employee Deleted Successfully");
-    }
 }
 
