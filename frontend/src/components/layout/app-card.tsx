@@ -2,24 +2,29 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
-export function CardComponent() {
+
+interface CardComponentProps {
+  Title: string;
+  Description: string;
+  children: React.ReactNode;
+}
+
+const CardComponent = ({ Title, Description, children }: CardComponentProps ) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Card Title 1</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+        <CardTitle>{Title}</CardTitle>
+        <CardDescription>{Description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Card Content</p>
+        {children}
       </CardContent>
-      <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter>
     </Card>
   );
-}
+};
+
+export default CardComponent

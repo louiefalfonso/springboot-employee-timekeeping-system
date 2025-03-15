@@ -5,7 +5,7 @@ interface Employee { id: string; }
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URI_EMPLOYEES;
 
-const employeeServices ={
+const employeeServices = {
 
     addNewEmployee: async (newEmployee: Employee) => {
         const response = await axios.post(API_BASE_URL, newEmployee);

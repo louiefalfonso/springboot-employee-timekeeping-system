@@ -22,7 +22,6 @@ const EmployeeList = () => {
   return (
     <div className="rounded-md border p-5">
       <div className="flex justify-between items-center pb-5">
-        <div className="font-semibold tracking-tight text-xl">Employees</div>
         <Button>
           <Link to={`/employees/add`}>Add Employee</Link>
         </Button>

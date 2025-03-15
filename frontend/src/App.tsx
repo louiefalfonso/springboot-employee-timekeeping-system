@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Employees from "./pages/employees/Employees";
+import Dashboard from "./pages/dashboard/page";
+import Employees from "./pages/employees/page";
 import AddEmployee from "./components/employees/employee-add";
 import EmployeePage from "./pages/employees/[...id]/page";
 
