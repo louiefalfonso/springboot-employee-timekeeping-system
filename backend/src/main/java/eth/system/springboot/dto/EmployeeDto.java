@@ -38,4 +38,13 @@ public class EmployeeDto {
 
     private Department department;
 
+    /*
+
+    public void setDateOfBirth(String s) {
+    }
+
+    public void setDepartment(long l) {
+    }
+
+     */
 }
