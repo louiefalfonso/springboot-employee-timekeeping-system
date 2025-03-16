@@ -180,7 +180,6 @@ public class EmployeeServiceUnitTests {
         verify(modelMapper, never()).map(any(Employee.class), eq(EmployeeDto.class));
     }
 
-    /*
     @Test
     @Order(7)
     @DisplayName("Test 7: Update Employee - Successfully")
@@ -270,8 +269,6 @@ public class EmployeeServiceUnitTests {
         verify(employeeRepository, never()).save(any());
         verify(modelMapper, never()).map(any(), eq (EmployeeDto.class));
     }
-
-     */
 
     @Test
     @Order(9)
