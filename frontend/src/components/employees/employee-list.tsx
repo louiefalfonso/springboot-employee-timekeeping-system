@@ -7,7 +7,7 @@ import {Table,
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import { useGetAllEmployees } from "@/services/EmployeeServices";
+import { useGetAllEmployees } from "@/services/services-employee";
 import { Link } from "react-router-dom";
 
 const EmployeeList = () => {
@@ -45,7 +45,7 @@ const EmployeeList = () => {
               employeeNumber: string;
               firstName: string;
               lastName: string;
-              department: { departmentName: string };
+              department: { departmentName: string } | null;
               position: string;
               employeeStatus: string;
             }) => (
@@ -53,7 +53,7 @@ const EmployeeList = () => {
                 <TableCell>{employee.employeeNumber}</TableCell>
                 <TableCell>{employee.firstName}</TableCell>
                 <TableCell>{employee.lastName}</TableCell>
-                <TableCell>{employee.department.departmentName}</TableCell>
+                <TableCell>{employee.department ? employee.department.departmentName : 'N/A'}</TableCell>
                 <TableCell>{employee.position}</TableCell>
                 <TableCell>{employee.employeeStatus}</TableCell>
                 <TableCell>

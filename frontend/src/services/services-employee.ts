@@ -1,7 +1,18 @@
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
-interface Employee { id: string; }
+interface Employee {
+  id: string;
+  firstName?: string;
+  lastName?: string;
+  employeeNumber?: string;
+  emailAddress?: string;
+  position?: string;
+  phoneNumber?: string;
+  department?: number; // Ensure departmentId is included
+  dateOfBirth?: Date;
+  employeeStatus?: string;
+}
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URI_EMPLOYEES;
 

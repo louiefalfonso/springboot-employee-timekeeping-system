@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useGetEmployeeById } from "@/services/EmployeeServices"
+import { useGetEmployeeById } from "@/services/services-employee"
 import MainLayout from "../layout/app-layout";
 import Headers from "../layout/app-header";
 import CardComponent from "../layout/app-card";
