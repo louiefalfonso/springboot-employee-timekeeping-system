@@ -60,6 +60,9 @@ const EmployeeList = () => {
                   <Button>
                     <Link to={`/employees/${employee.id}`}>View</Link>
                   </Button>
+                  <Button>
+                    <Link to={`/employees/update/${employee.id}`}>Update</Link>
+                  </Button>
                 </TableCell>
               </TableRow>
             )
