@@ -9,7 +9,7 @@ interface Employee {
   emailAddress?: string;
   position?: string;
   phoneNumber?: string;
-  department?: number; // Ensure departmentId is included
+  department?: number; 
   dateOfBirth?: Date;
   employeeStatus?: string;
 }
@@ -66,7 +66,7 @@ export const useGetEmployeeById = (id: string) => {
     { queryKey: ['employee', id], queryFn: () => employeeServices.getEmployeeById(id) });
 };
 
-export const useUpdateCurrentEmployee = (id: string) => {
+export const useUpdateEmployee = (id: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (currentEmployee: Employee) => employeeServices.updateCurrentEmployee(currentEmployee, id),
