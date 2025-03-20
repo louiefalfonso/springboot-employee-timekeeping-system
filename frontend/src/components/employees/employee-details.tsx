@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useGetEmployeeById } from "@/services/services-employee"
-import MainLayout from "../layout/app-layout";
-import Headers from "../layout/app-header";
-import CardComponent from "../layout/app-card";
+
+import MainLayout from "@/components/layout/app-layout";
+import Headers from "@/components/layout/app-header";
+import CardComponent from "@/components/layout/app-card";
 
 const EmployeeDetails: React.FC = () => {
 

@@ -1,22 +1,16 @@
 import React, { useMemo, useState } from "react";
-import MainLayout from "../layout/app-layout";
-import Headers from "../layout/app-header";
-import { useNavigate } from "react-router-dom";
-import { useAddNewEmployee } from "../../services/services-employee";
-import { useGetAllDepartments } from "@/services/services-department";
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
+
+import { useAddNewEmployee } from "@/services/services-employee";
+import { useGetAllDepartments } from "@/services/services-department";
+import MainLayout from "@/components/layout/app-layout";
+import Headers from "@/components/layout/app-header";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select"
 
 // Define a type for the department
 type Department = {
@@ -103,7 +97,7 @@ const AddEmployee = () => {
       <Headers Title="Add Employee" />
       <div className="flex flex-1 flex-col gap-4 p-4">
         <form onSubmit={handleSubmit}>
-          <div className="grid auto-rows-min md:grid-cols-2">
+          <div className="grid auto-rows-min md:grid-cols-3">
             <div className="grid w-full items-center gap-4 p-4">
               <Label htmlFor="firstName">First Name:</Label>
               <Input
@@ -112,7 +106,6 @@ const AddEmployee = () => {
                 placeholder="First Name"
                 onChange={(e) => setFirstName(e.target.value)}
               />
-
               <Label htmlFor="lastName">Last Name:</Label>
               <Input
                 type="text"
@@ -120,15 +113,6 @@ const AddEmployee = () => {
                 placeholder="Last Name"
                 onChange={(e) => setLastName(e.target.value)}
               />
-
-              <Label htmlFor="emailAddress">Email Address:</Label>
-              <Input
-                type="email"
-                id="emailAddress"
-                placeholder="Email Address"
-                onChange={(e) => setEmailAddress(e.target.value)}
-              />
-
               <Label htmlFor="department">Department:</Label>
               <Select onValueChange={(value) => handleDepartmentSelect(parseInt(value))}>
                 <SelectTrigger className="w-full">
@@ -144,6 +128,13 @@ const AddEmployee = () => {
               </Select>
             </div>
             <div className="grid w-full items-center gap-4 p-4">
+            <Label htmlFor="emailAddress">Email Address:</Label>
+              <Input
+                type="email"
+                id="emailAddress"
+                placeholder="Email Address"
+                onChange={(e) => setEmailAddress(e.target.value)}
+              />
               <Label htmlFor="employeeNumber">Employee Number:</Label>
               <Input
                 type="text"
@@ -151,7 +142,6 @@ const AddEmployee = () => {
                 placeholder="Employee Number"
                 onChange={(e) => setEmployeeNumber(e.target.value)}
               />
-
               <Label htmlFor="position">Role / Position:</Label>
               <Input
                 type="text"
@@ -159,23 +149,9 @@ const AddEmployee = () => {
                 placeholder="Role / Position"
                 onChange={(e) => setPosition(e.target.value)}
               />
-
-              <Label htmlFor="phoneNumber">Phone Number:</Label>
-              <Input
-                type="text"
-                id="phoneNumber"
-                placeholder="Phone Number"
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-              <Label htmlFor="employeeStatus">Employee Status:</Label>
-              <Input
-                type="text"
-                id="employeeStatus"
-                placeholder="Employee Status"
-                onChange={(e) => setEmployeeStatus(e.target.value)}
-              />
-
-              <Label htmlFor="dateOfBirth">Date Of Birth:</Label>
+            </div>
+            <div className="grid w-full items-center gap-4 p-4">
+            <Label htmlFor="dateOfBirth">Date Of Birth:</Label>
               <Input
                 type="date"
                 id="dateOfBirth"
@@ -189,11 +165,25 @@ const AddEmployee = () => {
                   setDateOfBirth(selectedDate);
                 }}
               />
+            <Label htmlFor="phoneNumber">Phone Number:</Label>
+              <Input
+                type="text"
+                id="phoneNumber"
+                placeholder="Phone Number"
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+              <Label htmlFor="employeeStatus">Employee Status:</Label>
+              <Input
+                type="text"
+                id="employeeStatus"
+                placeholder="Employee Status"
+                onChange={(e) => setEmployeeStatus(e.target.value)}
+              />
             </div>
-            <Button type="submit" className="mt-4">
+          </div>
+          <Button type="submit" className="mt-4">
               Add Employee
             </Button>
-          </div>
         </form>
       </div>
     </MainLayout>
