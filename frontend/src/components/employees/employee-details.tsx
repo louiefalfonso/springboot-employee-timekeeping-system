@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useGetEmployeeById } from "@/services/services-employee"
 
+import { useGetEmployeeById } from "@/services/services-employee"
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 import CardComponent from "@/components/layout/app-card";
 
-const EmployeeDetails: React.FC = () => {
+const EmployeeDetails = () => {
 
   // Declare state variables
   const { id } = useParams();

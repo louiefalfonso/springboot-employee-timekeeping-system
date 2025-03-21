@@ -76,8 +76,6 @@ const AddEmployee = () => {
       return;
     }
 
-    console.log("Submitting new employee:", newEmployee); // Log the newEmployee object
-
     try {
       mutate(newEmployee, {
         onSuccess: () => {
@@ -181,9 +179,9 @@ const AddEmployee = () => {
               />
             </div>
           </div>
-          <Button type="submit" className="mt-4">
+          <Button type="submit" className="mt-4 ml-4 bg-green-500 hover:bg-green-600">
               Add Employee
-            </Button>
+          </Button>
         </form>
       </div>
     </MainLayout>
