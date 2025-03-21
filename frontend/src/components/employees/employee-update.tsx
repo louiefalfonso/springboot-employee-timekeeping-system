@@ -1,19 +1,17 @@
-
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetEmployeeById, useUpdateEmployee } from "@/services/services-employee";
-import { useGetAllDepartments } from "@/services/services-department";
 import { format } from "date-fns";
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
+import { useGetEmployeeById, useUpdateEmployee } from "@/services/services-employee";
+import { useGetAllDepartments } from "@/services/services-department";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-// Define a type for the department
 type Department = {
   id: number;
   departmentName: string;
@@ -21,14 +19,27 @@ type Department = {
   departmentHead: string;
 };
 
+type Employee = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  employeeNumber: string;
+  departmentId: number;
+  dateOfBirth: Date | undefined;
+  emailAddress: string;
+  position: string;
+  phoneNumber: string;
+  employeeStatus: string;
+};
+
 const UpdateEmployee = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const { data, isLoading } = useGetEmployeeById(id || "");
-  const { mutate } = useUpdateEmployee();
+  const { mutate } = useUpdateEmployee(id || "");
   const { data: departments } = useGetAllDepartments();
 
-  // Declare state variables for form fields
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [employeeNumber, setEmployeeNumber] = useState("");
@@ -36,11 +47,9 @@ const UpdateEmployee = () => {
   const [position, setPosition] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [employeeStatus, setEmployeeStatus] = useState("");
-
   const [departmentId, setDepartmentId] = useState<number | null>(null);
   const [dateOfBirth, setDateOfBirth] = useState<Date | undefined>();
 
-  // Update state variables when data is fetched
   useEffect(() => {
     if (data) {
       setFirstName(data.firstName);
@@ -48,22 +57,16 @@ const UpdateEmployee = () => {
       setEmployeeNumber(data.employeeNumber);
       setDepartmentId(data.departmentId);
       setDateOfBirth(data.dateOfBirth);
-      setEmailAddress(data.emailAddress)
-      setPosition(data.position)
-      setPhoneNumber(data.phoneNumber)
-      setEmployeeStatus(data.employeeStatus)
+      setEmailAddress(data.emailAddress);
+      setPosition(data.position);
+      setPhoneNumber(data.phoneNumber);
+      setEmployeeStatus(data.employeeStatus);
     }
   }, [data]);
 
-  // Handle loading state
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (!data) {
-    return <div>No data found</div>;
-  }
+  if (isLoading) { return <div>Loading...</div>;}
+  if (!data) { return <div>No data found</div>;}
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -72,27 +75,32 @@ const UpdateEmployee = () => {
       return;
     }
 
-    const updatedEmployee = {
-      id,
+    const currentEmployee: Employee = {
+      id: id || "",
       firstName,
       lastName,
       employeeNumber,
       departmentId,
       dateOfBirth,
-      emailAddress
+      emailAddress,
+      position,
+      phoneNumber,
+      employeeStatus,
     };
 
     try {
-      mutate(updatedEmployee, {
+      mutate(currentEmployee, {
         onSuccess: () => {
           navigate("/employees");
         },
         onError: (error) => {
           console.error("Error updating employee:", error);
+          alert("Failed to update employee. Please try again.");
         },
       });
     } catch (error) {
       console.error("Unexpected error:", error);
+      alert("An unexpected error occurred. Please try again.");
     }
   };
 
@@ -130,14 +138,8 @@ const UpdateEmployee = () => {
                   ))}
                 </SelectContent>
               </Select>
-              
-             
-
-             
-              
             </div>
             <div className="grid w-full items-center gap-4 p-4">
-            
               <Label htmlFor="emailAddress">Email Address:</Label>
               <Input
                 type="email"
@@ -146,12 +148,12 @@ const UpdateEmployee = () => {
                 onChange={(e) => setEmailAddress(e.target.value)}
               />
               <Label htmlFor="employeeNumber">Employee Number:</Label>
-                <Input
-                  type="text"
-                  id="employeeNumber"
-                  value={employeeNumber}
-                  onChange={(e) => setEmployeeNumber(e.target.value)}
-                />
+              <Input
+                type="text"
+                id="employeeNumber"
+                value={employeeNumber}
+                onChange={(e) => setEmployeeNumber(e.target.value)}
+              />
               <Label htmlFor="position">Role / Position:</Label>
               <Input
                 type="text"
@@ -160,10 +162,9 @@ const UpdateEmployee = () => {
                 placeholder="Role / Position"
                 onChange={(e) => setPosition(e.target.value)}
               />
-              
             </div>
             <div className="grid w-full items-center gap-4 p-4">
-            <Label htmlFor="dateOfBirth">Date Of Birth:</Label>
+              <Label htmlFor="dateOfBirth">Date Of Birth:</Label>
               <Input
                 type="date"
                 id="dateOfBirth"
@@ -192,11 +193,10 @@ const UpdateEmployee = () => {
                 onChange={(e) => setEmployeeStatus(e.target.value)}
               />
             </div>
-            
-              
-            
           </div>
-          <Button type="submit" className="mt-4" >Update Employee</Button>
+          <Button type="submit" className="mt-4 ml-4 bg-violet-500 hover:bg-violet-600">
+            Update Employee
+          </Button>
         </form>
       </div>
     </MainLayout>
