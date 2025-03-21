@@ -3,7 +3,6 @@ import Headers from "@/components/layout/app-header";
 
 const Dashboard = () => {
   return (
-    <>
       <MainLayout>
         <Headers Title="Dashboard"/>
         <div className="flex flex-1 flex-col gap-4 p-4">
@@ -15,7 +14,6 @@ const Dashboard = () => {
           </div>
         </div>
       </MainLayout>
-    </>
   );
 }
 
