@@ -4,16 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const EmployeeList = () => {
+  
   // Declare state variables
   const { data, isLoading } = useGetAllEmployees();
 
   // Handle loading state
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (!data) {
-    return <div>No data found</div>;
-  }
+  if (isLoading) { return <div>Loading...</div>;}
+  if (!data) { return <div>No data found</div>;}
 
   return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">

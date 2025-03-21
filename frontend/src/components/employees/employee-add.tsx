@@ -16,8 +16,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@
 type Department = {
   id: number;
   departmentName: string;
-  departmentCode: string;
-  departmentHead: string;
 };
 
 const AddEmployee = () => {

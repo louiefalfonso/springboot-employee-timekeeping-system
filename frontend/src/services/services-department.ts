@@ -1,7 +1,15 @@
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
-interface Department { id: string; }
+interface Department { 
+  id: string; 
+  departmentName?: string;
+  departmentCode?: string;
+  departmentHead?: string;
+  departmentAssistant?: string;
+  location?:string;
+  contactNumber?:string;
+}
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URI_DEPARTMENTS;
 

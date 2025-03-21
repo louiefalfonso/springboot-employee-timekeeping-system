@@ -1,4 +1,4 @@
-import { Home, ContactRound  } from "lucide-react";
+import { Home, ContactRound, Building2 } from "lucide-react";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 
 // Menu items.
@@ -12,6 +12,11 @@ const items = [
     title: "Employees",
     url: "/employees",
     icon: ContactRound,
+  },
+  {
+    title: "Departments",
+    url: "/departments",
+    icon: Building2,
   },
 ];
 
