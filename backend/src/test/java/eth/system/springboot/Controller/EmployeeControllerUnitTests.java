@@ -52,9 +52,6 @@ public class EmployeeControllerUnitTests {
         inputEmployeeDto.setEmailAddress("clairejones@gmail.com");
         inputEmployeeDto.setPhoneNumber("07-3427-960453");
         inputEmployeeDto.setEmployeeStatus("Contract");
-        inputEmployeeDto.setDateOfBirth("02-24-2025");
-        inputEmployeeDto.setDepartment(1L);
-
 
         EmployeeDto savedEmployeeDto = new EmployeeDto();
         savedEmployeeDto.setFirstName("Claire");
@@ -64,8 +61,7 @@ public class EmployeeControllerUnitTests {
         savedEmployeeDto.setEmailAddress("clairejones@gmail.com");
         savedEmployeeDto.setPhoneNumber("07-3427-960453");
         savedEmployeeDto.setEmployeeStatus("Contract");
-        savedEmployeeDto.setDateOfBirth("02-24-2025");
-        savedEmployeeDto.setDepartment(1L);
+
 
         when(employeeService.createNewEmployee(inputEmployeeDto)).thenReturn(savedEmployeeDto);
 

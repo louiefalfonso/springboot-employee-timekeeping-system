@@ -6,7 +6,6 @@ import eth.system.springboot.repository.DepartmentRepository;
 import eth.system.springboot.repository.EmployeeRepository;
 import eth.system.springboot.service.EmployeeService;
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +20,6 @@ public class EmployeeController {
 
     private EmployeeRepository employeeRepository;
     private EmployeeService employeeService;
-    private ModelMapper modelMapper;
 
     //POST - Create New Employee REST API
     @PostMapping
