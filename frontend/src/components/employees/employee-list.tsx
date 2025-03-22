@@ -9,8 +9,8 @@ const EmployeeList = () => {
   const { data, isLoading } = useGetAllEmployees();
 
   // Handle loading state
-  if (isLoading) { return <div>Loading...</div>;}
-  if (!data) { return <div>No data found</div>;}
+  if (isLoading) { return <div>Loading...</div>};
+  if (!data) { return <div>No data found</div>};
 
   return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
@@ -51,10 +51,10 @@ const EmployeeList = () => {
                   <TableCell>{employee.position}</TableCell>
                   <TableCell>{employee.employeeStatus}</TableCell>
                   <TableCell>
-                    <Button className="mr-3 bg-sky-500 hover:bg-sky-600">
+                    <Button className="mr-2 bg-sky-500 hover:bg-sky-600">
                       <Link to={`/employees/${employee.id}`}>View</Link>
                     </Button>
-                    <Button className="bg-violet-500 hover:bg-violet-600">
+                    <Button className="mr-2 bg-violet-500 hover:bg-violet-600">
                       <Link to={`/employees/update/${employee.id}`}>Update</Link>
                     </Button>
                   </TableCell>

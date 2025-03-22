@@ -195,7 +195,10 @@ const UpdateEmployee = () => {
             </div>
           </div>
           <Button type="submit" className="mt-4 ml-4 bg-violet-500 hover:bg-violet-600">
-            Update Employee
+            Update
+          </Button>
+          <Button className="mt-4 ml-4 bg-red-500 hover:bg-red-600">
+            Delete
           </Button>
         </form>
       </div>

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import { useGetEmployeeById } from "@/services/services-employee"
+import { useGetAllDepartments } from "@/services/services-department";
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 import CardComponent from "@/components/layout/app-card";
@@ -10,6 +11,7 @@ const EmployeeDetails = () => {
   // Declare state variables
   const { id } = useParams();
   const { data, isLoading } = useGetEmployeeById(id || "");
+  const { data: departments } = useGetAllDepartments();
 
   // Handle loading state
     if (isLoading) {return <div>Loading...</div>;}
@@ -25,15 +27,24 @@ const EmployeeDetails = () => {
             Description="Employee details"
           >
             <p>Employee Number: {data.employeeNumber}</p>
-            <p>Employee First Name: {data.firstName}</p>
-            <p>Employee Last Name: {data.lastName}</p>
-            <p>Employee Department: {data.department.departmentName}</p>
-            <p>Employment Status: {data.employeeStatus}</p>
+            <p>Full Name: {data.firstName} {data.lastName}</p>
+            <p>Department: {data.department.departmentName}</p>
+            <p>Status: {data.employeeStatus}</p>
             <p>Role / Position: {data.position}</p>
             <p>Email Address: {data.emailAddress}</p>
-            <p>Phone Number: {data.phoneNumber}</p>
+            <p>Date of Birth: {data.dateOfBirth}</p>
           </CardComponent>
-          <div className="aspect-video rounded-xl bg-muted/50" />
+          <CardComponent
+            Title="Department Details"
+            Description="Employee department details"
+          >
+           <p>Department: {data.department.departmentName}</p> 
+           <p>Department Code: {data.department.departmentCode}</p>
+           <p>Department Head: {data.department.departmentHead}</p>
+           <p>Department Assistant: {data.department.departmentAssistant}</p>  
+           <p>Location: {data.department.location}</p>   
+           <p>Contact Number: {data.department.contactNumber}</p>     
+          </CardComponent>
         </div>
       </div>
     </MainLayout>
