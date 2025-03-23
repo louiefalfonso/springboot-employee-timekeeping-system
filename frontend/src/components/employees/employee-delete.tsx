@@ -1,40 +1,37 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useDeleteEmployee, useGetEmployeeById } from "@/services/services-employee"
 
-const DeleteEmployee = () => {
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 
-    // Declare state variables
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const { mutate } = useDeleteEmployee();
-    const { data, isLoading } = useGetEmployeeById(id || "");
+interface DeleteEmployeeDialogProps {
+  employeeId: string;
+  onDelete: () => void;
+}
 
-    // Handle loading state
-    if (isLoading) {return <div>Loading...</div>;}
-    if (!data) {return <div>No data found</div>;}
-
-    // Handle Delete
-    const handleDelete = () => {
-        try {
-            if (id) {
-                mutate(id);
-                navigate("/employees");
-                window.location.reload();
-            } else {
-                console.error("Employee Id is Undefined");
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
+const DeleteEmployeeDialog : React.FC<DeleteEmployeeDialogProps> = ({ employeeId, onDelete }) => {
+  
+  if (!employeeId) {
+    console.error("Invalid employee ID");
+    return null;
+  }
 
   return (
-    <>
-      <h1>Delete Asset</h1>
-      <p>Are you sure you want to delete this employee?</p>
-      <button>Delete Employee</button>
-    </>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button className="ml-4 bg-red-500 hover:bg-red-600">Delete</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogTitle>Confirm Deletion</DialogTitle>
+        <DialogDescription>
+          Are you sure you want to delete this employee? This action cannot be undone.
+        </DialogDescription>
+        <DialogFooter>
+          <Button onClick={onDelete} className="bg-red-500 hover:bg-red-600">
+            Confirm
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
 
-export default DeleteEmployee
+export default DeleteEmployeeDialog

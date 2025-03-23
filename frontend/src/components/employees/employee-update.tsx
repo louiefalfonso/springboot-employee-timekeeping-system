@@ -4,13 +4,15 @@ import { format } from "date-fns";
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
-import { useGetEmployeeById, useUpdateEmployee } from "@/services/services-employee";
+import DeleteEmployeeDialog from "./employee-delete";
+import { useGetEmployeeById, useUpdateEmployee, useDeleteEmployee } from "@/services/services-employee";
 import { useGetAllDepartments } from "@/services/services-department";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 
 type Department = {
   id: number;
@@ -33,13 +35,18 @@ type Employee = {
 };
 
 const UpdateEmployee = () => {
+
+  // get employee ID from URL
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // fetch employee data
   const { data, isLoading } = useGetEmployeeById(id || "");
   const { mutate } = useUpdateEmployee(id || "");
+  const { mutate: deleteEmployee } = useDeleteEmployee();
   const { data: departments } = useGetAllDepartments();
 
+  // employee data
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [employeeNumber, setEmployeeNumber] = useState("");
@@ -50,6 +57,7 @@ const UpdateEmployee = () => {
   const [departmentId, setDepartmentId] = useState<number | null>(null);
   const [dateOfBirth, setDateOfBirth] = useState<Date | undefined>();
 
+  // set employee data
   useEffect(() => {
     if (data) {
       setFirstName(data.firstName);
@@ -64,9 +72,11 @@ const UpdateEmployee = () => {
     }
   }, [data]);
 
+  // end set employee data
   if (isLoading) { return <div>Loading...</div>;}
   if (!data) { return <div>No data found</div>;}
 
+  // update employee
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -96,6 +106,24 @@ const UpdateEmployee = () => {
         onError: (error) => {
           console.error("Error updating employee:", error);
           alert("Failed to update employee. Please try again.");
+        },
+      });
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      alert("An unexpected error occurred. Please try again.");
+    }
+  };
+
+  // delete employee
+  const handleDelete = () => {
+    try {
+      deleteEmployee(id || "", {
+        onSuccess: () => {
+          navigate("/employees");
+        },
+        onError: (error) => {
+          console.error("Error deleting employee:", error);
+          alert("Failed to delete employee. Please try again.");
         },
       });
     } catch (error) {
@@ -194,12 +222,10 @@ const UpdateEmployee = () => {
               />
             </div>
           </div>
-          <Button type="submit" className="mt-4 ml-4 bg-violet-500 hover:bg-violet-600">
-            Update
-          </Button>
-          <Button className="mt-4 ml-4 bg-red-500 hover:bg-red-600">
-            Delete
-          </Button>
+          <div className="flex pl-4">
+            <Button type="submit" className="bg-violet-500 hover:bg-violet-600" aria-label="Update Employee">Update</Button>
+            <DeleteEmployeeDialog employeeId={id || ""} onDelete={handleDelete} aria-label="Delete Employee"/>
+          </div>
         </form>
       </div>
     </MainLayout>
