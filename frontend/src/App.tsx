@@ -5,6 +5,7 @@ import AddEmployee from "@/components/employees/employee-add";
 import EmployeePage from "@/pages/employees/[...id]/page";
 import UpdateEmployee from "@/components/employees/employee-update";
 import Departments from "@/pages/departments/page";
+import AddDepartment from "./components/departments/department-add";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/employees/:id" element={<EmployeePage/>} />
         <Route path="/employees/update/:id" element={<UpdateEmployee/>} />
         <Route path="/departments" element={<Departments/>}/>
+        <Route path="/departments/add" element={<AddDepartment/>}/>
       </Routes>
     </>
   );

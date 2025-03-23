@@ -19,6 +19,7 @@ type Department = {
 };
 
 const AddEmployee = () => {
+  
   // Declare state variables
   const navigate = useNavigate();
   const { mutate } = useAddNewEmployee();
