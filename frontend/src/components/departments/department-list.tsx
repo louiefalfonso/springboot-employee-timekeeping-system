@@ -2,6 +2,7 @@ import { useGetAllDepartments } from "@/services/services-department"
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Toaster } from "@/components/ui/sonner"
 const DepartmentList = () => {
 
    // Declare state variables
@@ -15,7 +16,7 @@ const DepartmentList = () => {
     <div className="rounded-md border p-5 w-full overflow-x-auto">
       <div className="flex justify-between items-center pb-5">
         <Button className ="bg-green-500 hover:bg-green-600">
-          <Link to={``}>Add Department</Link>
+          <Link to={`/departments/add`}>Add Department</Link>
         </Button>
       </div>
       <div className="min-w-full">
@@ -60,6 +61,7 @@ const DepartmentList = () => {
             </TableBody>
         </Table>
       </div>
+      <Toaster />
     </div> 
   )
 }
