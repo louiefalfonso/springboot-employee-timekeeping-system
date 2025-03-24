@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { format } from "date-fns";
+import { toast } from "sonner"
 
 
 import MainLayout from "@/components/layout/app-layout";
@@ -82,7 +83,7 @@ const UpdateEmployee = () => {
     e.preventDefault();
 
     if (departmentId === null) {
-      alert("Please select a department");
+      toast.error("Please select a department");
       return;
     }
 
@@ -102,16 +103,17 @@ const UpdateEmployee = () => {
     try {
       mutate(currentEmployee, {
         onSuccess: () => {
+          toast.success("Employee updated successfully");
           navigate("/employees");
         },
         onError: (error) => {
           console.error("Error updating employee:", error);
-          alert("Failed to update employee. Please try again.");
+          toast.error("Failed to update employee. Please try again.");
         },
       });
     } catch (error) {
       console.error("Unexpected error:", error);
-      alert("An unexpected error occurred. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
     }
   };
 
@@ -120,16 +122,17 @@ const UpdateEmployee = () => {
     try {
       deleteEmployee(id || "", {
         onSuccess: () => {
+          toast.success("Employee deleted successfully");
           navigate("/employees");
         },
         onError: (error) => {
           console.error("Error deleting employee:", error);
-          alert("Failed to delete employee. Please try again.");
+          toast.error("Failed to delete employee. Please try again.");
         },
       });
     } catch (error) {
       console.error("Unexpected error:", error);
-      alert("An unexpected error occurred. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
     }
   };
 

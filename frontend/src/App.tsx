@@ -10,6 +10,9 @@ import DepartmentPage from "./pages/departments/[...id]/page";
 import UpdateDepartment from "./components/departments/department-update";
 import Attendances from "./pages/attendances/page";
 
+import { Toaster} from "@/components/ui/sonner"
+import AddNewAttendance from "./components/attendances/attendance-add";
+
 function App() {
   return (
     <>
@@ -23,8 +26,10 @@ function App() {
         <Route path="/departments/add" element={<AddDepartment/>}/>
         <Route path="/departments/:id" element={<DepartmentPage/>}/>
         <Route path="/departments/update/:id" element={<UpdateDepartment/>}/>
-        <Route path="/attendances" element={<Attendances/>} /> 
+        <Route path="/attendances" element={<Attendances/>} />
+        <Route path="/attendances/add" element={<AddNewAttendance/>} />  
       </Routes>
+      <Toaster />
     </>
   );
 }

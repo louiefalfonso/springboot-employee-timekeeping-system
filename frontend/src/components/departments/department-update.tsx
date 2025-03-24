@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link} from "react-router-dom";
-
+import { Toaster} from "@/components/ui/sonner"
+import { toast } from "sonner"
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
@@ -72,16 +73,17 @@ const UpdateDepartment = () => {
      try {
       mutate(currentDepartment, {
         onSuccess: () => {
+          toast.success("Department updated successfully");
           navigate("/departments");
         },
         onError: (error) => {
           console.error("Error updating employee:", error);
-          alert("Failed to update employee. Please try again.");
+          toast.error("Failed to update employee. Please try again.");
         },
       });
     } catch (error) {
       console.error("Unexpected error:", error);
-      alert("An unexpected error occurred. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
     }
    }
 
@@ -89,16 +91,17 @@ const UpdateDepartment = () => {
     try {
       deleteDepartment(id || "", {
         onSuccess: () => {
+          toast.success("Department Deleted successfully");
           navigate("/departments");
         },
         onError: (error) => {
           console.error("Error updating department:", error);
-          alert("Failed to update department. Please try again.");
+          toast.error("Failed to update department. Please try again.");
         },
       });
     } catch (error) {
       console.error("Unexpected error:", error);
-      alert("An unexpected error occurred. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
     }
    }
 
@@ -134,6 +137,7 @@ const UpdateDepartment = () => {
             </div>
         </form>
       </div>
+      <Toaster />
     </MainLayout>
   )
 }

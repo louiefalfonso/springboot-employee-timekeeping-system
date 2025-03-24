@@ -1,11 +1,10 @@
-
-import MainLayout from "@/components/layout/app-layout";
-import Headers from "@/components/layout/app-header";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { useGetDepartmentById } from "@/services/services-department";
 import { useGetAllEmployees } from "@/services/services-employee";
+import MainLayout from "@/components/layout/app-layout";
+import Headers from "@/components/layout/app-header";
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";

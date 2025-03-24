@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 interface DeleteDepartmentDialogProps {
     departmentId: string;
     onDelete: () => void;
-  }
+}
 
 const DeleteDepartmentDialog : React.FC<DeleteDepartmentDialogProps> = ({ departmentId, onDelete })  => {
 

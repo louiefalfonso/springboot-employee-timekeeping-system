@@ -20,7 +20,7 @@ const EmployeeList = () => {
   const { data, isLoading, refetch } = useGetAllEmployees();
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 8;
 
   if (isLoading) { return <div>Loading...</div>};
   if (!data) { return <div>No data found</div>};

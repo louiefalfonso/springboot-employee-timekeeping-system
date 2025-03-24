@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { format } from "date-fns";
 import { useNavigate, Link } from "react-router-dom";
+import { toast } from "sonner"
 
 import { useAddNewEmployee } from "@/services/services-employee";
 import { useGetAllDepartments } from "@/services/services-department";
@@ -71,20 +72,23 @@ const AddEmployee = () => {
     e.preventDefault();
 
     if (!selectedDepartment) {
-      alert("Please select a department");
+      toast.error("Please select a department");
       return;
     }
 
     try {
       mutate(newEmployee, {
         onSuccess: () => {
+          toast.success("Employee added successfully");
           navigate("/employees");
         },
         onError: (error) => {
+          toast.error(error.message);
           console.error("Error adding employee:", error);
         },
       });
     } catch (error) {
+      toast.error(error.message);
       console.error("Unexpected error:", error);
     }
   };
@@ -185,8 +189,7 @@ const AddEmployee = () => {
             <Link to={`/employees`}>
               <Button className ="bg-gray-500 hover:bg-gray-600">Back to Employees</Button>  
             </Link>
-          </div>
-         
+          </div> 
         </form>
       </div>
     </MainLayout>

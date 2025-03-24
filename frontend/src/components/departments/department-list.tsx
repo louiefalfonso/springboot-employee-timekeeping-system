@@ -1,5 +1,6 @@
-import { useGetAllDepartments } from "@/services/services-department"
 import { Link } from "react-router-dom";
+import { useGetAllDepartments } from "@/services/services-department"
+
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Toaster } from "@/components/ui/sonner"
