@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
-
 import { useGetEmployeeById } from "@/services/services-employee"
 import { useGetAllDepartments } from "@/services/services-department";
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 import CardComponent from "@/components/layout/app-card";
+
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const EmployeeDetails = () => {
 
@@ -46,6 +48,11 @@ const EmployeeDetails = () => {
            <p>Contact Number: {data.department.contactNumber}</p>     
           </CardComponent>
         </div>
+        <div className="flex">
+            <Link to={`/employees`}>
+              <Button className ="bg-gray-500 hover:bg-gray-600">Back to Employees</Button>  
+            </Link>
+          </div>
       </div>
     </MainLayout>
   );

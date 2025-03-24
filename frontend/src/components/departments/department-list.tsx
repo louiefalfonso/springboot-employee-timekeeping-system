@@ -15,9 +15,9 @@ const DepartmentList = () => {
   return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
       <div className="flex justify-between items-center pb-5">
-        <Button className ="bg-green-500 hover:bg-green-600">
-          <Link to={`/departments/add`}>Add Department</Link>
-        </Button>
+          <Link to={`/departments/add`}>
+            <Button className ="bg-green-500 hover:bg-green-600">Add Department</Button>
+          </Link>
       </div>
       <div className="min-w-full">
         <Table>
@@ -48,12 +48,12 @@ const DepartmentList = () => {
                             <TableCell>{department.contactNumber}</TableCell>
                             <TableCell>{department.location}</TableCell>
                             <TableCell>
-                                <Button className="mr-3 bg-sky-500 hover:bg-sky-600">
-                                    <Link to={``}>View</Link>
-                                    </Button>
-                                <Button className="bg-violet-500 hover:bg-violet-600">
-                                    <Link to={``}>Update</Link>
-                                    </Button>
+                                <Link to={`/departments/${department.id}`}>
+                                    <Button className="mr-3 bg-sky-500 hover:bg-sky-600">View</Button>
+                                </Link>
+                                <Link to={``}>
+                                    <Button className="bg-violet-500 hover:bg-violet-600">Update</Button>
+                                </Link>
                             </TableCell>
                         </TableRow>
                     )

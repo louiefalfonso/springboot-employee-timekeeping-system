@@ -15,9 +15,9 @@ const EmployeeList = () => {
   return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
       <div className="flex justify-between items-center pb-5">
-        <Button className ="bg-green-500 hover:bg-green-600">
-          <Link to={`/employees/add`}>Add Employee</Link>
-        </Button>
+        <Link to={`/employees/add`}>
+          <Button className ="bg-green-500 hover:bg-green-600"> Add Employee</Button>
+        </Link>
       </div>
       <div className="min-w-full">
         <Table>
@@ -51,12 +51,12 @@ const EmployeeList = () => {
                   <TableCell>{employee.position}</TableCell>
                   <TableCell>{employee.employeeStatus}</TableCell>
                   <TableCell>
-                    <Button className="mr-2 bg-sky-500 hover:bg-sky-600">
-                      <Link to={`/employees/${employee.id}`}>View</Link>
-                    </Button>
-                    <Button className="mr-2 bg-violet-500 hover:bg-violet-600">
-                      <Link to={`/employees/update/${employee.id}`}>Update</Link>
-                    </Button>
+                      <Link to={`/employees/${employee.id}`}>
+                        <Button className="mr-2 bg-sky-500 hover:bg-sky-600">View</Button>
+                       </Link>
+                       <Link to={`/employees/update/${employee.id}`}>
+                        <Button className="mr-2 bg-violet-500 hover:bg-violet-600">Update</Button>
+                       </Link>
                   </TableCell>
                 </TableRow>
               )

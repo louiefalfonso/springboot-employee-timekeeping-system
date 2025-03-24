@@ -1,11 +1,8 @@
-import { useParams } from "react-router-dom";
+import DepartmentDetails from "@/components/departments/department.details"
 const DepartmentPage = () => {
 
-  // Get the asset ID from the URL
-  const { id } = useParams();
-
   return (
-    <>DepartmentPage</>
+    <><DepartmentDetails/></>
   )
 }
 

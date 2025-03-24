@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { useAddNewEmployee } from "@/services/services-employee";
 import { useGetAllDepartments } from "@/services/services-department";
@@ -178,9 +178,15 @@ const AddEmployee = () => {
               />
             </div>
           </div>
-          <Button type="submit" className="mt-4 ml-4 bg-green-500 hover:bg-green-600">
-              Add Employee
-          </Button>
+          <div className="flex pl-4 mt-4 ">
+            <Button type="submit" className="mr-4 bg-green-500 hover:bg-green-600">
+                Add Employee
+            </Button>
+            <Link to={`/employees`}>
+              <Button className ="bg-gray-500 hover:bg-gray-600">Back to Employees</Button>  
+            </Link>
+          </div>
+         
         </form>
       </div>
     </MainLayout>

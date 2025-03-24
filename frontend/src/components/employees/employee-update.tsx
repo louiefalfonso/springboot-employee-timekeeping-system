@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { format } from "date-fns";
+
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
@@ -225,6 +226,9 @@ const UpdateEmployee = () => {
           <div className="flex pl-4">
             <Button type="submit" className="bg-violet-500 hover:bg-violet-600" aria-label="Update Employee">Update</Button>
             <DeleteEmployeeDialog employeeId={id || ""} onDelete={handleDelete} aria-label="Delete Employee"/>
+            <Link to={`/departments`}>
+              <Button className ="bg-gray-500 hover:bg-gray-600">Back</Button>  
+            </Link>
           </div>
         </form>
       </div>
