@@ -26,7 +26,7 @@ const DepartmentDetails = () => {
 
   return (
     <MainLayout>
-      <Headers Title="Department Details" />
+      <Headers Title="Department Details Page" />
       <div className="flex flex-1 flex-col gap-4 p-4">
         <div className="grid auto-rows-min gap-4 md:grid-cols-1">
           <div className="rounded-md border p-5 w-full overflow-x-auto">
@@ -57,42 +57,46 @@ const DepartmentDetails = () => {
           </div>
           <div className="rounded-md border p-5 w-full overflow-x-auto">
             <div className="min-w-full">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Employee Number</TableHead>
-                    <TableHead>Full Name</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Role / Position</TableHead>
-                    <TableHead>Email Address</TableHead>
-                    <TableHead>Phone Number</TableHead>
-                    
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {departmentEmployees?.map(
-                    (employee: {
-                      id: string;
-                      employeeNumber: string;
-                      firstName: string;
-                      lastName: string;
-                      employeeStatus: string;
-                      position: string;
-                      emailAddress: string;
-                      phoneNumber: string;
-                    }) => (
-                      <TableRow key={employee.id}>
-                        <TableCell>{employee.employeeNumber}</TableCell>
-                        <TableCell>{employee.firstName} {employee.lastName}</TableCell>
-                        <TableCell>{employee.employeeStatus}</TableCell>
-                        <TableCell>{employee.position}</TableCell>
-                        <TableCell>{employee.emailAddress}</TableCell>
-                        <TableCell>{employee.phoneNumber}</TableCell>
-                      </TableRow>
-                    )
-                  )}
-                </TableBody>
-              </Table>
+              <h1 className="scroll-m-20 text-3xl font-bold tracking-tight mb-5"> List of Employees at {data.departmentName}</h1>
+              {departmentEmployees.length > 0 ? (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Employee Number</TableHead>
+                      <TableHead>Full Name</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Role / Position</TableHead>
+                      <TableHead>Email Address</TableHead>
+                      <TableHead>Phone Number</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {departmentEmployees.map(
+                      (employee: {
+                        id: string;
+                        employeeNumber: string;
+                        firstName: string;
+                        lastName: string;
+                        employeeStatus: string;
+                        position: string;
+                        emailAddress: string;
+                        phoneNumber: string;
+                      }) => (
+                        <TableRow key={employee.id}>
+                          <TableCell>{employee.employeeNumber}</TableCell>
+                          <TableCell>{employee.firstName} {employee.lastName}</TableCell>
+                          <TableCell>{employee.employeeStatus}</TableCell>
+                          <TableCell>{employee.position}</TableCell>
+                          <TableCell>{employee.emailAddress}</TableCell>
+                          <TableCell>{employee.phoneNumber}</TableCell>
+                        </TableRow>
+                      )
+                    )}
+                  </TableBody>
+                </Table>
+              ) : (
+                <div>No employees found for this department yet.</div>
+              )}
             </div>
           </div>
           <div className="flex ">
