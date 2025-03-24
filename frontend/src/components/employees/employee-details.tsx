@@ -1,19 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useGetEmployeeById } from "@/services/services-employee"
-import { useGetAllDepartments } from "@/services/services-department";
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
-import CardComponent from "@/components/layout/app-card";
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 const EmployeeDetails = () => {
 
   // Declare state variables
   const { id } = useParams();
   const { data, isLoading } = useGetEmployeeById(id || "");
-  const { data: departments } = useGetAllDepartments();
+ 
 
   // Handle loading state
     if (isLoading) {return <div>Loading...</div>;}
@@ -21,32 +20,63 @@ const EmployeeDetails = () => {
 
   return (
     <MainLayout>
-      <Headers Title="Employee Details"/>
+      <Headers Title="Employee Details Page"/>
       <div className="flex flex-1 flex-col gap-4 p-4">
-        <div className="grid auto-rows-min gap-4 md:grid-cols-2">
-          <CardComponent
-            Title="Complete Employee Details"
-            Description="Employee details"
-          >
-            <p>Employee Number: {data.employeeNumber}</p>
-            <p>Full Name: {data.firstName} {data.lastName}</p>
-            <p>Department: {data.department.departmentName}</p>
-            <p>Status: {data.employeeStatus}</p>
-            <p>Role / Position: {data.position}</p>
-            <p>Email Address: {data.emailAddress}</p>
-            <p>Date of Birth: {data.dateOfBirth}</p>
-          </CardComponent>
-          <CardComponent
-            Title="Department Details"
-            Description="Employee department details"
-          >
-           <p>Department: {data.department.departmentName}</p> 
-           <p>Department Code: {data.department.departmentCode}</p>
-           <p>Department Head: {data.department.departmentHead}</p>
-           <p>Department Assistant: {data.department.departmentAssistant}</p>  
-           <p>Location: {data.department.location}</p>   
-           <p>Contact Number: {data.department.contactNumber}</p>     
-          </CardComponent>
+        <div className="grid auto-rows-min gap-4 md:grid-cols-1">
+          <div className="rounded-md border p-5 w-full overflow-x-auto">
+            <div className="min-w-full">
+              <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Employee Number</TableHead>
+                      <TableHead>Full Name</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Role / Position</TableHead>
+                      <TableHead>Email Address</TableHead>
+                      <TableHead>Phone Number</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                  {data && (
+                    <TableRow key={data.id}>
+                      <TableCell>{data.employeeNumber}</TableCell>
+                      <TableCell>{data.firstName} {data.lastName}</TableCell>
+                      <TableCell>{data.employeeStatus}</TableCell>
+                      <TableCell>{data.position}</TableCell>
+                      <TableCell>{data.emailAddress}</TableCell>
+                      <TableCell>{data.phoneNumber}</TableCell>
+                    </TableRow>
+                    )}
+                  </TableBody>
+              </Table>
+            </div>
+          </div> 
+          <div className="rounded-md border p-5 w-full overflow-x-auto">
+            <div className="min-w-full">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Department Name</TableHead>
+                    <TableHead>Department Code</TableHead>
+                    <TableHead>Department Head</TableHead>
+                    <TableHead>Department Assistant</TableHead>
+                    <TableHead>Contact Number</TableHead>
+                    <TableHead>Location</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>{data.department.departmentName}</TableCell>
+                    <TableCell>{data.department.departmentCode}</TableCell>
+                    <TableCell>{data.department.departmentHead}</TableCell>
+                    <TableCell>{data.department.departmentAssistant}</TableCell>
+                    <TableCell>{data.department.location}</TableCell>
+                    <TableCell>{data.department.contactNumber}</TableCell>
+                  </TableRow>
+                </TableBody>    
+              </Table>  
+            </div> 
+          </div>
         </div>
         <div className="flex">
             <Link to={`/employees`}>

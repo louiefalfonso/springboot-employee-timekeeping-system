@@ -21,3 +21,20 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
+
+.sidebar-group-label {
+  margin: 50px 0;
+}
+
+.sidebar-menu-button-active {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.main-logo {
+  height: 100px;
+}
+
+.sidebar-content{
+  background-color: #fff;
+}
