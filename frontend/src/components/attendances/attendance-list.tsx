@@ -16,7 +16,7 @@ const AttendanceList = () => {
   return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
       <div className="flex justify-between items-center pb-5">
-          <Link to={``}>
+          <Link to={`/attendances/add`}>
             <Button className ="bg-green-500 hover:bg-green-600">Add Attendance</Button>
           </Link>
       </div>
@@ -25,8 +25,8 @@ const AttendanceList = () => {
             <TableHeader>
                 <TableRow>
                     <TableHead>Date (yyyy-MM-dd)</TableHead>
-                    <TableHead>Employee Number</TableHead>
                     <TableHead>Employee Name</TableHead>
+                    <TableHead>Employee Number</TableHead>
                     <TableHead>Role / Position</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Reason For Absence</TableHead>
@@ -48,6 +48,11 @@ const AttendanceList = () => {
                             <TableCell>{attendance.employee?.position}</TableCell>
                             <TableCell>{attendance.status}</TableCell>
                             <TableCell>{attendance.reasonForAbsence}</TableCell>  
+                            <TableCell>
+                                <Link to={``}>
+                                    <Button className="bg-violet-500 hover:bg-violet-600">Update</Button>
+                                </Link>
+                            </TableCell>
                         </TableRow>
                     )
                 )}

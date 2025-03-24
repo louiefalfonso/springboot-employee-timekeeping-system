@@ -74,7 +74,7 @@ const EmployeeDetails = () => {
                     <TableCell>{data.department.contactNumber}</TableCell>
                   </TableRow>
                 </TableBody>    
-              </Table>  
+              </Table> 
             </div> 
           </div>
         </div>
