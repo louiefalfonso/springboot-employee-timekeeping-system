@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { format } from "date-fns";
+
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
@@ -154,7 +155,7 @@ const UpdateEmployee = () => {
                 onChange={(e) => setLastName(e.target.value)}
               />
               <Label htmlFor="department">Department:</Label>
-              <Select onValueChange={(value) => setDepartmentId(parseInt(value))}>
+              <Select disabled onValueChange={(value) => setDepartmentId(parseInt(value))}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select Department" />
                 </SelectTrigger>
@@ -225,6 +226,9 @@ const UpdateEmployee = () => {
           <div className="flex pl-4">
             <Button type="submit" className="bg-violet-500 hover:bg-violet-600" aria-label="Update Employee">Update</Button>
             <DeleteEmployeeDialog employeeId={id || ""} onDelete={handleDelete} aria-label="Delete Employee"/>
+            <Link to={`/employees`}>
+              <Button className ="bg-gray-500 hover:bg-gray-600">Back</Button>  
+            </Link>
           </div>
         </form>
       </div>

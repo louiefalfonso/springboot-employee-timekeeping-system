@@ -16,7 +16,7 @@ const DeleteDepartmentDialog : React.FC<DeleteDepartmentDialogProps> = ({ depart
 return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="ml-4 bg-red-500 hover:bg-red-600">Delete</Button>
+        <Button className="ml-2 mr-2 bg-red-500 hover:bg-red-600">Delete</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogTitle>Confirm Deletion</DialogTitle>

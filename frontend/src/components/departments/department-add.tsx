@@ -73,8 +73,8 @@ const AddDepartment = () => {
             <Input type="text" id="contactNumber" onChange={(e) => setContactNumber(e.target.value)}/>
           </div>
         </div>
-        <div className="flex pl-4 mt-4 ">
-          <Button type="submit" className="mr-4 bg-green-500 hover:bg-green-600">Add Department</Button>
+        <div className="flex pl-4 mt-4">
+          <Button type="submit" className="mr-2 bg-green-500 hover:bg-green-600">Add Department</Button>
           <Link to={`/departments`}>
             <Button className ="bg-gray-500 hover:bg-gray-600">Back</Button>  
           </Link>
