@@ -61,7 +61,7 @@ export const useGetDepartmentById = (id: string) => {
     { queryKey: ['department', id], queryFn: () => departmentServices.getDepartmentById(id) });
 }
 
-export const useUpdateCurrentDepertment = (id: string) => {
+export const useUpdateDepertment = (id: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (currentDepartment: Department) => departmentServices.updateCurrentDepartment(currentDepartment, id),

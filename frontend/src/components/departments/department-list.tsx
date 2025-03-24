@@ -51,7 +51,7 @@ const DepartmentList = () => {
                                 <Link to={`/departments/${department.id}`}>
                                     <Button className="mr-3 bg-sky-500 hover:bg-sky-600">View</Button>
                                 </Link>
-                                <Link to={``}>
+                                <Link to={`/departments/update/${department.id}`}>
                                     <Button className="bg-violet-500 hover:bg-violet-600">Update</Button>
                                 </Link>
                             </TableCell>
