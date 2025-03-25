@@ -24,6 +24,7 @@ const EmployeeList = () => {
 
   if (isLoading) { return <div>Loading...</div>};
   if (!data) { return <div>No data found</div>};
+  
 
   // Define Employee interface
   interface Employee {
