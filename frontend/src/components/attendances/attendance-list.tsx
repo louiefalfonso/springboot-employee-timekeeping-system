@@ -49,8 +49,8 @@ const AttendanceList = () => {
                             <TableCell>{attendance.status}</TableCell>
                             <TableCell>{attendance.reasonForAbsence}</TableCell>  
                             <TableCell>
-                                <Link to={``}>
-                                    <Button className="bg-violet-500 hover:bg-violet-600">Update</Button>
+                                <Link to={`/attendances/${attendance.id}`}>
+                                    <Button className="mr-2 bg-sky-500 hover:bg-sky-600" aria-label="View Employee">View</Button>
                                 </Link>
                             </TableCell>
                         </TableRow>

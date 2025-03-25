@@ -9,9 +9,9 @@ interface Employee {
   emailAddress?: string;
   position?: string;
   phoneNumber?: string;
-  department?: number; 
   dateOfBirth?: Date;
   employeeStatus?: string;
+  department?: number; 
 }
 
 const API_BASE_URL = import.meta.env.VITE_BASE_URI_EMPLOYEES;

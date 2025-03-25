@@ -25,7 +25,15 @@ const attendanceServices  = {
     getAttendanceById: async (id: string) => {
       const response = await axios.get(`${API_BASE_URL}/${id}`);
       return response.data;
-    }
+    },
+    updateCurrentAttendance: async (currentAttendance: Attendance, id: string) => {
+      const response = await axios.put(`${API_BASE_URL}/${id}`, currentAttendance);
+      return response.data;
+  },
+
+  deleteAttendance: async (id: string) => {
+      await axios.delete(`${API_BASE_URL}/${id}`);
+  },
     
 }
 
@@ -49,5 +57,25 @@ export const useGetAllAttendances = () => {
     return useQuery(
       { queryKey: ['attendance', id], queryFn: () => attendanceServices.getAttendanceById(id) });
   }
+
+  export const useUpdateAttendance = (id: string) => {
+    const queryClient = useQueryClient();
+    return useMutation({
+      mutationFn: (currentAttendance: Attendance) => attendanceServices.updateCurrentAttendance(currentAttendance, id),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['attendance', id] });
+      },
+    });
+  };
+
+  export const useDeleteAttendance = () => {
+    const queryClient = useQueryClient();
+    return useMutation({
+      mutationFn: (id: string) => attendanceServices.deleteAttendance(id),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['attendances'] });
+      },
+    });
+  };
 
 export default attendanceServices

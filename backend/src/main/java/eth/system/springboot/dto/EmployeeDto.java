@@ -38,13 +38,4 @@ public class EmployeeDto {
 
     private Department department;
 
-
-
-    /*
-
-    for unit test only
-    public void setDateOfBirth(String s) { }
-    public void setDepartment(long l) {}
-
-     */
 }
