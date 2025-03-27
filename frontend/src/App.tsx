@@ -13,6 +13,7 @@ import Attendances from "./pages/attendances/page";
 import { Toaster} from "@/components/ui/sonner"
 import AddNewAttendance from "./components/attendances/attendance-add";
 import AttendanceDetails from "./components/attendances/attendance-details";
+import UpdateAttendance from "./components/attendances/attendance-update";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
         <Route path="/departments/update/:id" element={<UpdateDepartment/>}/>
         <Route path="/attendances" element={<Attendances/>} />
         <Route path="/attendances/add" element={<AddNewAttendance/>} />  
-        <Route path="/attendances/:id" element={<AttendanceDetails/>} /> 
+        <Route path="/attendances/:id" element={<AttendanceDetails/>} />
+        <Route path="/attendances/update/:id" element={<UpdateAttendance/>} />  
       </Routes>
       <Toaster />
     </>

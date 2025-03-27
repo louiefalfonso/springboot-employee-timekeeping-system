@@ -56,12 +56,20 @@ const AddNewAttendance = () => {
   );
 
   // Inside the handleSubmit function
-  const handleSubmit = async () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if(!selectedEmployee){
+      toast.error("Please select an employee")
+      return;
+    }
+
     try {
       mutate(newAttendance, {
         onSuccess: () => {
           toast.success("Attendance added successfully");
           navigate("/attendances");
+
         },
         onError: (error) => {
           toast.error(error.message);
