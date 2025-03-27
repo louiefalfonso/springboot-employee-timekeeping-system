@@ -12,8 +12,6 @@ const AttendanceDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetAttendancetById(id || "");
 
-  
-
   // Handle loading state
   if (isLoading) {return <div>Loading...</div>;}
   if (!data) {return <div>No data found</div>;}

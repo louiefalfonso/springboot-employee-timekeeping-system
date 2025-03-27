@@ -20,8 +20,11 @@ type Employee = {
   id: number;
   firstName: string;
   lastName: string;
+  employeeNumber: string;
 }
 const AddNewAttendance = () => {
+
+  // Declare state variables
   const navigate = useNavigate();
   const { mutate } = useAddNewAttendance();
   const { data: employees } = useGetAllEmployees();
@@ -52,6 +55,7 @@ const AddNewAttendance = () => {
     ]
   );
 
+  // Inside the handleSubmit function
   const handleSubmit = async () => {
     try {
       mutate(newAttendance, {
@@ -86,18 +90,18 @@ const AddNewAttendance = () => {
                 />
                 
                 <Label htmlFor="department">Department:</Label>
-              <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Employee" />
-                </SelectTrigger>
-                <SelectContent>
-                  {employees?.map((employee: Employee) => (
-                    <SelectItem key={employee.id} value={employee.id.toString()}>
-                      {employee.firstName} {employee.lastName}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select Employee" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {employees?.map((employee: Employee) => (
+                      <SelectItem key={employee.id} value={employee.id.toString()}>
+                        {employee.firstName} {employee.lastName} - {employee.employeeNumber}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 
                 <Label htmlFor="date">Date:</Label>
                 <Input
