@@ -29,5 +29,7 @@ public class LeaveAbsenceDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
     private Date endDate;
 
+    private String remarks;
+
     private Employee employee;
 }

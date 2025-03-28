@@ -51,6 +51,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         attendance.setDate(updateAttendance.getDate());
         attendance.setStatus(updateAttendance.getStatus());
         attendance.setReasonForAbsence(updateAttendance.getReasonForAbsence());
+        attendance.setRemarks(updateAttendance.getRemarks());
         attendance.setEmployee(updateAttendance.getEmployee());
 
         Attendance updateAttendanceObj = attendanceRepository.save(attendance);

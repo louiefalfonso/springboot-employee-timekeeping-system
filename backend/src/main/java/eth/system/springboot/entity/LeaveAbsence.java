@@ -33,6 +33,8 @@ public class LeaveAbsence {
 
     private String reasonForLeave;
 
+    private String remarks;
+
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
