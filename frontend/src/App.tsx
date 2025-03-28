@@ -14,6 +14,7 @@ import { Toaster} from "@/components/ui/sonner"
 import AddNewAttendance from "./components/attendances/attendance-add";
 import AttendanceDetails from "./components/attendances/attendance-details";
 import UpdateAttendance from "./components/attendances/attendance-update";
+import LeaveAbsences from "./pages/leave-absences/page";
 
 function App() {
   return (
@@ -31,7 +32,9 @@ function App() {
         <Route path="/attendances" element={<Attendances/>} />
         <Route path="/attendances/add" element={<AddNewAttendance/>} />  
         <Route path="/attendances/:id" element={<AttendanceDetails/>} />
-        <Route path="/attendances/update/:id" element={<UpdateAttendance/>} />  
+        <Route path="/attendances/update/:id" element={<UpdateAttendance/>} /> 
+        <Route path="/leave-absences " element={<LeaveAbsences/>} />
+
       </Routes>
       <Toaster />
     </>

@@ -9,6 +9,20 @@ import Headers from "@/components/layout/app-header";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 
+type Employee = {
+  id: string;
+  employeeNumber: string;
+  firstName: string;
+  lastName: string;
+  employeeStatus: string;
+  position: string;
+  emailAddress: string;
+  phoneNumber: string;
+  department: {
+    id: string;
+  };
+};
+
 const DepartmentDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetDepartmentById(id || "");
@@ -21,7 +35,7 @@ const DepartmentDetails = () => {
   if (!data) {return <div>No data found</div>;}
 
   // Filter employees by department ID
-  const departmentEmployees = employees ? employees.filter((employee) => employee.department.id === data.id) : [];
+  const departmentEmployees = employees ? employees.filter((employee: Employee) => employee.department.id === data.id) : [];
 
   return (
     <MainLayout>
