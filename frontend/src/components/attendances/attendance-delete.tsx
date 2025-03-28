@@ -1,15 +1,14 @@
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 
-
 interface DeleteDepartmentDialogProps {
-    employeeId: string;
+    attendanceId: string;
     onDelete: () => void;
 }
 
-const DeleteAttendanceDialog : React.FC<DeleteDepartmentDialogProps> = ({ employeeId, onDelete }) => {
+const DeleteAttendanceDialog : React.FC<DeleteDepartmentDialogProps> = ({ attendanceId, onDelete }) => {
     
-    if (!employeeId) {
+    if (!attendanceId) {
         console.error("Invalid Employee ID");
         return null;
     }

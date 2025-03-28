@@ -64,12 +64,14 @@ const UpdateEmployee = () => {
       setFirstName(data.firstName);
       setLastName(data.lastName);
       setEmployeeNumber(data.employeeNumber);
-      setDepartmentId(data.departmentId);
+      setDepartmentId(data.department.id);
       setDateOfBirth(data.dateOfBirth);
       setEmailAddress(data.emailAddress);
       setPosition(data.position);
       setPhoneNumber(data.phoneNumber);
       setEmployeeStatus(data.employeeStatus);
+      console.log(data.department.id)
+
     }
   }, [data]);
 
@@ -91,12 +93,12 @@ const UpdateEmployee = () => {
       firstName,
       lastName,
       employeeNumber,
-      departmentId,
       dateOfBirth,
       emailAddress,
       position,
       phoneNumber,
       employeeStatus,
+      department: { id: departmentId },
     };
 
     try {
@@ -157,7 +159,13 @@ const UpdateEmployee = () => {
                 onChange={(e) => setLastName(e.target.value)}
               />
               <Label htmlFor="department">Department:</Label>
-              <Select disabled onValueChange={(value) => setDepartmentId(parseInt(value))}>
+              <Select value={departmentId ? departmentId.toString() : undefined}
+                onValueChange={(value) => {
+                  const parsedValue = parseInt(value);
+                  if (!isNaN(parsedValue)) {
+                    setDepartmentId(parsedValue);
+                  }
+                }}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select Department" />
                 </SelectTrigger>

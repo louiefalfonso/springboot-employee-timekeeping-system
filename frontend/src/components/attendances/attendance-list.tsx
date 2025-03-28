@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -21,7 +20,7 @@ const AttendanceList = () => {
           </Link>
       </div>
       <div className="min-w-full">
-      <Table>
+        <Table>
             <TableHeader>
                 <TableRow>
                     <TableHead>Date (yyyy-MM-dd)</TableHead>
@@ -49,9 +48,6 @@ const AttendanceList = () => {
                             <TableCell>{attendance.status}</TableCell>
                             <TableCell>{attendance.reasonForAbsence}</TableCell>  
                             <TableCell>
-                                <Link to={`/attendances/${attendance.id}`}>
-                                    <Button className="mr-2 bg-sky-500 hover:bg-sky-600" aria-label="View Employee">View</Button>
-                                </Link>
                                 <Link to={`/attendances/update/${attendance.id}`}>
                                     <Button className="mr-2 bg-violet-500 hover:bg-violet-600" aria-label="Update Employee">Update</Button>
                                 </Link>
@@ -62,8 +58,7 @@ const AttendanceList = () => {
             </TableBody>
         </Table>    
       </div>
-
-      </div>
+    </div>
   )
 }
 
