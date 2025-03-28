@@ -20,6 +20,8 @@ public class AttendanceDto {
 
     private String reasonForAbsence;
 
+    private String remarks;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
     private Date date;
 

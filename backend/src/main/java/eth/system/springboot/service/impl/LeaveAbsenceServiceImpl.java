@@ -53,6 +53,7 @@ public class LeaveAbsenceServiceImpl implements LeaveAbsenceService {
         leaveAbsence.setLeaveType(updateLeaveAbsence.getLeaveType());
         leaveAbsence.setStatus(updateLeaveAbsence.getStatus());
         leaveAbsence.setReasonForLeave(updateLeaveAbsence.getReasonForLeave());
+        leaveAbsence.setRemarks(updateLeaveAbsence.getRemarks());
         leaveAbsence.setEmployee(updateLeaveAbsence.getEmployee());
 
         LeaveAbsence updateLeaveAbsenceObj = leaveAbsenceRepository.save(leaveAbsence);

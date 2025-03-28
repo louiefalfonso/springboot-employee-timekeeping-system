@@ -52,6 +52,7 @@ public class AttendanceController {
         updateAttendance.setDate(attendanceDetails.getDate());
         updateAttendance.setStatus(attendanceDetails.getStatus());
         updateAttendance.setReasonForAbsence(attendanceDetails.getReasonForAbsence());
+        updateAttendance.setRemarks(attendanceDetails.getRemarks());
         updateAttendance.setEmployee(attendanceDetails.getEmployee());
 
         attendanceRepository.save(updateAttendance);

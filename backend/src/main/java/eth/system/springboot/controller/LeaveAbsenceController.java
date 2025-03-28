@@ -54,6 +54,7 @@ public class LeaveAbsenceController {
         updateLeaveAbsence.setLeaveType(leaveAbsenceDetails.getLeaveType());
         updateLeaveAbsence.setStatus(leaveAbsenceDetails.getStatus());
         updateLeaveAbsence.setReasonForLeave(leaveAbsenceDetails.getReasonForLeave());
+        updateLeaveAbsence.setRemarks(leaveAbsenceDetails.getRemarks());
         updateLeaveAbsence.setEmployee(leaveAbsenceDetails.getEmployee());
 
         leaveAbsenceRepository.save(updateLeaveAbsence);
