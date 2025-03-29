@@ -12,7 +12,8 @@ type Attendance = {
   id: number;
   date: string;
   status: string;
-  reasonForAbsence?: string;
+  reasonForAbsence: string;
+  remarks: string;
   employee: {
     id: number;
     employeeNumber: string;
@@ -114,6 +115,7 @@ const EmployeeDetails = () => {
                     <TableHead>Date</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Reason for Absence</TableHead>
+                    <TableHead>Remarks</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -124,6 +126,7 @@ const EmployeeDetails = () => {
                         <TableCell>{attendance.date}</TableCell>
                         <TableCell>{attendance.status}</TableCell>
                         <TableCell>{attendance.reasonForAbsence || "N/A"}</TableCell>
+                        <TableCell>{attendance.remarks}</TableCell>
                       </TableRow>
                     ))
                   ) : (
