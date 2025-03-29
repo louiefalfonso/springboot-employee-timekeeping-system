@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea"
-
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select"
 
 // define a type for employee
@@ -32,6 +31,7 @@ const AddNewAttendance = () => {
   const [status, setStatus] = useState("");
   const [reasonForAbsence, setReasonForAbsence] = useState("");
   const [date, setDate] = useState<Date | undefined>();
+  const [remarks, setRemarks] = useState("");
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
   const handleEmployeeSelect = (employeeId: number) => {
@@ -46,12 +46,14 @@ const AddNewAttendance = () => {
       reasonForAbsence,
       date: date ? format(date, "MM-dd-yyyy") : undefined,
       employee: selectedEmployee,
+      remarks
     }),
     [
       status,
       reasonForAbsence,
       date,
       selectedEmployee,
+      remarks
     ]
   );
 
@@ -97,7 +99,7 @@ const AddNewAttendance = () => {
                   onChange={(e) => setStatus(e.target.value)}
                 />
                 
-                <Label htmlFor="department">Department:</Label>
+                <Label htmlFor="employee">Employee:</Label>
                 <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select Employee" />
@@ -127,6 +129,8 @@ const AddNewAttendance = () => {
                 />
                 <Label htmlFor="reasonForAbsence">Reason For Absence:</Label>
                 <Textarea id="reasonForAbsenc"  placeholder="Reason For Absence" onChange={(e) => setReasonForAbsence(e.target.value)}/>
+                <Label htmlFor="remarks">Remarks:</Label>
+                <Textarea id="remarks"  placeholder="Remarks" onChange={(e) => setRemarks(e.target.value)}/>
             </div>
           </div>
           <div className="flex pl-4 mt-4 ">

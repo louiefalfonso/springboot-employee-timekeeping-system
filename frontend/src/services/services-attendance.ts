@@ -22,18 +22,20 @@ const attendanceServices  = {
         const response = await axios.get(API_BASE_URL);
         return response.data;
     },
+
     getAttendanceById: async (id: string) => {
       const response = await axios.get(`${API_BASE_URL}/${id}`);
       return response.data;
     },
+
     updateCurrentAttendance: async (currentAttendance: Attendance, id: string) => {
       const response = await axios.put(`${API_BASE_URL}/${id}`, currentAttendance);
       return response.data;
-  },
+    },
 
-  deleteAttendance: async (id: string) => {
-      await axios.delete(`${API_BASE_URL}/${id}`);
-  },
+    deleteAttendance: async (id: string) => {
+        await axios.delete(`${API_BASE_URL}/${id}`);
+    },
     
 }
 

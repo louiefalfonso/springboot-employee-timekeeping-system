@@ -26,6 +26,7 @@ type Attendance = {
   id: string;
   status: string;
   reasonForAbsence: string;
+  remarks: string;
   date: Date | undefined;
   employee: {
       id: number;
@@ -43,6 +44,7 @@ const UpdateAttendance = () => {
 
   const [status, setStatus] = useState("");
   const [reasonForAbsence, setReasonForAbsence] = useState("");
+  const [remarks, setRemarks] = useState("");
   const [date, setDate] = useState<Date | undefined>();
   const [employeeId, setEmployeeId] = useState<number | null>(null);
 
@@ -51,6 +53,7 @@ const UpdateAttendance = () => {
       setDate(data.date);
       setReasonForAbsence(data.reasonForAbsence);
       setStatus(data.status);
+      setRemarks(data.remarks)
       setEmployeeId(data.employee.id);
     }
   }, [data]);
@@ -68,6 +71,7 @@ const UpdateAttendance = () => {
       status,
       reasonForAbsence,
       date,
+      remarks,
       employee: { id: employeeId }, // Send the employee object with the ID
     };
 
@@ -171,6 +175,12 @@ const UpdateAttendance = () => {
                 id="reasonForAbsence"
                 value={reasonForAbsence}
                 onChange={(e) => setReasonForAbsence(e.target.value)}
+              />
+              <Label htmlFor="remarks">Remarks:</Label>
+              <Textarea
+                id="remarks"
+                value={remarks}
+                onChange={(e) => setRemarks(e.target.value)}
               />
             </div>
           </div>

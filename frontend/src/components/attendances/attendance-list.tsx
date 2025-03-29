@@ -23,7 +23,7 @@ const AttendanceList = () => {
         <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead>Date (yyyy-MM-dd)</TableHead>
+                    <TableHead>Date</TableHead>
                     <TableHead>Employee Name</TableHead>
                     <TableHead>Employee Number</TableHead>
                     <TableHead>Role / Position</TableHead>
@@ -41,7 +41,7 @@ const AttendanceList = () => {
                         employee: { firstName: string; lastName: string; employeeNumber: string; employeeStatus: string; position:string } | null;
                     }) => (
                         <TableRow key={attendance.id}>
-                            <TableCell>{format(new Date(attendance.date), 'yyyy-MM-dd')}</TableCell>
+                            <TableCell>{format(new Date(attendance.date), 'MM-dd-yyyy')}</TableCell>
                             <TableCell>{attendance.employee?.firstName} {attendance.employee?.lastName}</TableCell>
                             <TableCell>{attendance.employee?.employeeNumber}</TableCell>
                             <TableCell>{attendance.employee?.position}</TableCell>
