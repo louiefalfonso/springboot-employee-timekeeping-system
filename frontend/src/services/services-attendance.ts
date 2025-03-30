@@ -55,7 +55,7 @@ export const useGetAllAttendances = () => {
       { queryKey: ['attendances'], queryFn: attendanceServices.getAllAttendances });
   };
 
-  export const useGetAttendancetById = (id: string) => {
+  export const useGetAttendanceById = (id: string) => {
     return useQuery(
       { queryKey: ['attendance', id], queryFn: () => attendanceServices.getAttendanceById(id) });
   }

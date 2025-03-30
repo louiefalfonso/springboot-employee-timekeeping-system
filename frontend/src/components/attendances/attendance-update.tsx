@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useDeleteAttendance, useGetAttendancetById, useUpdateAttendance } from "@/services/services-attendance";
+import { useDeleteAttendance, useGetAttendanceById, useUpdateAttendance } from "@/services/services-attendance";
 import { useGetAllEmployees } from "@/services/services-employee";
 import DeleteAttendanceDialog from "./attendance-delete";
 
@@ -37,7 +37,7 @@ const UpdateAttendance = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data, isLoading } = useGetAttendancetById(id || "");
+  const { data, isLoading } = useGetAttendanceById(id || "");
   const { mutate } = useUpdateAttendance(id || "");
   const { mutate: deleteAttendance } = useDeleteAttendance();
   const { data: employees } = useGetAllEmployees();

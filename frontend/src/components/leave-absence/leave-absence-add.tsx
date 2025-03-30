@@ -121,32 +121,23 @@ const AddNewLeaveAbsence = () => {
                 <Label htmlFor="status">Status:</Label>
                 <Input type="text" id="status" placeholder="Leave Type" onChange={(e) => setStatus(e.target.value)}/>
                 
-
             </div>
 
             <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="startDate">Start Date:</Label>
-                <Input type="date" id="startDate" value={startDate ? format(startDate, "yyyy-MM-dd") : ""}
-                  onChange={(e) => {
-                    const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
-                    if (selectedDate && selectedDate > new Date()) {
-                      toast.error("Start Date cannot be in the future.");
-                      return;
-                    }
-                    setStartDate(selectedDate);
-                  }}
-                />
-                <Label htmlFor="endDate">End Date:</Label>
-                <Input type="date" id="endDate" value={endDate ? format(endDate, "yyyy-MM-dd") : ""}
-                  onChange={(e) => {
-                    const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
-                    if (selectedDate && selectedDate > new Date()) {
-                      toast.error("End Date cannot be in the future.");
-                      return;
-                    }
-                    setEndDate(selectedDate);
-                  }}
-                />
+            <Label htmlFor="startDate">Start Date:</Label>
+                  <Input type="date" id="startDate" value={startDate ? format(startDate, "yyyy-MM-dd") : ""}
+                    onChange={(e) => {
+                      const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
+                      setStartDate(selectedDate);
+                    }}
+                  />
+                  <Label htmlFor="endDate">End Date:</Label>
+                  <Input type="date" id="endDate" value={endDate ? format(endDate, "yyyy-MM-dd") : ""}
+                    onChange={(e) => {
+                      const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
+                      setEndDate(selectedDate);
+                    }}
+                  />
                 <Label htmlFor="reasonForLeave">Reason For Leave:</Label>
                 <Input type="text" id="reasonForLeave" placeholder="Reason For Leave" onChange={(e) => setReasonForLeave(e.target.value)}/>
             </div>
@@ -156,6 +147,14 @@ const AddNewLeaveAbsence = () => {
 
             </div>
           </div>
+          <div className="flex pl-4 mt-4 ">
+            <Button type="submit" className="mr-4 bg-green-500 hover:bg-green-600">
+                Add New Leave / Absence
+            </Button>
+            <Link to={`/leave-absences`}>
+              <Button className ="bg-gray-500 hover:bg-gray-600">Back to Add Leave / Absence</Button>  
+            </Link>
+          </div> 
         </form>
       </div>
     </MainLayout>  
