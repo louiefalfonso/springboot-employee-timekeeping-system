@@ -16,7 +16,7 @@ const LeaveAbsenceList = () => {
   return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
       <div className="flex justify-between items-center pb-5">
-          <Link to={``}>
+          <Link to={`/leave-absences/add`}>
             <Button className ="bg-green-500 hover:bg-green-600">Add Leave / Absence</Button>
           </Link>
       </div>
