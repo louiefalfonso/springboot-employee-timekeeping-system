@@ -50,7 +50,7 @@ const LeaveAbsenceList = () => {
                     <TableCell>{leaveAbsence.leaveType}</TableCell>
                     <TableCell>{leaveAbsence.status}</TableCell>
                     <TableCell>
-                      <Link to={``}>
+                      <Link to={`/leave-absences/update/${leaveAbsence.id}`}>
                           <Button className="mr-2 bg-violet-500 hover:bg-violet-600" aria-label="Update Leave & Absence">Update</Button>
                       </Link>
                     </TableCell>

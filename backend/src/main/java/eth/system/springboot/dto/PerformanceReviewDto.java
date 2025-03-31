@@ -25,4 +25,8 @@ public class PerformanceReviewDto {
     private String rating;
 
     private String comments;
+
+    private String reviewedBy;
+
+    private String reviewStatus;
 }

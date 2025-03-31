@@ -57,10 +57,7 @@ const AddNewLeaveAbsence = () => {
   // Memoize the newLeaveAttendance object
   const newLeaveAttendance = useMemo<LeaveAttendance>(
     () => ({
-      leaveType,
-      reasonForLeave,
-      remarks,
-      status,
+      leaveType, reasonForLeave, remarks, status,
       startDate: startDate ? format(startDate, "MM-dd-yyyy") : undefined,
       endDate: endDate ? format(endDate, "MM-dd-yyyy") : undefined,
       employee: selectedEmployee,
