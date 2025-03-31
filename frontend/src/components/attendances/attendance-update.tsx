@@ -72,7 +72,7 @@ const UpdateAttendance = () => {
       reasonForAbsence,
       date,
       remarks,
-      employee: { id: employeeId }, // Send the employee object with the ID
+      employee: { id: employeeId },
     };
 
     try {

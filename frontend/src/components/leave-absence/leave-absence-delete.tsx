@@ -9,7 +9,7 @@ interface DeleteLeaveAbsenceDialogProps {
 const DeleteLeaveAbsenceDialog : React.FC<DeleteLeaveAbsenceDialogProps> = ({ leaveAbsenceId, onDelete }) => {
    
     if (!leaveAbsenceId) {
-        console.error("Invalid Leave / Absence ID");
+        console.error("Invalid Leave / Absence Id");
         return null;
     }
 
