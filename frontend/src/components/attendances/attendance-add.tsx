@@ -3,8 +3,6 @@ import { format } from "date-fns";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "sonner"
 
-import { useAddNewAttendance } from "@/services/services-attendance";
-import { useGetAllEmployees } from "@/services/services-employee";
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 
@@ -13,6 +11,9 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select"
+
+import { useAddNewAttendance } from "@/services/services-attendance";
+import { useGetAllEmployees } from "@/services/services-employee";
 
 // define a type for employee
 type Employee = {
@@ -48,13 +49,7 @@ const AddNewAttendance = () => {
       employee: selectedEmployee,
       remarks
     }),
-    [
-      status,
-      reasonForAbsence,
-      date,
-      selectedEmployee,
-      remarks
-    ]
+    [ status, reasonForAbsence, date, selectedEmployee, remarks ]
   );
 
   // Inside the handleSubmit function
@@ -74,13 +69,13 @@ const AddNewAttendance = () => {
 
         },
         onError: (error) => {
-          toast.error(error.message);
-          console.error("Error adding attendance:", error);
+          console.error("Error adding Attendance:", error);
+          toast.error("Failed to add Attendance.");
         },
       });
     } catch (error) {
-      toast.error(error.message);
       console.error("Unexpected error:", error);
+      toast.error("Unexpected error occurred.");
     }
   };
 

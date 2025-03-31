@@ -2,16 +2,15 @@ import { useParams, Link } from "react-router-dom";
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 
-
-import { useGetAttendancetById } from "@/services/services-attendance";
+import { useGetAttendanceById } from "@/services/services-attendance";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button";
 
-const AttendanceDetails = () => {
-   
-    // Declare state variables
+const AttendanceDetails = () => { 
+  
+  // Declare state variables
   const { id } = useParams();
-  const { data, isLoading } = useGetAttendancetById(id || "");
+  const { data, isLoading } = useGetAttendanceById(id || "");
 
   // Handle loading state
   if (isLoading) {return <div>Loading...</div>;}

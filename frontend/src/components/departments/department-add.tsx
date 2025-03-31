@@ -1,14 +1,15 @@
 import React, { useMemo, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"
+import { toast } from "sonner";
 
-import { useAddNewDepartment } from "@/services/services-department";
 import MainLayout from "@/components/layout/app-layout";
-import Headers from "@/components/layout/app-header";
+import Headers from "@/components/layout/app-header";;
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+
+import { useAddNewDepartment } from "@/services/services-department";
 
 const AddDepartment = () => {
 

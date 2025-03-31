@@ -5,15 +5,15 @@ import { toast } from "sonner"
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
-import DeleteEmployeeDialog from "./employee-delete";
-import { useGetEmployeeById, useUpdateEmployee, useDeleteEmployee } from "@/services/services-employee";
-import { useGetAllDepartments } from "@/services/services-department";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+import { useGetEmployeeById, useUpdateEmployee, useDeleteEmployee } from "@/services/services-employee";
+import { useGetAllDepartments } from "@/services/services-department";
+import DeleteEmployeeDialog from "./employee-delete";
 
 type Department = {
   id: number;
@@ -37,17 +37,15 @@ type Employee = {
 
 const UpdateEmployee = () => {
 
-  // get employee ID from URL
+  // Declare state variables
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // fetch employee data
   const { data, isLoading } = useGetEmployeeById(id || "");
   const { mutate } = useUpdateEmployee(id || "");
   const { mutate: deleteEmployee } = useDeleteEmployee();
   const { data: departments } = useGetAllDepartments();
 
-  // employee data
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [employeeNumber, setEmployeeNumber] = useState("");
@@ -79,7 +77,7 @@ const UpdateEmployee = () => {
   if (isLoading) { return <div>Loading...</div>;}
   if (!data) { return <div>No data found</div>;}
 
-  // update employee
+   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 

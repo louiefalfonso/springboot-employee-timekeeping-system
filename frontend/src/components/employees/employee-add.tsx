@@ -3,8 +3,6 @@ import { format } from "date-fns";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "sonner"
 
-import { useAddNewEmployee } from "@/services/services-employee";
-import { useGetAllDepartments } from "@/services/services-department";
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 
@@ -13,7 +11,9 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select"
 
-// Define a type for the department
+import { useAddNewEmployee } from "@/services/services-employee";
+import { useGetAllDepartments } from "@/services/services-department";
+
 type Department = {
   id: number;
   departmentName: string;
@@ -54,20 +54,10 @@ const AddEmployee = () => {
       employeeStatus,
       department: selectedDepartment,
     }),
-    [
-      firstName,
-      lastName,
-      employeeNumber,
-      emailAddress,
-      position,
-      phoneNumber,
-      dateOfBirth,
-      employeeStatus,
-      selectedDepartment
-    ]
+    [ firstName, lastName, employeeNumber, emailAddress, position, phoneNumber, dateOfBirth, employeeStatus,selectedDepartment ]
   );
 
-  // Inside the handleSubmit function
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -83,13 +73,13 @@ const AddEmployee = () => {
           navigate("/employees");
         },
         onError: (error) => {
-          toast.error(error.message);
-          console.error("Error adding employee:", error);
+          console.error("Error adding Employee:", error);
+          toast.error("Failed to add Employee.");
         },
       });
     } catch (error) {
-      toast.error(error.message);
       console.error("Unexpected error:", error);
+      toast.error("Unexpected error occurred.");
     }
   };
 
