@@ -53,6 +53,8 @@ public class PerformanceReviewController {
         updatePerformanceReview.setReviewDate(pReviewDetails.getReviewDate());
         updatePerformanceReview.setRating(pReviewDetails.getRating());
         updatePerformanceReview.setComments(pReviewDetails.getComments());
+        updatePerformanceReview.setReviewStatus(pReviewDetails.getReviewStatus());
+        updatePerformanceReview.setReviewedBy(pReviewDetails.getReviewedBy());
         updatePerformanceReview.setEmployee(pReviewDetails.getEmployee());
 
         performanceReviewRepository.save(updatePerformanceReview);

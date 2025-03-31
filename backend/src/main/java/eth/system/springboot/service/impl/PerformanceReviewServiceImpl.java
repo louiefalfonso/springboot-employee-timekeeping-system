@@ -51,6 +51,8 @@ public class PerformanceReviewServiceImpl implements PerformanceReviewService {
        performanceReview.setReviewDate(updatePerformanceReview.getReviewDate());
        performanceReview.setComments(updatePerformanceReview.getComments());
        performanceReview.setRating(updatePerformanceReview.getRating());
+       performanceReview.setReviewedBy(updatePerformanceReview.getReviewedBy());
+       performanceReview.setReviewStatus(updatePerformanceReview.getReviewStatus());
        performanceReview.setEmployee(updatePerformanceReview.getEmployee());
 
        PerformanceReview updatePerformanceReviewObj = performanceReviewRepository.save(performanceReview);

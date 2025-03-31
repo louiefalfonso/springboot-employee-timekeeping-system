@@ -32,4 +32,7 @@ public class PerformanceReview {
 
     private String comments;
 
+    private String reviewedBy;
+
+    private String reviewStatus;
 }
