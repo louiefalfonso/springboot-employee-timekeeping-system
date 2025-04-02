@@ -49,7 +49,7 @@ const PerformanceReviewList = () => {
                   <TableCell>{performanceReview.reviewedBy}</TableCell>
                   <TableCell>{performanceReview.reviewStatus}</TableCell>
                   <TableCell>
-                      <Link to={`/performance-reviews/${performanceReview.id}`}>
+                      <Link to={`/performance-reviews/update/${performanceReview.id}`}>
                           <Button className="mr-2 bg-violet-500 hover:bg-violet-600" aria-label="Update Employee">Update</Button>
                       </Link>
                   </TableCell>

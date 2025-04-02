@@ -1,12 +1,14 @@
-import { useParams } from "react-router-dom";
-import { useGetEmployeeById } from "@/services/services-employee";
-import { useGetAllAttendances } from "@/services/services-attendance";
+import { useParams, Link } from "react-router-dom";
+
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+
+import { useGetEmployeeById } from "@/services/services-employee";
+import { useGetAllAttendances } from "@/services/services-attendance";
+
 
 type Attendance = {
   id: number;
@@ -35,9 +37,7 @@ const EmployeeDetails = () => {
   }
 
   // Filter attendance records for this employee
-  const employeeAttendance = attendanceData?.filter(
-    (attendance) => attendance.employee.id.toString() === id
-  );
+  const employeeAttendance = attendanceData?.filter((attendance: Attendance) => attendance.employee.id.toString() === id);
 
   return (
     <MainLayout>

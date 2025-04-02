@@ -11,7 +11,7 @@ const DeletePerformanceReviewDialog : React.FC<DeletePerformanceReviewDialogProp
         console.error("Invalid Performance Review Id");
         return null;
     }
-  
+     
     return (
         <Dialog>
         <DialogTrigger asChild>

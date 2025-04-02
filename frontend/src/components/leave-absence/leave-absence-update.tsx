@@ -16,7 +16,6 @@ import { useGetAllEmployees } from "@/services/services-employee";
 import { useDeleteLeaveAttendance, useGetLeaveAttendanceById, useUpdateLeaveAttendance } from "@/services/services-leave-absence";
 import DeleteLeaveAbsenceDialog from "./leave-absence-delete";
 
-
 type Employee = {
   id: number;
   firstName: string;
@@ -66,12 +65,8 @@ const UpdateLeaveAbsence = () => {
     }
   }, [data]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (!data) {
-    return <div>No data found</div>;
-  }
+  if (isLoading) { return <div>Loading...</div>;}
+  if (!data) { return <div>No data found</div>;}
 
   const handleSubmit = (e:React.FormEvent)=>{
     e.preventDefault();
