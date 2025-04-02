@@ -1,8 +1,8 @@
-import { Home, ContactRound, Building2, FileClock, NotebookPen } from "lucide-react";
+import { Home, ContactRound, Building2, FileClock, NotebookPen, Medal, Wallet } from "lucide-react";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import MainLogo from '@/assets/logo.png';
 import '../../App.css'; 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 // Menu items.
@@ -32,7 +32,18 @@ const items = [
     url: "/leave-absences",
     icon: NotebookPen ,
   },
+  {
+    title: "Performance Review",
+    url: "/performance-reviews",
+    icon: Medal ,
+  },
+  {
+    title: "Payroll",
+    url: "/payroll",
+    icon: Wallet ,
+  },
 ];
+
 
 
 const AppSidebar = () => {

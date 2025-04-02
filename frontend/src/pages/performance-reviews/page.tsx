@@ -2,7 +2,7 @@ import MainLayout from '@/components/layout/app-layout'
 import Headers from "@/components/layout/app-header";
 import PerformanceReviewList from '@/components/performance-review/performance-list';
 
-const PerformaceReviews = () => {
+const PerformanceReviews = () => {
   return (
    <MainLayout>
     <Headers Title ="Performance Review List"/>
@@ -15,4 +15,4 @@ const PerformaceReviews = () => {
   )
 }
 
-export default PerformaceReviews
+export default PerformanceReviews

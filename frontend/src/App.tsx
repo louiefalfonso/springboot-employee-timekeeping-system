@@ -17,6 +17,10 @@ import LeaveAbsences from "./pages/leave-absences/page";
 import AddNewLeaveAbsence from "./components/leave-absence/leave-absence-add";
 import LeaveAbsenceDetails from "./components/leave-absence/leave-absence-details";
 import UpdateLeaveAbsence from "./components/leave-absence/leave-absence-update";
+import PerformanceReviews from "./pages/performance-reviews/page";
+import AddPerformanceReview from "./components/performance-review/performance-add";
+import PerformanceReviewDetails from "./components/performance-review/performance-details";
+import UpdatePerformanceReview from "./components/performance-review/performance-update";
 
 function App() {
   return (
@@ -42,6 +46,11 @@ function App() {
         <Route path="/leave-absences/add" element={<AddNewLeaveAbsence/>}/>
         <Route path="/leave-absences/:id" element={<LeaveAbsenceDetails/>} />
         <Route path="/leave-absences/update/:id" element={<UpdateLeaveAbsence/>}/>
+
+        <Route path="/performance-reviews" element={<PerformanceReviews/>} />
+        <Route path="/performance-reviews/add" element={<AddPerformanceReview/>} />
+        <Route path="/performance-reviews/:id" element={<PerformanceReviewDetails/>} />
+        <Route path="/performance-reviews/update/:id" element={<UpdatePerformanceReview/>} />
 
       </Routes>
       <Toaster />

@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 import { useDeleteAttendance, useGetAttendanceById, useUpdateAttendance } from "@/services/services-attendance";
 import { useGetAllEmployees } from "@/services/services-employee";
 import DeleteAttendanceDialog from "./attendance-delete";
@@ -92,12 +93,8 @@ const UpdateAttendance = () => {
     }
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (!data) {
-    return <div>No data found</div>;
-  }
+  if (isLoading) { return <div>Loading...</div>;}
+  if (!data) { return <div>No data found</div>;}
 
   // delete attendance
   const handleDelete = () => {
@@ -189,7 +186,7 @@ const UpdateAttendance = () => {
             <Button type="submit" className="bg-violet-500 hover:bg-violet-600" aria-label="Update Attendance">Update</Button>
             <DeleteAttendanceDialog attendanceId={id || ""} onDelete={handleDelete} aria-label="Delete Attendance"/>
             <Link to={`/attendances`}>
-              <Button className="bg-gray-500 hover:bg-gray-600">Back to Attendances</Button>
+              <Button className="bg-gray-500 hover:bg-gray-600">Back</Button>
             </Link>
           </div>
         </form>

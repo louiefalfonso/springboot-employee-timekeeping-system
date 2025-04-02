@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { format } from "date-fns";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "sonner"
@@ -21,7 +21,18 @@ type Employee = {
   firstName: string;
   lastName: string;
   employeeNumber: string;
+
 }
+
+type Attendance = {
+  id?:number;
+  status?: string;
+  reasonForAbsence?: string;
+  date?: string;
+  remarks?: string;
+  employee: Employee | null;
+}
+
 const AddNewAttendance = () => {
 
   // Declare state variables
@@ -35,13 +46,13 @@ const AddNewAttendance = () => {
   const [remarks, setRemarks] = useState("");
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
-  const handleEmployeeSelect = (employeeId: number) => {
-    const employee = employees?.find(emp => emp.id === employeeId) || null;
+  const handleEmployeeSelect = useCallback((employeeId: number) => {
+    const employee = employees?.find((employee: { id: number; }) => employee.id === employeeId) || null;
     setSelectedEmployee(employee);
-  };
+  }, [employees]);
 
   // Memoize the newAttendance object
-  const newAttendance = useMemo(
+  const newAttendance = useMemo<Attendance>(
     () => ({
       status,
       reasonForAbsence,

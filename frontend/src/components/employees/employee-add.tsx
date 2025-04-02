@@ -44,14 +44,8 @@ const AddEmployee = () => {
   // Memoize the newEmployee object
   const newEmployee = useMemo(
     () => ({
-      firstName,
-      lastName,
-      employeeNumber,
-      emailAddress,
-      position,
-      phoneNumber,
+      firstName, lastName, employeeNumber, emailAddress, position, phoneNumber, employeeStatus,
       dateOfBirth: dateOfBirth ? format(dateOfBirth, "MM-dd-yyyy") : undefined,
-      employeeStatus,
       department: selectedDepartment,
     }),
     [ firstName, lastName, employeeNumber, emailAddress, position, phoneNumber, dateOfBirth, employeeStatus,selectedDepartment ]

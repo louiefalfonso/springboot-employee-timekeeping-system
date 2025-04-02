@@ -1,10 +1,12 @@
 import { useParams, Link } from "react-router-dom";
+
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 
-import { useGetAttendanceById } from "@/services/services-attendance";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button";
+
+import { useGetAttendanceById } from "@/services/services-attendance";
 
 const AttendanceDetails = () => { 
   
@@ -45,7 +47,7 @@ const AttendanceDetails = () => {
           </div>
           <div className="flex ">
             <Link to={`/attendances`}>
-              <Button className ="bg-gray-500 hover:bg-gray-600">Back to Departments</Button>  
+              <Button className ="bg-gray-500 hover:bg-gray-600">Back to Attendance</Button>  
             </Link>
           </div>
          </div>

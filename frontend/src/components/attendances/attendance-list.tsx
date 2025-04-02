@@ -5,6 +5,7 @@ import { useGetAllAttendances } from "@/services/services-attendance";
 import { format } from "date-fns";
 
 const AttendanceList = () => {
+    
     // Declare state variables
    const { data, isLoading } = useGetAllAttendances()
 
