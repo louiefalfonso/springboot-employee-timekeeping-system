@@ -145,7 +145,7 @@ const AddNewLeaveAbsence = () => {
               Add New Leave / Absence
             </Button>
             <Link to={`/leave-absences`}>
-              <Button className="bg-gray-500 hover:bg-gray-600">Back to Add Leave / Absence</Button>
+              <Button className="bg-gray-500 hover:bg-gray-600">Back</Button>
             </Link>
           </div>
         </form>

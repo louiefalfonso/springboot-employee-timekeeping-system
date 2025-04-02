@@ -92,12 +92,8 @@ const UpdateAttendance = () => {
     }
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (!data) {
-    return <div>No data found</div>;
-  }
+  if (isLoading) { return <div>Loading...</div>;}
+  if (!data) { return <div>No data found</div>;}
 
   // delete attendance
   const handleDelete = () => {

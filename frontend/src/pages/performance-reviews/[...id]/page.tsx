@@ -1,6 +1,6 @@
 import PerformanceReviewDetails from "@/components/performance-review/performance-details"
 
-const PerformaceReviewPage = () => {
+const PerformanceReviewPage = () => {
   return (
     <>
       <PerformanceReviewDetails/>
@@ -8,4 +8,4 @@ const PerformaceReviewPage = () => {
   )
 }
 
-export default PerformaceReviewPage
+export default PerformanceReviewPage
