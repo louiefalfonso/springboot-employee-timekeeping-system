@@ -7,7 +7,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 
 import { useGetEmployeeById } from "@/services/services-employee";
-import { useGetAllAttendances } from "@/services/services-attendance";
+import { useGetAllAttendances } from "@/services/services-attendance"
+import { useGetAllLeaveAttendances } from "@/services/services-leave-absence";
 
 
 type Attendance = {
