@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { useGetAllEmployees } from "@/services/services-employee";
-import { useAddLeaveAttendance } from "@/services/services-leave-absence";
+import { useAddLeaveAbsence } from "@/services/services-leave-absence";
 
 type Employee = {
   id: number;
@@ -23,7 +23,7 @@ type Employee = {
   employeeNumber: string;
 };
 
-type LeaveAttendance = {
+type LeaveAbsence = {
   id?: number;
   leaveType: string;
   reasonForLeave: string;
@@ -38,7 +38,7 @@ const AddNewLeaveAbsence = () => {
 
    // Declare state variables
   const navigate = useNavigate();
-  const { mutate } = useAddLeaveAttendance();
+  const { mutate } = useAddLeaveAbsence();
   const { data: employees } = useGetAllEmployees();
 
   const [leaveType, setLeaveType] = useState<string>("");
@@ -55,7 +55,7 @@ const AddNewLeaveAbsence = () => {
   }, [employees]);
 
   // Memoize the newLeaveAttendance object
-  const newLeaveAttendance = useMemo<LeaveAttendance>(
+  const newLeaveAbsence = useMemo<LeaveAbsence>(
     () => ({
       leaveType, reasonForLeave, remarks, status,
       startDate: startDate ? format(startDate, "MM-dd-yyyy") : undefined,
@@ -75,7 +75,7 @@ const AddNewLeaveAbsence = () => {
     }
 
     try {
-      mutate(newLeaveAttendance, {
+      mutate(newLeaveAbsence, {
         onSuccess: () => {
           toast.success("Leave / Absence added successfully");
           navigate("/leave-absences");

@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { format } from "date-fns";
-import { useGetAllLeaveAttendances } from "@/services/services-leave-absence";
+import { useGetAllLeaveAbsence } from "@/services/services-leave-absence";
 
 const LeaveAbsenceList = () => {
 
   // Declare state variables
-  const { data, isLoading } = useGetAllLeaveAttendances()
+  const { data, isLoading } = useGetAllLeaveAbsence()
 
   // Handle loading state
    if (isLoading) { return <div>Loading...</div>;}

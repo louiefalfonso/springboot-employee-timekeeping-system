@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { useGetAllEmployees } from "@/services/services-employee";
-import { useDeleteLeaveAttendance, useGetLeaveAttendanceById, useUpdateLeaveAttendance } from "@/services/services-leave-absence";
+import { useDeleteLeaveAttendance, useGetLeaveAbsenceById, useUpdateLeaveAbsence } from "@/services/services-leave-absence";
 import DeleteLeaveAbsenceDialog from "./leave-absence-delete";
 
 type Employee = {
@@ -40,8 +40,8 @@ const UpdateLeaveAbsence = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data, isLoading } = useGetLeaveAttendanceById(id || "");
-  const { mutate } = useUpdateLeaveAttendance(id || "");
+  const { data, isLoading } = useGetLeaveAbsenceById(id || "");
+  const { mutate } = useUpdateLeaveAbsence(id || "");
   const { mutate: deleteLeaveAbsence } = useDeleteLeaveAttendance();
   const { data: employees } = useGetAllEmployees();
 
@@ -76,7 +76,7 @@ const UpdateLeaveAbsence = () => {
       return;
     }
 
-    const currentLeaveAttendance: LeaveAbsence ={
+    const currentLeaveAbsence: LeaveAbsence ={
       id: id || "",
       startDate: startDate || new Date(),
       endDate: endDate || new Date(),
@@ -88,7 +88,7 @@ const UpdateLeaveAbsence = () => {
     }
 
     try {
-      mutate(currentLeaveAttendance, {
+      mutate(currentLeaveAbsence, {
         onSuccess: () => {
           toast.success("Leave / Absence updated successfully");
           navigate("/leave-absences");

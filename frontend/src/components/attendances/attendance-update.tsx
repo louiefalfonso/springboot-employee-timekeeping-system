@@ -35,14 +35,18 @@ type Attendance = {
 }
 
 const UpdateAttendance = () => {
+
+  // get attendance ID from URL
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // fetch attendance data
   const { data, isLoading } = useGetAttendanceById(id || "");
   const { mutate } = useUpdateAttendance(id || "");
   const { mutate: deleteAttendance } = useDeleteAttendance();
   const { data: employees } = useGetAllEmployees();
 
+  // attendance data
   const [status, setStatus] = useState("");
   const [reasonForAbsence, setReasonForAbsence] = useState("");
   const [remarks, setRemarks] = useState("");
@@ -58,6 +62,9 @@ const UpdateAttendance = () => {
       setEmployeeId(data.employee.id);
     }
   }, [data]);
+
+  if (isLoading) { return <div>Loading...</div>;}
+  if (!data) { return <div>No data found</div>;}
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,8 +100,6 @@ const UpdateAttendance = () => {
     }
   };
 
-  if (isLoading) { return <div>Loading...</div>;}
-  if (!data) { return <div>No data found</div>;}
 
   // delete attendance
   const handleDelete = () => {

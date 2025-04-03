@@ -5,12 +5,13 @@ import { toast } from "sonner"
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
-import DeleteDepartmentDialog from "./department-delete";
-import { useGetDepartmentById, useUpdateDepertment, useDeleteDepartment} from "@/services/services-department";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+
+import DeleteDepartmentDialog from "./department-delete";
+import { useGetDepartmentById, useUpdateDepertment, useDeleteDepartment} from "@/services/services-department";
 
 type Department = {
   id: string;

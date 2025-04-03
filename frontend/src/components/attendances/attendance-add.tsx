@@ -25,7 +25,7 @@ type Employee = {
 }
 
 type Attendance = {
-  id?:number;
+  id?:string;
   status?: string;
   reasonForAbsence?: string;
   date?: string;

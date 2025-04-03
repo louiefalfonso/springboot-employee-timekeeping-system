@@ -16,56 +16,56 @@ const API_BASE_URL = import.meta.env.VITE_BASE_URI_LEAVEABSENCE;
 
 const leaveAbsenceServices  = {
 
-    addNewLeaveAttendance: async (newLeaveAttendance: LeaveAbsence) => {
+    addNewLeaveAbsence: async (newLeaveAttendance: LeaveAbsence) => {
         const response = await axios.post(API_BASE_URL, newLeaveAttendance);
         return response.data;
     },
 
-    getAllLeaveAttendances : async () => {
+    getAllLeaveAbsence : async () => {
         const response = await axios.get(API_BASE_URL);
         return response.data;
     },
 
-    getLeaveAttendanceById: async (id: string) => {
+    getLeaveAbsenceById: async (id: string) => {
         const response = await axios.get(`${API_BASE_URL}/${id}`);
         return response.data;
     },
 
-    updateCurrentLeaveAttendance: async (currentLeaveAttendance: LeaveAbsence, id: string) => {
-        const response = await axios.put(`${API_BASE_URL}/${id}`, currentLeaveAttendance);
+    updateCurrentLeaveAbsence: async (currentLeaveAbsence: LeaveAbsence, id: string) => {
+        const response = await axios.put(`${API_BASE_URL}/${id}`, currentLeaveAbsence);
         return response.data;
     },
 
-    deleteLeaveAttendance: async (id: string) => {
+    deleteLeaveAbsence: async (id: string) => {
         await axios.delete(`${API_BASE_URL}/${id}`);
     },
 }
 
 // React Query Hooks
-export const useAddLeaveAttendance = () => {
+export const useAddLeaveAbsence = () => {
     const queryClient = useQueryClient();
     return useMutation({
-      mutationFn: (newLeaveAttendance: LeaveAbsence) => leaveAbsenceServices.addNewLeaveAttendance(newLeaveAttendance),
+      mutationFn: (newLeaveAbsence: LeaveAbsence) => leaveAbsenceServices.addNewLeaveAbsence(newLeaveAbsence),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['leaveAbsences'] });
       },
     });
 };
 
-export const useGetAllLeaveAttendances = () => {
+export const useGetAllLeaveAbsence = () => {
     return useQuery( 
-      { queryKey: ['leaveAbsences'], queryFn: leaveAbsenceServices.getAllLeaveAttendances });
+      { queryKey: ['leaveAbsences'], queryFn: leaveAbsenceServices.getAllLeaveAbsence });
 };
 
-export const useGetLeaveAttendanceById = (id: string) => {
+export const useGetLeaveAbsenceById = (id: string) => {
     return useQuery(
-      { queryKey: ['leaveAbsence', id], queryFn: () => leaveAbsenceServices.getLeaveAttendanceById(id) });
+      { queryKey: ['leaveAbsence', id], queryFn: () => leaveAbsenceServices.getLeaveAbsenceById(id) });
 }
 
-export const useUpdateLeaveAttendance = (id: string) => {
+export const useUpdateLeaveAbsence = (id: string) => {
     const queryClient = useQueryClient();
     return useMutation({
-      mutationFn: (currentLeaveAttendance: LeaveAbsence) => leaveAbsenceServices.updateCurrentLeaveAttendance(currentLeaveAttendance, id),
+      mutationFn: (currentLeaveAttendance: LeaveAbsence) => leaveAbsenceServices.updateCurrentLeaveAbsence(currentLeaveAttendance, id),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['leaveAbsence', id] });
       },
