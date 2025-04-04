@@ -171,7 +171,7 @@ const AddEmployee = () => {
                 Add Employee
             </Button>
             <Link to={`/employees`}>
-              <Button className ="bg-gray-500 hover:bg-gray-600">Back to Employees</Button>  
+              <Button className ="bg-gray-500 hover:bg-gray-600">Back</Button>  
             </Link>
           </div> 
         </form>

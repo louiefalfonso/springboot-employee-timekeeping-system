@@ -17,17 +17,17 @@ import {
 
 const EmployeeList = () => {
   
-  const { data, isLoading, refetch } = useGetAllEmployees();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+const { data, isLoading, refetch } = useGetAllEmployees();
+const [searchQuery, setSearchQuery] = useState("");
+const [currentPage, setCurrentPage] = useState(1);
+const itemsPerPage = 8;
 
-  if (isLoading) { return <div>Loading...</div>};
-  if (!data) { return <div>No data found</div>};
+if (isLoading) { return <div>Loading...</div>};
+if (!data) { return <div>No data found</div>};
   
 
-  // Define Employee interface
-  interface Employee {
+// Define Employee interface
+interface Employee {
     id: string;
     employeeNumber: string;
     firstName: string;
@@ -35,29 +35,31 @@ const EmployeeList = () => {
     department: { departmentName: string } | null;
     position: string;
     employeeStatus: string;
-  }
+}
 
-  // Filter employees based on search query
-  const filteredEmployees: Employee[] = data.filter((employee: Employee) =>
-    employee.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    employee.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    employee.position.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    employee.employeeNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    employee.employeeStatus.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (employee.department?.departmentName.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
+// Filter employees based on search query
+const filteredEmployees: Employee[] = searchQuery
+  ? data.filter((employee: Employee) =>
+      employee.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.position.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.employeeNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.employeeStatus.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (employee.department?.departmentName.toLowerCase().includes(searchQuery.toLowerCase()))
+    )
+  : data;
 
-  // Pagination
-  const totalPages = Math.ceil(filteredEmployees.length / itemsPerPage);
-  const paginatedEmployees = filteredEmployees.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+// Pagination
+const totalPages = Math.ceil(filteredEmployees.length / itemsPerPage);
+const paginatedEmployees = filteredEmployees.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-  // Handle page change
-  const handlePageChange = (newPage: number) => {
+// Handle page change
+const handlePageChange = (newPage: number) => {
     if (newPage < 1 || newPage > totalPages) return;
     setCurrentPage(newPage);
-  };
+};
 
-  return (
+return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
       <div className="flex flex-col md:flex-row justify-between items-center pb-5 space-y-2 md:space-y-0 md:space-x-2">
         <Link to={`/employees/add`}>
@@ -126,7 +128,7 @@ const EmployeeList = () => {
         </div>
       </div>
     </div>
-  );
+);
 };
 
 export default EmployeeList;
