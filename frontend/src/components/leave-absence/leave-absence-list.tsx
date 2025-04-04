@@ -1,20 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { format } from "date-fns"
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { format } from "date-fns";
-import { Input } from "@/components/ui/input";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
 import { useGetAllLeaveAbsence } from "@/services/services-leave-absence";
-
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
 
 const LeaveAbsenceList = () => {
 
@@ -57,7 +48,7 @@ const LeaveAbsenceList = () => {
     const handlePageChange = (newPage: number) => {
     if (newPage < 1 || newPage > totalPages) return;
     setCurrentPage(newPage);
-};
+  };
 
   return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
@@ -101,7 +92,7 @@ const LeaveAbsenceList = () => {
               </TableBody>
         </Table>
         <div className="flex justify-center mt-4">
-        <Pagination>
+          <Pagination>
             <PaginationContent>
               <PaginationItem>
                 <PaginationPrevious onClick={() => handlePageChange(currentPage - 1)}/>

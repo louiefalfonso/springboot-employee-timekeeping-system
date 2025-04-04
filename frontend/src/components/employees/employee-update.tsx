@@ -102,12 +102,12 @@ const UpdateEmployee = () => {
     try {
       mutate(currentEmployee, {
         onSuccess: () => {
-          toast.success("Employee updated successfully");
+          toast.success("Employee Updated Successfully");
           navigate("/employees");
         },
         onError: (error) => {
-          console.error("Error updating employee:", error);
-          toast.error("Failed to update employee. Please try again.");
+          console.error("Error Updating Employee:", error);
+          toast.error("Failed to Update Employee. Please try again.");
         },
       });
     } catch (error) {
