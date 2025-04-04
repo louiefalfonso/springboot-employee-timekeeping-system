@@ -83,7 +83,7 @@ const UpdatePerformanceReview = () => {
     try {
       mutate(currentPerformanceReview, {
         onSuccess: () => {
-          toast.success("Performance Review updated successfully");
+          toast.success("Performance Review Updated Successfully");
           navigate("/performance-reviews");
         },
         onError: (error) => {

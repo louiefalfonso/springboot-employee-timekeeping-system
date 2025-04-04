@@ -90,12 +90,12 @@ const UpdateLeaveAbsence = () => {
     try {
       mutate(currentLeaveAbsence, {
         onSuccess: () => {
-          toast.success("Leave / Absence updated successfully");
+          toast.success("Leave / Absence Updated Successfully");
           navigate("/leave-absences");
         },
         onError: (error) => {
-          console.error("Error updating Leave / Absence:", error);
-          toast.error("Failed to update Leave / Absence. Please try again.");
+          console.error("Error Updating Leave / Absence:", error);
+          toast.error("Failed to Update Leave / Absence. Please try again.");
         },
       })
       
@@ -110,12 +110,12 @@ const UpdateLeaveAbsence = () => {
     try {
       deleteLeaveAbsence(id || "", {
         onSuccess: () => {
-          toast.success("Leave / Absence deleted successfully");
+          toast.success("Leave / Absence Deleted Successfully");
           navigate("/leave-absences");
         },
         onError: (error) => {
-          console.error("Error deleting attendance:", error);
-          toast.error("Failed to delete attendance. Please try again.");
+          console.error("Error Deleting Attendance:", error);
+          toast.error("Failed to Delete Attendance. Please try again.");
         },
       });
     } catch (error) {

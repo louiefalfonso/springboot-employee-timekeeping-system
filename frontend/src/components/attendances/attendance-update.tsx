@@ -86,12 +86,12 @@ const UpdateAttendance = () => {
     try {
       mutate(currentAttendance, {
         onSuccess: () => {
-          toast.success("Attendance updated successfully");
+          toast.success("Attendance Updated Successfully");
           navigate("/attendances");
         },
         onError: (error) => {
-          console.error("Error updating attendance:", error);
-          toast.error("Failed to update attendance. Please try again.");
+          console.error("Error Updating Attendance:", error);
+          toast.error("Failed to Update Attendance. Please try again.");
         },
       });
     } catch (error) {

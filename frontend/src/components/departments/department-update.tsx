@@ -74,11 +74,11 @@ const UpdateDepartment = () => {
      try {
       mutate(currentDepartment, {
         onSuccess: () => {
-          toast.success("Department updated successfully");
+          toast.success("Department Updated Successfully");
           navigate("/departments");
         },
         onError: (error) => {
-          console.error("Error updating employee:", error);
+          console.error("Error Updating Employee:", error);
           toast.error("Failed to update employee. Please try again.");
         },
       });

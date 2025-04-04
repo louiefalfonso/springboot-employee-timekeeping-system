@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useGetAllDepartments } from "@/services/services-department"
-
+import { Toaster } from "@/components/ui/sonner"
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Toaster } from "@/components/ui/sonner"
+import { useGetAllDepartments } from "@/services/services-department"
+
 const DepartmentList = () => {
 
    // Declare state variables
