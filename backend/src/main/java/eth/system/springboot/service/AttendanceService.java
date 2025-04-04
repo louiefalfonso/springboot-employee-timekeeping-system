@@ -8,7 +8,7 @@ public interface AttendanceService {
 
     AttendanceDto createNewAttendance(AttendanceDto attendanceDto);
 
-    AttendanceDto gerAttendanceById(Long attendanceId);
+    AttendanceDto getAttendanceById(Long attendanceId);
 
     List<AttendanceDto> getAllAttendances();
 

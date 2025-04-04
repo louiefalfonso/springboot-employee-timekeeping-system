@@ -28,7 +28,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     // REST API - Get Attendance By ID
     @Override
-    public AttendanceDto gerAttendanceById(Long attendanceId) {
+    public AttendanceDto getAttendanceById(Long attendanceId) {
         Attendance attendance = attendanceRepository.findAllById(attendanceId)
                 .orElseThrow(()-> new RuntimeException("Attendance doesn't exist with a given Id:" + attendanceId));
         return modelMapper.map(attendanceId, AttendanceDto.class);
