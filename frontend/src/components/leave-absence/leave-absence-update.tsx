@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { useGetAllEmployees } from "@/services/services-employee";
-import { useDeleteLeaveAttendance, useGetLeaveAbsenceById, useUpdateLeaveAbsence } from "@/services/services-leave-absence";
+import { useDeleteLeaveAbsence, useGetLeaveAbsenceById, useUpdateLeaveAbsence } from "@/services/services-leave-absence";
 import DeleteLeaveAbsenceDialog from "./leave-absence-delete";
 
 type Employee = {
@@ -42,7 +42,7 @@ const UpdateLeaveAbsence = () => {
 
   const { data, isLoading } = useGetLeaveAbsenceById(id || "");
   const { mutate } = useUpdateLeaveAbsence(id || "");
-  const { mutate: deleteLeaveAbsence } = useDeleteLeaveAttendance();
+  const { mutate: deleteLeaveAbsence } = useDeleteLeaveAbsence();
   const { data: employees } = useGetAllEmployees();
 
   const [startDate, setStartDate] = useState<Date | undefined>();

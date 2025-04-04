@@ -42,7 +42,7 @@ const PerformanceReviewList = () => {
                 employee: { firstName: string; lastName: string; employeeNumber: string; position: string} | null;
               }) => (
                 <TableRow key={performanceReview.id}>
-                  <TableCell>{format(new Date(performanceReview.reviewDate), 'MM-dd-yyyy')}</TableCell>
+                  <TableCell>{format(new Date(performanceReview.reviewDate), 'MM/dd/yyyy')}</TableCell>
                   <TableCell>{performanceReview.employee?.firstName} {performanceReview.employee?.lastName}</TableCell>
                   <TableCell>{performanceReview.employee?.employeeNumber}</TableCell>
                   <TableCell>{performanceReview.employee?.position}</TableCell>

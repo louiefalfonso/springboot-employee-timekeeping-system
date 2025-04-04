@@ -65,17 +65,17 @@ export const useGetLeaveAbsenceById = (id: string) => {
 export const useUpdateLeaveAbsence = (id: string) => {
     const queryClient = useQueryClient();
     return useMutation({
-      mutationFn: (currentLeaveAttendance: LeaveAbsence) => leaveAbsenceServices.updateCurrentLeaveAbsence(currentLeaveAttendance, id),
+      mutationFn: (currentLeaveAbsence: LeaveAbsence) => leaveAbsenceServices.updateCurrentLeaveAbsence(currentLeaveAbsence, id),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['leaveAbsence', id] });
       },
     });
 };
 
-export const useDeleteLeaveAttendance = () => {
+export const useDeleteLeaveAbsence = () => {
     const queryClient = useQueryClient();
     return useMutation({
-      mutationFn: (id: string) => leaveAbsenceServices.deleteLeaveAttendance(id),
+      mutationFn: (id: string) => leaveAbsenceServices.deleteLeaveAbsence(id),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['leaveAbsences'] });
       },
