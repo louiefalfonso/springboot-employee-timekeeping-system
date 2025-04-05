@@ -21,6 +21,10 @@ import PerformanceReviews from "./pages/performance-reviews/page";
 import AddPerformanceReview from "./components/performance-review/performance-add";
 import PerformanceReviewDetails from "./components/performance-review/performance-details";
 import UpdatePerformanceReview from "./components/performance-review/performance-update";
+import Payrolls from "./pages/payroll/page";
+import AddNewPayroll from "./components/payroll/payroll-add";
+import PayrollDetails from "./components/payroll/payroll-details";
+import UpdatePayroll from "./components/payroll/payroll-update";
 
 function App() {
   return (
@@ -51,6 +55,11 @@ function App() {
         <Route path="/performance-reviews/add" element={<AddPerformanceReview/>} />
         <Route path="/performance-reviews/:id" element={<PerformanceReviewDetails/>} />
         <Route path="/performance-reviews/update/:id" element={<UpdatePerformanceReview/>} />
+        
+        <Route path="/payrolls" element={<Payrolls/>} />
+        <Route path="/payrolls/add" element={<AddNewPayroll/>} />
+        <Route path="/payrolls/id" element={<PayrollDetails/>} />
+        <Route path="/payrolls/update/:id" element={<UpdatePayroll/>} />
 
       </Routes>
       <Toaster />
