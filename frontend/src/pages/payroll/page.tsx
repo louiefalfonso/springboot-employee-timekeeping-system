@@ -1,7 +1,6 @@
 import MainLayout from '@/components/layout/app-layout'
 import Headers from "@/components/layout/app-header"
 import PayrollList from '@/components/payroll/payroll-list'
-
 const Payrolls = () => {
   return (
     <MainLayout>
