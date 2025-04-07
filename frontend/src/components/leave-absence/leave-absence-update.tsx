@@ -185,7 +185,7 @@ const UpdateLeaveAbsence = () => {
             <Button type="submit" className="bg-violet-500 hover:bg-violet-600" aria-label="Update Leave / Absence">Update</Button>
             <DeleteLeaveAbsenceDialog leaveAbsenceId={id || ""} onDelete={handleDelete} aria-label="Delete Leave / Absence"/>
             <Link to={`/leave-absences`}>
-              <Button className="bg-gray-500 hover:bg-gray-600">Back to Leave / Absence</Button>
+              <Button className="bg-gray-500 hover:bg-gray-600">Back</Button>
             </Link>
           </div>
         </form>

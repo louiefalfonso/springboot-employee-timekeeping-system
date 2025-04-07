@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { format } from "date-fns"
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
+
 import { useGetAllLeaveAbsence } from "@/services/services-leave-absence";
 
 const LeaveAbsenceList = () => {
@@ -52,7 +54,7 @@ const LeaveAbsenceList = () => {
 
   return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
-      <div className="flex justify-between items-center pb-5">
+      <div className="flex flex-col md:flex-row justify-between items-center pb-5 space-y-2 md:space-y-0 md:space-x-2">
           <Link to={`/leave-absences/add`}>
             <Button className ="bg-green-500 hover:bg-green-600">Add Leave / Absence</Button>
           </Link>
@@ -83,7 +85,7 @@ const LeaveAbsenceList = () => {
                           <TableCell>{leaveAbsence.leaveType}</TableCell>
                           <TableCell>{leaveAbsence.status}</TableCell>
                           <TableCell>
-                            <Link to={`/leave-absences/edit/${leaveAbsence.id}`}>
+                            <Link to={`/leave-absences/update/${leaveAbsence.id}`}>
                               <Button className="bg-violet-500 hover:bg-violet-600">Update</Button>
                             </Link>
                           </TableCell>

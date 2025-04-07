@@ -38,8 +38,8 @@ const items = [
     icon: Medal ,
   },
   {
-    title: "Payroll",
-    url: "/payroll",
+    title: "Payrolls",
+    url: "/payrolls",
     icon: Wallet ,
   },
 ];

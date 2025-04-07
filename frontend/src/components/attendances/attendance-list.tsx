@@ -50,7 +50,7 @@ const handlePageChange = (newPage: number) => {
 
 return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
-      <div className="flex justify-between items-center pb-5">
+      <div className="flex flex-col md:flex-row justify-between items-center pb-5 space-y-2 md:space-y-0 md:space-x-2">
           <Link to={`/attendances/add`}>
             <Button className ="bg-green-500 hover:bg-green-600">Add Attendance</Button>
           </Link>
@@ -81,7 +81,7 @@ return (
                         <TableCell>{attendance.status}</TableCell>
                         <TableCell>{attendance.reasonForAbsence}</TableCell>
                         <TableCell>
-                            <Link to={`/attendances/edit/${attendance.id}`}>
+                            <Link to={`/attendances/update/${attendance.id}`}>
                                 <Button className="bg-violet-500 hover:bg-violet-600">Update</Button>
                             </Link>
                         </TableCell>
