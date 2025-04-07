@@ -68,7 +68,6 @@ const UpdateEmployee = () => {
       setPosition(data.position);
       setPhoneNumber(data.phoneNumber);
       setEmployeeStatus(data.employeeStatus);
-      console.log(data.department.id)
 
     }
   }, [data]);
