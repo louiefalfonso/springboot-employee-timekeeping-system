@@ -188,7 +188,7 @@ const UpdateLeaveAbsence = () => {
               <Button className="bg-gray-500 hover:bg-gray-600">Back</Button>
             </Link>
           </div>
-        </form>
+      </form>
       </div>
    </MainLayout>   
   )

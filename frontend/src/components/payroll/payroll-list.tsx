@@ -87,7 +87,7 @@ const handlePageChange = (newPage: number) => {
                 <TableCell>{payroll.employee?.position}</TableCell>
                 <TableCell>{payroll.grossPay}</TableCell>
                 <TableCell>
-                    <Link to={`/payroll/update/${payroll.id}`}>
+                    <Link to={`/payrolls/update/${payroll.id}`}>
                         <Button className="bg-violet-500 hover:bg-violet-600">Update</Button>
                      </Link>
                 </TableCell>

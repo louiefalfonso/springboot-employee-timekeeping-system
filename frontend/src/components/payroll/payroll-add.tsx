@@ -25,13 +25,13 @@ type Employee = {
 }
 
 type Payroll ={
-  id:string;
-  payPeriodStartDate: string;
-  payPeriodEndDate: string;
+  id?:string;
+  payPeriodStartDate?: string;
+  payPeriodEndDate?: string;
   grossPay: string;
   deductions: string;
   netPay: string;
-  paymentDate: string;
+  paymentDate?: string;
   remarks: string;
   employee: Employee | null;
 }
@@ -43,6 +43,7 @@ const AddNewPayroll = () => {
   const navigate = useNavigate();
   const { mutate } = useAddNewPayroll();
   const { data: employees } = useGetAllEmployees();
+  
   const [payPeriodStartDate, setPayPeriodStartDate] = useState<Date | undefined>();
   const [payPeriodEndDate, setPayPeriodEndDate] = useState<Date | undefined>();
   const [grossPay, setGrossPay] = useState("");
@@ -104,43 +105,18 @@ const AddNewPayroll = () => {
       <Headers Title="Add New Employee Payroll" />
       <div className="flex flex-1 flex-col gap-4 p-4">
         <form onSubmit={handleSubmit}>
-        <div className="grid auto-rows-min md:grid-cols-3">
-            <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="employee">Employee:</Label>
-                <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select Employee" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {employees?.map((employee: Employee) => (
-                      <SelectItem key={employee.id} value={employee.id.toString()}>
-                        {employee.firstName} {employee.lastName} - {employee.employeeNumber}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-            </div>
-            
-          </div>
           <div className="grid auto-rows-min md:grid-cols-3">
             <div className="grid w-full items-center gap-4 p-4">
               <Label htmlFor="payPeriodStartDate">Period Start Date :</Label>
-                <Input
-                  type="date"
-                  id="payPeriodStartDate"
-                  value={payPeriodStartDate ? format(payPeriodStartDate, "yyyy-MM-dd") : ""}
-                  onChange={(e) => {
-                    const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
+                <Input type="date" id="payPeriodStartDate" value={payPeriodStartDate ? format(payPeriodStartDate, "yyyy-MM-dd") : ""}
+                  onChange={(e) => { const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
                     setPayPeriodStartDate(selectedDate);
                   }}
-                /> 
-            </div>
+                />    
+              </div>
             <div className="grid w-full items-center gap-4 p-4">
               <Label htmlFor="payPeriodEndDate">Period End Date :</Label>
-                <Input
-                  type="date"
-                  id="payPeriodEndDate"
-                  value={payPeriodEndDate ? format(payPeriodEndDate, "yyyy-MM-dd") : ""}
+                <Input type="date" id="payPeriodEndDate" value={payPeriodEndDate ? format(payPeriodEndDate, "yyyy-MM-dd") : ""}
                   onChange={(e) => {
                     const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
                     setPayPeriodEndDate(selectedDate);
@@ -148,7 +124,7 @@ const AddNewPayroll = () => {
                 />  
             </div>
             <div className="grid w-full items-center gap-4 p-4">
-            <Label htmlFor="paymentDate">Payment Date :</Label>
+              <Label htmlFor="paymentDate">Payment Date :</Label>
                 <Input
                   type="date"
                   id="paymentDate"
@@ -190,14 +166,27 @@ const AddNewPayroll = () => {
             </div>
           </div>
           <div className="grid auto-rows-min md:grid-cols-3">
-          <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="remarks">Remarks:</Label>
-              <Textarea id="remarks"  placeholder="Remarks" onChange={(e) => setRemarks(e.target.value)}/>
+            <div className="grid w-full items-center gap-4 p-4">
+                <Label htmlFor="remarks">Remarks:</Label>
+                <Textarea id="remarks"  placeholder="Remarks" onChange={(e) => setRemarks(e.target.value)}/>
             </div>
+            <div className="grid w-full items-center gap-4 p-4">
+              <Label htmlFor="employee">Employee:</Label>
+                <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select Employee" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {employees?.map((employee: Employee) => (
+                      <SelectItem key={employee.id} value={employee.id.toString()}>
+                        {employee.firstName} {employee.lastName} - {employee.employeeNumber}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+            </div>
+            
           </div>
-          
-
-
           <div className="flex pl-4 mt-4 ">
             <Button type="submit" className="mr-4 bg-green-500 hover:bg-green-600">
                 Add Payroll
