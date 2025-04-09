@@ -1,27 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Toaster} from "@/components/ui/sonner"
 import { toast } from "sonner"
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-
-import DeleteDepartmentDialog from "./department-delete";
 import { useGetDepartmentById, useUpdateDepertment, useDeleteDepartment} from "@/services/services-department";
-
-type Department = {
-  id: string;
-  departmentName: string;
-  departmentCode: string;
-  departmentHead: string;
-  departmentAssistant: string;
-  location: string;
-  contactNumber: string;
-};
+import UpdateDepartmentForm from "./department-update-form";
 
 const UpdateDepartment = () => {
 
@@ -61,7 +47,7 @@ const UpdateDepartment = () => {
    const handleSubmit = (e: React.FormEvent) => {
      e.preventDefault();
 
-     const currentDepartment : Department ={
+     const currentDepartment = {
       id: id || "",
       departmentName,
       departmentCode,
@@ -88,6 +74,7 @@ const UpdateDepartment = () => {
     }
    }
 
+   // delete department
    const handleDelete = () =>{
     try {
       deleteDepartment(id || "", {
@@ -110,33 +97,23 @@ const UpdateDepartment = () => {
     <MainLayout>
       <Headers Title="Update Department" />
       <div className="flex flex-1 flex-col gap-4 p-4">
-        <form onSubmit={handleSubmit}>
-          <div className="grid auto-rows-min md:grid-cols-3">
-            <div className="grid w-full items-center gap-4 p-4">
-                <Label htmlFor="departmentName">Department Name:</Label>
-                <Input type="text" id="departmentName" value={departmentName} onChange={(e) => setDepartmentName(e.target.value)}/>
-                <Label htmlFor="departmentCode">Department Code:</Label>
-                <Input type="text" id="departmentCode" value={departmentCode}  onChange={(e) => setDepartmentCode(e.target.value)}/>
-                <Label htmlFor="departmentHead">Department Head:</Label>
-                <Input type="text" id="departmentHead" value={departmentHead} onChange={(e) => setDepartmentHead(e.target.value)}/>
-            </div>
-            <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="departmentAssistant">Department Assistant:</Label>
-              <Input type="text" id="departmentAssistant" value={departmentAssistant} onChange={(e) => setDepartmentAssistant(e.target.value)}/>
-              <Label htmlFor="location">Location:</Label>
-              <Input type="text" id="location" value={location} onChange={(e) => setLocation(e.target.value)}/>
-              <Label htmlFor="contactNumber">Contact Number:</Label>
-              <Input type="text" id="contactNumber" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)}/>
-            </div>  
-          </div>
-          <div className="flex pl-4">
-            <Button type="submit" className=" bg-violet-500 hover:bg-violet-600" aria-label="Update Employee">Update</Button>
-              <DeleteDepartmentDialog departmentId={id || ""} onDelete={handleDelete} aria-label="Delete Department"/>
-              <Link to={`/departments`}>
-                <Button className ="bg-gray-500 hover:bg-gray-600">Back</Button>  
-              </Link>
-            </div>
-        </form>
+        <UpdateDepartmentForm
+        departmentName={departmentName}
+        setDepartmentName={setDepartmentName}
+        departmentCode={departmentCode}
+        setDepartmentCode={setDepartmentCode}
+        departmentHead={departmentHead}
+        setDepartmentHead={setDepartmentHead}
+        departmentAssistant={departmentAssistant}
+        setDepartmentAssistant={setDepartmentAssistant}
+        location={location}
+        setLocation={setLocation}
+        contactNumber={contactNumber}
+        setContactNumber={setContactNumber}
+        handleSubmit={handleSubmit}
+        handleDelete={handleDelete}
+        departmentId={id || ""}
+        />
       </div>
       <Toaster />
     </MainLayout>

@@ -1,24 +1,27 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { toast } from "sonner";
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
-import { Button } from "@/components/ui/button";
 
 import { useDeleteAttendance, useGetAttendanceById, useUpdateAttendance } from "@/services/services-attendance";
 import { useGetAllEmployees } from "@/services/services-employee";
 import UpdateAttendanceForm from "./attendance-update-form";
 
 const UpdateAttendance = () => {
+
+  // get attendance ID from URL
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // fetch department & employee data
   const { data, isLoading } = useGetAttendanceById(id || "");
   const { mutate } = useUpdateAttendance(id || "");
   const { mutate: deleteAttendance } = useDeleteAttendance();
   const { data: employees } = useGetAllEmployees();
 
+   // attendance data
   const [status, setStatus] = useState("");
   const [reasonForAbsence, setReasonForAbsence] = useState("");
   const [remarks, setRemarks] = useState("");
@@ -38,11 +41,12 @@ const UpdateAttendance = () => {
   if (isLoading) { return <div>Loading...</div>; }
   if (!data) { return <div>No data found</div>; }
 
+  // update attendance
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (employeeId === null) {
-      toast.error("Please select an employee");
+    if (!status || !employeeId) {
+      toast.error("Please fill in all required fields");
       return;
     }
 
@@ -52,7 +56,7 @@ const UpdateAttendance = () => {
       reasonForAbsence,
       date,
       remarks,
-      employee: { id: employeeId },
+      employee: employeeId,
     };
 
     try {
@@ -72,6 +76,7 @@ const UpdateAttendance = () => {
     }
   };
 
+  // delete attendance
   const handleDelete = () => {
     try {
       deleteAttendance(id || "", {
