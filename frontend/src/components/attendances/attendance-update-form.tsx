@@ -34,20 +34,12 @@ type AttendanceFormProps = {
 };
 
 const UpdateAttendanceForm: React.FC<AttendanceFormProps> = ({
-  status,
-  setStatus,
-  reasonForAbsence,
-  setReasonForAbsence,
-  remarks,
-  setRemarks,
-  date,
-  setDate,
-  employeeId,
-  setEmployeeId,
-  employees,
-  handleSubmit,
-  handleDelete,
-  attendanceId,
+  status, setStatus,
+  reasonForAbsence,setReasonForAbsence,
+  remarks,setRemarks,
+  date,setDate,
+  employeeId,setEmployeeId,employees,
+  handleSubmit,handleDelete,attendanceId,
 }) => {
   return (
     <form onSubmit={handleSubmit}>
@@ -75,11 +67,15 @@ const UpdateAttendanceForm: React.FC<AttendanceFormProps> = ({
               <SelectValue placeholder="Select Employee" />
             </SelectTrigger>
             <SelectContent>
-              {employees?.map((employee: Employee) => (
-                <SelectItem key={employee.id} value={employee.id.toString()}>
-                  {employee.firstName} {employee.lastName} - {employee.employeeNumber}
-                </SelectItem>
-              ))}
+            {employees ? (
+                employees.map((employee: Employee) => (
+                  <SelectItem key={employee.id} value={employee.id.toString()}>
+                    {employee.firstName} {employee.lastName} - {employee.employeeNumber}
+                  </SelectItem>
+                ))
+              ) : (
+                <SelectItem disabled value={""}>Loading employees...</SelectItem>
+              )}
             </SelectContent>
           </Select>
 

@@ -116,7 +116,6 @@ const AddNewLeaveAbsence = () => {
               <Label htmlFor="status">Status:</Label>
               <Input type="text" id="status" placeholder="Status" onChange={(e) => setStatus(e.target.value)} />
             </div>
-
             <div className="grid w-full items-center gap-4 p-4">
               <Label htmlFor="startDate">Start Date:</Label>
               <Input type="date" id="startDate" value={startDate ? format(startDate, "yyyy-MM-dd") : ""}

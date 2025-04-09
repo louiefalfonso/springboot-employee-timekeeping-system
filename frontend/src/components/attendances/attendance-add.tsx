@@ -8,7 +8,6 @@ import { useAddNewAttendance } from "@/services/services-attendance";
 import { useGetAllEmployees } from "@/services/services-employee";
 import AttendanceForm from "@/components/attendances/attendance-add-form";
 
-
 const AddNewAttendance = () => {
   const navigate = useNavigate();
   const { mutate } = useAddNewAttendance();

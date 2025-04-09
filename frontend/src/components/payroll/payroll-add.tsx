@@ -107,85 +107,83 @@ const AddNewPayroll = () => {
         <form onSubmit={handleSubmit}>
           <div className="grid auto-rows-min md:grid-cols-3">
             <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="payPeriodStartDate">Period Start Date :</Label>
-                <Input type="date" id="payPeriodStartDate" value={payPeriodStartDate ? format(payPeriodStartDate, "yyyy-MM-dd") : ""}
-                  onChange={(e) => { const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
-                    setPayPeriodStartDate(selectedDate);
-                  }}
-                />    
+                <Label htmlFor="employee">Employee:</Label>
+                  <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select Employee" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {employees?.map((employee: Employee) => (
+                        <SelectItem key={employee.id} value={employee.id.toString()}>
+                          {employee.firstName} {employee.lastName} - {employee.employeeNumber}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
               </div>
-            <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="payPeriodEndDate">Period End Date :</Label>
-                <Input type="date" id="payPeriodEndDate" value={payPeriodEndDate ? format(payPeriodEndDate, "yyyy-MM-dd") : ""}
-                  onChange={(e) => {
-                    const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
-                    setPayPeriodEndDate(selectedDate);
-                  }}
-                />  
-            </div>
-            <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="paymentDate">Payment Date :</Label>
-                <Input
-                  type="date"
-                  id="paymentDate"
-                  value={paymentDate ? format(paymentDate, "yyyy-MM-dd") : ""}
-                  onChange={(e) => {
-                    const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
-                    setPaymentDate(selectedDate);
-                  }}
-                />   
-            </div>
           </div>
           <div className="grid auto-rows-min md:grid-cols-3">
             <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="grossPay">Gross Pay:</Label>
-                <Input
-                  type="text"
-                  id="grossPay"
-                  placeholder="Gross Pay"
-                  onChange={(e) => setGrossPay(e.target.value)}
-                />
+                <Label htmlFor="payPeriodStartDate">Period Start Date :</Label>
+                  <Input type="date" id="payPeriodStartDate" value={payPeriodStartDate ? format(payPeriodStartDate, "yyyy-MM-dd") : ""}
+                    onChange={(e) => { const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
+                      setPayPeriodStartDate(selectedDate);
+                    }}
+                  />    
             </div>
             <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="deductions">Deductions:</Label>
-                <Input
-                  type="text"
-                  id="deductions"
-                  placeholder="Deductions"
-                  onChange={(e) => setDeductions(e.target.value)}
-                />
-            </div>
-            <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="netPay">Net Pay:</Label>
-                <Input
-                  type="text"
-                  id="netPay"
-                  placeholder="Net Pay"
-                  onChange={(e) => setNetPay(e.target.value)}
-                />
-            </div>
+                <Label htmlFor="grossPay">Gross Pay:</Label>
+                  <Input
+                    type="text"
+                    id="grossPay"
+                    placeholder="Gross Pay"
+                    onChange={(e) => setGrossPay(e.target.value)}
+                  />
+              </div>
           </div>
           <div className="grid auto-rows-min md:grid-cols-3">
             <div className="grid w-full items-center gap-4 p-4">
-                <Label htmlFor="remarks">Remarks:</Label>
-                <Textarea id="remarks"  placeholder="Remarks" onChange={(e) => setRemarks(e.target.value)}/>
-            </div>
-            <div className="grid w-full items-center gap-4 p-4">
-              <Label htmlFor="employee">Employee:</Label>
-                <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select Employee" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {employees?.map((employee: Employee) => (
-                      <SelectItem key={employee.id} value={employee.id.toString()}>
-                        {employee.firstName} {employee.lastName} - {employee.employeeNumber}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-            </div>
-            
+                <Label htmlFor="payPeriodEndDate">Period End Date :</Label>
+                  <Input type="date" id="payPeriodEndDate" value={payPeriodEndDate ? format(payPeriodEndDate, "yyyy-MM-dd") : ""}
+                    onChange={(e) => {
+                      const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
+                      setPayPeriodEndDate(selectedDate);
+                    }}
+                  />  
+              </div>
+              <div className="grid w-full items-center gap-4 p-4">
+                <Label htmlFor="deductions">Deductions:</Label>
+                  <Input
+                    type="text"
+                    id="deductions"
+                    placeholder="Deductions"
+                    onChange={(e) => setDeductions(e.target.value)}
+                  />
+              </div>
+          </div>
+          <div className="grid auto-rows-min md:grid-cols-3">
+              <div className="grid w-full items-center gap-4 p-4">
+                <Label htmlFor="paymentDate">Payment Date :</Label>
+                  <Input
+                    type="date"
+                    id="paymentDate"
+                    value={paymentDate ? format(paymentDate, "yyyy-MM-dd") : ""}
+                    onChange={(e) => {
+                      const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
+                      setPaymentDate(selectedDate);
+                    }}
+                  />   
+              </div>
+              <div className="grid w-full items-center gap-4 p-4">
+                <Label htmlFor="netPay">Net Pay:</Label>
+                  <Input
+                    type="text"
+                    id="netPay"
+                    placeholder="Net Pay"
+                    onChange={(e) => setNetPay(e.target.value)}
+                  />
+              </div>
+              
           </div>
           <div className="flex pl-4 mt-4 ">
             <Button type="submit" className="mr-4 bg-green-500 hover:bg-green-600">
