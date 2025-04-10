@@ -37,18 +37,12 @@ type LeaveAbsenceFormProps = {
 }
 
 const UpdateLeaveAbsenceForm: React.FC<LeaveAbsenceFormProps> = ({
-    startDate,
-    setStartDate,
-    endDate,
-    setEndDate,
-    status,
-    setStatus,
-    leaveType,
-    setLeaveType,
-    remarks,
-    setRemarks,
-    reasonForLeave,
-    setReasonForLeave,
+    startDate, setStartDate,
+    endDate, setEndDate,
+    status, setStatus,
+    leaveType, setLeaveType,
+    remarks, setRemarks,
+    reasonForLeave,setReasonForLeave,
     employeeId,setEmployeeId,employees,
     handleSubmit,handleDelete,leaveAbsenceId,
 }) => {

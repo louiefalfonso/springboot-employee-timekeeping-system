@@ -62,7 +62,7 @@ const UpdateLeaveAbsence = () => {
       status,
       reasonForLeave,
       remarks,
-      employee: employeeId
+      employee : { id : employeeId }
     }
 
     try {
@@ -105,28 +105,28 @@ const UpdateLeaveAbsence = () => {
   return (
     <MainLayout>
       <Headers Title="Update Leave / Absence" />
-      <div className="flex flex-1 flex-col gap-4 p-4">
-      <UpdateLeaveAbsenceForm
-       startDate={startDate}
-       setStartDate ={setStartDate}
-       endDate={endDate}
-       setEndDate={setEndDate}
-       status={status}
-       setStatus={setStatus}
-       leaveType={leaveType}
-       setLeaveType={setLeaveType}
-       remarks={remarks}
-       setRemarks={setRemarks}
-       reasonForLeave={reasonForLeave}
-       setReasonForLeave={setReasonForLeave}
-       employeeId={employeeId}
-       setEmployeeId={setEmployeeId}
-       employees={employees}
-       handleSubmit={handleSubmit}
-       handleDelete={handleDelete}
-       leaveAbsenceId= {id || ""}
-      />
-      </div>
+        <div className="flex flex-1 flex-col gap-4 p-4">
+          <UpdateLeaveAbsenceForm
+          startDate={startDate}
+          setStartDate ={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+          status={status}
+          setStatus={setStatus}
+          leaveType={leaveType}
+          setLeaveType={setLeaveType}
+          remarks={remarks}
+          setRemarks={setRemarks}
+          reasonForLeave={reasonForLeave}
+          setReasonForLeave={setReasonForLeave}
+          employeeId={employeeId}
+          setEmployeeId={setEmployeeId}
+          employees={employees}
+          handleSubmit={handleSubmit}
+          handleDelete={handleDelete}
+          leaveAbsenceId= {id || ""}
+          />
+        </div>
    </MainLayout>   
   )
 }
