@@ -20,12 +20,12 @@ const AddNewLeaveAbsence = () => {
     try {
       mutate(newLeaveAbsence, {
         onSuccess: () => {
-          toast.success("Leave / Absence added successfully");
+          toast.success("Leave / Absence Added Successfully");
           navigate("/leave-absences");
         },
         onError: (error) => {
-          console.error("Error adding Leave / Absence:", error);
-          toast.error("Failed to add Leave / Absence.");
+          console.error("Error Adding Leave / Absence:", error);
+          toast.error("Failed to Add Leave / Absence.");
         },
       });
     } catch (error) {

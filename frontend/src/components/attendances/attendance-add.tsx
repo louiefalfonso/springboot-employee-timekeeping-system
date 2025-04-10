@@ -9,10 +9,13 @@ import { useGetAllEmployees } from "@/services/services-employee";
 import AttendanceForm from "@/components/attendances/attendance-add-form";
 
 const AddNewAttendance = () => {
+
+  // Declare state variables
   const navigate = useNavigate();
   const { mutate } = useAddNewAttendance();
   const { data: employees } = useGetAllEmployees();
 
+  // Handle form submission
   const handleFormSubmit = (newAttendance) => {
     try {
       mutate(newAttendance, {

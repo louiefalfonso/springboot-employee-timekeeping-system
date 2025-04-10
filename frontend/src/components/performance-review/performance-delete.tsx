@@ -14,20 +14,20 @@ const DeletePerformanceReviewDialog : React.FC<DeletePerformanceReviewDialogProp
      
     return (
         <Dialog>
-        <DialogTrigger asChild>
-          <Button className="ml-2 mr-2 bg-red-500 hover:bg-red-600">Delete</Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogTitle>Confirm Deletion</DialogTitle>
-          <DialogDescription>
-            Are you sure you want to delete this employee's performance review? This action cannot be undone.
-          </DialogDescription>
-          <DialogFooter>
-            <Button onClick={onDelete} className="bg-red-500 hover:bg-red-600">
-              Confirm
-            </Button>
-          </DialogFooter>
-        </DialogContent>
+          <DialogTrigger asChild>
+            <Button className="ml-2 mr-2 bg-red-500 hover:bg-red-600">Delete</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Confirm Deletion</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to delete this employee's performance review? This action cannot be undone.
+            </DialogDescription>
+            <DialogFooter>
+              <Button onClick={onDelete} className="bg-red-500 hover:bg-red-600">
+                Confirm
+              </Button>
+            </DialogFooter>
+          </DialogContent>
       </Dialog>
   )
 }
