@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom"
 import { toast } from "sonner";
 
 import MainLayout from "@/components/layout/app-layout";
@@ -54,7 +54,7 @@ const UpdatePerformanceReview = () => {
 
     const currentPerformanceReview = {
       id: id || "",
-      reviewDate,
+      reviewDate: reviewDate || new Date(),
       rating,
       comments,
       reviewedBy,
