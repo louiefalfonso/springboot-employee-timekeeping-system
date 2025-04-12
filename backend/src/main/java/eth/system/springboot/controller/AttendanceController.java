@@ -30,7 +30,8 @@ public class AttendanceController {
     //GET - Get Attendance By ID REST API
     @GetMapping("{id}")
     public ResponseEntity<Attendance> getAttendanceById(@PathVariable ("id") Long id){
-        Attendance attendance = attendanceRepository.findAllById(id).orElseThrow(()-> new RuntimeException("Attendance does not exist with Id:" + id));
+        Attendance attendance = attendanceRepository.findAllById(id)
+                .orElseThrow(()-> new RuntimeException("Attendance does not exist with Id:" + id));
         return ResponseEntity.ok(attendance);
     }
 
