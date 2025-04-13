@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -31,5 +32,37 @@ public class ProjectController {
         Project project = projectRepository.findAllById(id)
                 .orElseThrow(()->new RuntimeException("Project does not exist with Id:" + id));
         return ResponseEntity.ok(project);
+    }
+
+    //GET - Get All Projects REST API
+    @GetMapping
+    public ResponseEntity<List<ProjectDto>> getAllProjects(){
+        List<ProjectDto> projects = projectService.getAllProjects();
+        return ResponseEntity.ok(projects);
+    }
+
+    //UPDATE - Update Project REST API
+    @PutMapping("{id}")
+    public ResponseEntity<Project> updateProject(@PathVariable ("id")long id,
+                                                 @RequestBody Project projectDetails){
+        Project updateProject = projectRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("Project does not exist with id: " + id));
+
+        updateProject.setProjectName(projectDetails.getProjectName());
+        updateProject.setStatus(projectDetails.getStatus());
+        updateProject.setRemarks(projectDetails.getRemarks());
+        updateProject.setDescription(projectDetails.getDescription());
+        updateProject.setStartDate(projectDetails.getStartDate());
+        updateProject.setDueDate(projectDetails.getDueDate());
+        updateProject.setEmployee(projectDetails.getEmployee());
+
+        projectRepository.save(updateProject);
+        return ResponseEntity.ok(updateProject);
+    }
+
+    //DELETE - Delete Project REST API
+    public ResponseEntity<String> deleteProject(Long projectId){
+        projectService.deleteProject(projectId);
+        return ResponseEntity.ok("Project Deleted Successfully");
     }
 }
