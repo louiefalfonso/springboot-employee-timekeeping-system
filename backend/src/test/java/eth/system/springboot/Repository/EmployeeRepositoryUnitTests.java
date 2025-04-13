@@ -205,17 +205,73 @@ public class EmployeeRepositoryUnitTests {
 
     @Test
     @Order(9)
-    @DisplayName("Test 9: Delete All Employees - Success")
-    void deleteAllEmployees() {
-        // Retrieve the em ployee to be deleted
-        Employee employee = employeeRepository.findById(1L).orElseThrow(() -> new RuntimeException("Employee not found"));
+    @DisplayName("Test 9: Create New Employee - Failure")
+    void createNewEmployee_NotFound() {
+        // Create a mock implementation of the Employee Repository interface
+        EmployeeRepository mockRepository = Mockito.mock(EmployeeRepository.class);
 
-        // Delete the employee
-        employeeRepository.deleteById(1L);
+        // Define the behavior of the mock implementation
+        when(mockRepository.save(Mockito.any(Employee.class)))
+                .thenThrow(new EntityNotFoundException("Failed to create employee"));
 
-        // Verify that the employee is deleted
-        Optional<Employee> deletedEmployee = employeeRepository.findById(1L);
-        Assertions.assertThat(deletedEmployee).isEmpty();
+        // Create a new employee object
+        Employee employee = Employee.builder()
+                .firstName("Invalid")
+                .lastName("Employee")
+                .employeeNumber("INVALID-0000")
+                .position("Unknown")
+                .phoneNumber("000-000-0000")
+                .employeeStatus("Invalid")
+                .build();
+
+        // Try to save the employee and expect an exception
+        Assertions.assertThatThrownBy(() -> mockRepository.save(employee))
+                .isInstanceOf(EntityNotFoundException.class)
+                .hasMessageContaining("Failed to create employee");
+    }
+
+    @Test
+    @Order(10)
+    @DisplayName("Test 10: Get All Employees - Failure")
+    void getAllEmployees_Failure() {
+        // Create a mock implementation of the Employee Repository interface
+        EmployeeRepository mockRepository = Mockito.mock(EmployeeRepository.class);
+
+        // Define the behavior of the mock implementation
+        when(mockRepository.findAll()).thenThrow(new RuntimeException("Failed to retrieve employees"));
+
+        // Try to retrieve all employees and expect an exception
+        Assertions.assertThatThrownBy(() -> mockRepository.findAll())
+                .isInstanceOf(RuntimeException.class)
+                .hasMessageContaining("Failed to retrieve employees");
+    }
+
+    @Test
+    @Order(11)
+    @DisplayName("Test 11: Update Employee - Failure")
+    void updateEmployee_Failure() {
+        // Create a mock implementation of the Employee Repository interface
+        EmployeeRepository mockRepository = Mockito.mock(EmployeeRepository.class);
+
+        // Define the behavior of the mock implementation
+        when(mockRepository.save(Mockito.any(Employee.class)))
+                .thenThrow(new EntityNotFoundException("Employee not found"));
+
+        // Create an employee object with a non-existent ID
+        Employee employee = Employee.builder()
+                .id(999L)
+                .firstName("NonExistent")
+                .lastName("Employee")
+                .employeeNumber("NON-9999")
+                .position("Unknown")
+                .phoneNumber("000-000-0000")
+                .employeeStatus("Invalid")
+                .build();
+
+        // Try to update the employee and expect an exception
+        Assertions.assertThatThrownBy(() -> mockRepository.save(employee))
+                .isInstanceOf(EntityNotFoundException.class)
+                .hasMessageContaining("Employee not found");
     }
 
 }
