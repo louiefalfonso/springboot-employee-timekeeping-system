@@ -1,4 +1,4 @@
-import { Home, ContactRound, Building2, FileClock, NotebookPen, Medal, Wallet } from "lucide-react";
+import { Home, ContactRound, Building2, FileClock, NotebookPen, Medal, Wallet, BookOpenCheck } from "lucide-react";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import MainLogo from '@/assets/logo.png';
 import '../../App.css'; 
@@ -41,6 +41,11 @@ const items = [
     title: "Payrolls",
     url: "/payrolls",
     icon: Wallet ,
+  },
+  {
+    title: "Projects",
+    url: "/projects",
+    icon: BookOpenCheck ,
   },
 ];
 

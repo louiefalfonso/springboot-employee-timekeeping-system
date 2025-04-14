@@ -5,7 +5,7 @@ import { format } from "date-fns"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
 
 import { useGetAllLeaveAbsence } from "@/services/services-leave-absence";
 
@@ -106,9 +106,6 @@ const LeaveAbsenceList = () => {
                   </PaginationLink>
                 </PaginationItem>
               ))}
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
               <PaginationItem>
                 <PaginationNext onClick={() => handlePageChange(currentPage + 1)}/>
               </PaginationItem>

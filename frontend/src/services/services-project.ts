@@ -55,7 +55,7 @@ export const useAddNewProject = () => {
 
 export const useGetAllProjects = () => {
     return useQuery( 
-      { queryKey: ['project'], queryFn: projectServices.getAllProjects });
+      { queryKey: ['projects'], queryFn: projectServices.getAllProjects });
 };
 
 export const useGetProjectById = (id: string) => {

@@ -4,7 +4,7 @@ import { format } from "date-fns";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 import { useGetAllPayrolls } from "../../services/services-payrolls";
@@ -108,9 +108,6 @@ const handlePageChange = (newPage: number) => {
                   </PaginationLink>
                 </PaginationItem>
               ))}
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
               <PaginationItem>
                 <PaginationNext onClick={() => handlePageChange(currentPage + 1)}/>
               </PaginationItem>
