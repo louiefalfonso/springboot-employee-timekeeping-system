@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useGetAllEmployees } from "@/services/services-employee";
 
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
 
 const EmployeeList = () => {
   
@@ -109,9 +109,6 @@ return (
                   </PaginationLink>
                 </PaginationItem>
               ))}
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
               <PaginationItem>
                 <PaginationNext onClick={() => handlePageChange(currentPage + 1)}/>
               </PaginationItem>

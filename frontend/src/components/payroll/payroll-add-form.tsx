@@ -92,11 +92,12 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
           <div className="grid auto-rows-min md:grid-cols-3">
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="payPeriodStartDate">Period Start Date :</Label>
-                  <Input type="date" id="payPeriodStartDate" value={payPeriodStartDate ? format(payPeriodStartDate, "yyyy-MM-dd") : ""}
-                    onChange={(e) => { const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
-                      setPayPeriodStartDate(selectedDate);
-                    }}
-                  />    
+                <Input type="date" id="payPeriodStartDate" value={payPeriodStartDate ? format(payPeriodStartDate, "yyyy-MM-dd") : ""}
+                onChange={(e) => {
+                  const selectedDate = e.target.value ? new Date(e.target.value) : null;
+                  setPayPeriodStartDate(selectedDate);
+                }}
+              /> 
             </div>
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="grossPay">Gross Pay:</Label>
@@ -111,12 +112,12 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
           <div className="grid auto-rows-min md:grid-cols-3">
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="payPeriodEndDate">Period End Date :</Label>
-                  <Input type="date" id="payPeriodEndDate" value={payPeriodEndDate ? format(payPeriodEndDate, "yyyy-MM-dd") : ""}
-                    onChange={(e) => {
-                      const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
-                      setPayPeriodEndDate(selectedDate);
-                    }}
-                  />  
+                <Input type="date" id="payPeriodEndDate" value={payPeriodEndDate ? format(payPeriodEndDate, "yyyy-MM-dd") : ""}
+                onChange={(e) => {
+                  const selectedDate = e.target.value ? new Date(e.target.value) : null;
+                  setPayPeriodEndDate(selectedDate);
+                }}
+              />  
               </div>
               <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="deductions">Deductions:</Label>
@@ -131,7 +132,7 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
           <div className="grid auto-rows-min md:grid-cols-3">
               <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="paymentDate">Payment Date :</Label>
-                <Input type="date" id="reviewDate" value={paymentDate ? format(paymentDate, "yyyy-MM-dd") : ""}
+                <Input type="date" id="paymentDate" value={paymentDate ? format(paymentDate, "yyyy-MM-dd") : ""}
                         onChange={(e) => {
                         const selectedDate = e.target.value ? new Date(e.target.value) : null;
                         setPaymentDate(selectedDate);
@@ -160,10 +161,10 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
                 Add Payroll
             </Button>
             <Link to={`/payrolls`}>
-              <Button className ="bg-gray-500 hover:bg-gray-600">Back to Payrol</Button>  
+              <Button className ="bg-gray-500 hover:bg-gray-600">Back to Payroll</Button>  
             </Link>
           </div>
-        </form>
+    </form>
   )
 }
 
