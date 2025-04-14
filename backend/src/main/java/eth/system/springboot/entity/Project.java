@@ -41,5 +41,7 @@ public class Project {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
+    private boolean deleted = false;
+
 }
 

@@ -6,7 +6,7 @@ import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 
 import { useGetAllEmployees } from "@/services/services-employee";
-import { useDeletePerformanceReview, useGetPerformanceReviewById, useUpdatePerformanceReview } from "@/services/service-performance";
+import { useDeletePerformanceReview, useGetPerformanceReviewById, useUpdatePerformanceReview } from "@/services/services-performance";
 import { UpdatePerformanceReviewForm } from "./performance-update-form";
 
 const UpdatePerformanceReview = () => {

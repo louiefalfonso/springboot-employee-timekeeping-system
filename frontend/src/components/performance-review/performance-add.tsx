@@ -5,7 +5,7 @@ import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
 
 import { useGetAllEmployees } from "@/services/services-employee";
-import { useAddNewPerformanceReview } from "@/services/service-performance";
+import { useAddNewPerformanceReview } from "@/services/services-performance";
 import AddNewPerformanceReviewForm from "./performance-add-form";
 
 const AddPerformanceReview = () => {

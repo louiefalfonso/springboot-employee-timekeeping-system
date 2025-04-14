@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
 
-import { useGetAllPerformanceReviews } from "@/services/service-performance";
+import { useGetAllPerformanceReviews } from "@/services/services-performance";
 const PerformanceReviewList = () => {
 
   // Declare state variables

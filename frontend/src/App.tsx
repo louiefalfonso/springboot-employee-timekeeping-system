@@ -25,6 +25,10 @@ import Payrolls from "./pages/payroll/page";
 import AddNewPayroll from "./components/payroll/payroll-add";
 import PayrollDetails from "./components/payroll/payroll-details";
 import UpdatePayroll from "./components/payroll/payroll-update";
+import Projects from "./pages/projects/page";
+import AddNewProject from "./components/projects/project-add";
+import ProjectDetails from "./components/projects/project-details";
+import UpdateProject from "./components/projects/project-update";
 
 function App() {
   return (
@@ -60,6 +64,11 @@ function App() {
         <Route path="/payrolls/add" element={<AddNewPayroll/>} />
         <Route path="/payrolls/id" element={<PayrollDetails/>} />
         <Route path="/payrolls/update/:id" element={<UpdatePayroll/>} />
+
+        <Route path="/projects" element={<Projects/>} />
+        <Route path="/projects/add" element={<AddNewProject/>} />
+        <Route path="/projects/:id" element={<ProjectDetails/>} />
+        <Route path="/projects/update/:id" element={<UpdateProject/>} />
 
       </Routes>
       <Toaster />
