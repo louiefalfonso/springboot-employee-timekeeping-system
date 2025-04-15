@@ -66,18 +66,4 @@ public class ProjectController {
         projectService.deleteProject(projectId);
         return ResponseEntity.ok("Project Deleted Successfully");
     }
-
-    //GET - Get All Deleted Projects REST API
-    @GetMapping("/deleted")
-    public ResponseEntity<List<ProjectDto>> getAllDeletedProjects(){
-        List<ProjectDto> deletedProjects = projectService.getAllDeletedProjects();
-        return ResponseEntity.ok(deletedProjects);
-    }
-
-    //GET - Get Deleted Project By ID REST API
-    @GetMapping("/deleted/{id}")
-    public ResponseEntity<ProjectDto> getDeletedProjectById(@PathVariable ("id") Long id){
-        ProjectDto deletedProject = projectService.getDeletedProjectById(id);
-        return ResponseEntity.ok(deletedProject);
-    }
 }
