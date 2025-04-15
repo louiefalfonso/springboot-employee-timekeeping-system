@@ -66,23 +66,6 @@ public class ProjectServiceImpl implements ProjectService {
     public void deleteProject(Long projectId) {
         Project project = projectRepository.findAllById(projectId)
                 .orElseThrow(()->new RuntimeException("Project doesn't exist with given id:" + projectId));
-        project.setDeleted(true);
-        projectRepository.save(project);
-    }
-
-    // REST API - Get All Deleted Projects
-    @Override
-    public List<ProjectDto> getAllDeletedProjects() {
-        List<Project> deletedProjects = projectRepository.findByDeleted(true);
-        return deletedProjects.stream().map(project -> modelMapper.map(project, ProjectDto.class))
-                .collect(Collectors.toList());
-    }
-
-    //GET - Get Deleted Project By ID REST API
-    @Override
-    public ProjectDto getDeletedProjectById(Long id) {
-       Project project = projectRepository.findByIdAndDeleted(id,true)
-               .orElseThrow(()->new RuntimeException("Deleted Project doesn't exist with a given Id:" + id));
-       return modelMapper.map(project, ProjectDto.class);
+        projectRepository.deleteById(projectId);
     }
 }

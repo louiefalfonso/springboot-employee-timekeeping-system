@@ -115,7 +115,7 @@ const AddProjectForm: React.FC<ProjectFormProps> = ({ employees, onSubmit }) => 
       </div>
       <div className="grid w-full items-center gap-4 p-4">
         <Label htmlFor="projectManager">Project Manager:</Label>
-        <Input type="text" id="projectManager" placeholder="Project manager" onChange={(e) => setProjectManager(e.target.value)}/>
+        <Input type="text" id="projectManager" placeholder="Project Manager" onChange={(e) => setProjectManager(e.target.value)}/>
       </div>
       <div className="grid w-full items-center gap-4 p-4">
         <Label htmlFor="status">Status:</Label>
@@ -137,7 +137,7 @@ const AddProjectForm: React.FC<ProjectFormProps> = ({ employees, onSubmit }) => 
         <Link to={`/projects`}>
           <Button className ="bg-gray-500 hover:bg-gray-600">Back to Projects</Button>  
         </Link>
-      </div>
+    </div>
     </form>
   )
 }

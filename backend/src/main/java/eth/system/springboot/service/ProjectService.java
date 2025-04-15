@@ -15,9 +15,4 @@ public interface ProjectService {
     ProjectDto updateProject(Long projectId, ProjectDto updateProject);
 
     void deleteProject(Long projectId);
-
-    List<ProjectDto> getAllDeletedProjects();
-
-    ProjectDto getDeletedProjectById(Long id);
-
 }
