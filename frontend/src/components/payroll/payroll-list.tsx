@@ -56,7 +56,7 @@ const handlePageChange = (newPage: number) => {
 
   return (
     <div className="rounded-md border p-5 w-full overflow-x-auto">
-       <div className="flex flex-col md:flex-row justify-between items-center pb-5 space-y-2 md:space-y-0 md:space-x-2">
+      <div className="flex flex-col md:flex-row justify-between items-center pb-5 space-y-2 md:space-y-0 md:space-x-2">
          <Link to={`/payrolls/add`}>
             <Button className ="bg-green-500 hover:bg-green-600">Add New Payroll</Button>
           </Link>
