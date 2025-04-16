@@ -26,17 +26,13 @@ type ProjectFormProps = {
   setRemarks: (value: string) => void;
   projectManager: string; 
   setProjectManager: (value: string) => void;
-
   startDate:  Date | undefined;
   setStartDate: (value: Date | undefined) => void;
-
   dueDate:  Date | undefined;
   setDueDate: (value: Date | undefined) => void;
-
   employeeId: number | null;
   setEmployeeId: (value: number | null) => void;
   employees: Employee[] | undefined;
-
   handleSubmit: (e: React.FormEvent) => void;
   handleDelete: () => void;
   projectId: string;
@@ -51,10 +47,8 @@ const UpdateProjectForm: React.FC<ProjectFormProps> = ({
   setDescription,
   remarks, 
   setRemarks,
-
   projectManager, 
   setProjectManager,
-
   startDate, 
   setStartDate,
   dueDate, 
@@ -109,7 +103,7 @@ const UpdateProjectForm: React.FC<ProjectFormProps> = ({
               const selectedDate = e.target.value ? parseISO(e.target.value) : undefined;
               setDueDate(selectedDate);
             }}
-          />
+          />      
       </div>
     </div>
     <div className="grid auto-rows-min md:grid-cols-3">

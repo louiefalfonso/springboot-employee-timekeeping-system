@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate} from "react-router-dom";
 import { toast } from "sonner"
+import { format } from "date-fns";
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
@@ -57,9 +58,9 @@ const UpdatePayroll = () => {
     }
     const currentPayroll = {
       id: id || "",
-      payPeriodStartDate: payPeriodStartDate || new Date(),
-      payPeriodEndDate: payPeriodEndDate || new Date(),
-      paymentDate: paymentDate || new Date(),
+      payPeriodStartDate: payPeriodStartDate ? format(payPeriodStartDate, "MM-dd-yyyy") : undefined,
+      payPeriodEndDate: payPeriodEndDate ? format(payPeriodEndDate, "MM-dd-yyyy") : undefined,
+      paymentDate: paymentDate ? format(paymentDate, "MM-dd-yyyy") : undefined,
       grossPay,
       deductions,
       netPay,

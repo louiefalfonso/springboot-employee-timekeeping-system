@@ -120,3 +120,9 @@
   }
 }
 
+@media (min-width: 640px) { /* Assuming 640px is the breakpoint for mobile */
+  .text-wrap {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}

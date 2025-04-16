@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 import { toast } from "sonner";
+import { format } from "date-fns";
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
@@ -54,7 +55,7 @@ const UpdatePerformanceReview = () => {
 
     const currentPerformanceReview = {
       id: id || "",
-      reviewDate: reviewDate || new Date(),
+      reviewDate: reviewDate ? format(reviewDate, "MM-dd-yyyy") : undefined,
       rating,
       comments,
       reviewedBy,

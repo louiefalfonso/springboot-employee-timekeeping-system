@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "sonner"
+import { format } from "date-fns";
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
@@ -64,7 +65,7 @@ const UpdateEmployee = () => {
       firstName,
       lastName,
       employeeNumber,
-      dateOfBirth,
+      dateOfBirth: dateOfBirth ? format(dateOfBirth, "MM-dd-yyyy") : undefined,
       emailAddress,
       position,
       phoneNumber,

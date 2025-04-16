@@ -66,7 +66,7 @@ const AddNewPerformanceReviewForm:React.FC<PerformanceReviewProps> = ({ employee
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="grid auto-rows-min md:grid-cols-3">
+            <div className="grid auto-rows-min md:grid-cols-2">
                 <div className="grid w-full items-center gap-4 p-4">
                     <Label htmlFor="employee">Employee:</Label>
                     <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
@@ -101,12 +101,12 @@ const AddNewPerformanceReviewForm:React.FC<PerformanceReviewProps> = ({ employee
                 </div>
             </div>
             <div className="flex pl-4 mt-4 ">
-            <Button type="submit" className="mr-4 bg-green-500 hover:bg-green-600">
-                Add New Performance Review
-            </Button>
-            <Link to={`/performance-reviews`}>
-                <Button className="bg-gray-500 hover:bg-gray-600">Back</Button>
-            </Link>
+                <Button type="submit" className="mr-4 bg-green-500 hover:bg-green-600">
+                    Add New Performance Review
+                </Button>
+                <Link to={`/performance-reviews`}>
+                    <Button className="bg-gray-500 hover:bg-gray-600">Back</Button>
+                </Link>
             </div>
       </form>
   )

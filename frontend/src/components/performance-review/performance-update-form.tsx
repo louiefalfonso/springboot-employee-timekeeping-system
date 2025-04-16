@@ -51,7 +51,7 @@ export const UpdatePerformanceReviewForm: React.FC<PerformanceReviewFormProps> =
 }) => {
   return (
     <form onSubmit={handleSubmit}>
-        <div className="grid auto-rows-min md:grid-cols-3">
+        <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
               <Label htmlFor="employee">Employee:</Label>
               <Select

@@ -26,11 +26,10 @@ type Employee = {
 const DepartmentDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetDepartmentById(id || "");
-  
   const { data: employees, error: employeesError } = useGetAllEmployees();
+  
+   // Handle loading state
   if (employeesError) { return <div>Error loading employees data</div>; }
-
-  // Handle loading state
   if (isLoading) {return <div>Loading...</div>;}
   if (!data) {return <div>No data found</div>;}
 

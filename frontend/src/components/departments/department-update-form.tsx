@@ -34,7 +34,7 @@ const UpdateDepartmentForm: React.FC<DepartmentFormProps> = ({
 }) => {
   return (
     <form onSubmit={handleSubmit}>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="departmentName">Department Name:</Label>
                 <Input type="text" id="departmentName" value={departmentName} onChange={(e) => setDepartmentName(e.target.value)}/>

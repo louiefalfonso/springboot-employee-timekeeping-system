@@ -74,7 +74,7 @@ const handlePageChange = (newPage: number) => {
               <TableHead>Employee Name</TableHead>
               <TableHead>Employee Number</TableHead>
               <TableHead>Role / Position</TableHead>
-              <TableHead>Gross Pay</TableHead>
+              <TableHead>Remarks</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -85,9 +85,10 @@ const handlePageChange = (newPage: number) => {
                 <TableCell>{payroll.employee?.firstName} {payroll.employee?.lastName}</TableCell>
                 <TableCell>{payroll.employee?.employeeNumber}</TableCell>
                 <TableCell>{payroll.employee?.position}</TableCell>
-                <TableCell>{payroll.grossPay}</TableCell>
+                <TableCell>{payroll.remarks}</TableCell>
                 <TableCell>
                     <Link to={`/payrolls/update/${payroll.id}`}>
+
                         <Button className="bg-violet-500 hover:bg-violet-600">Update</Button>
                      </Link>
                 </TableCell>

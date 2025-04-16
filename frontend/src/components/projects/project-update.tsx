@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate} from "react-router-dom";
 import { toast } from "sonner"
+import { format } from "date-fns";
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
@@ -57,8 +58,8 @@ const UpdateProject = () => {
 
     const currentProject = {
       id: id || "",
-      startDate: startDate || new Date(),
-      dueDate: dueDate || new Date(),
+      startDate: startDate ? format(startDate, "MM-dd-yyyy") : undefined,
+      dueDate: dueDate ? format(dueDate, "MM-dd-yyyy") : undefined,
       projectName, 
       projectManager, 
       status, 
