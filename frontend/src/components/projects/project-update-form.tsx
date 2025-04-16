@@ -18,12 +18,16 @@ type Employee = {
 type ProjectFormProps = {
   projectName: string;
   setProjectName: (value: string) => void;
+
   status: string;
   setStatus: (value: string) => void;
+
   description: string;
   setDescription:(value: string) => void;
+
   remarks: string;
   setRemarks: (value: string) => void;
+
   projectManager: string; 
   setProjectManager: (value: string) => void;
 
@@ -45,10 +49,13 @@ type ProjectFormProps = {
 const UpdateProjectForm: React.FC<ProjectFormProps> = ({
   projectName, 
   setProjectName,
+
   status, 
   setStatus,
+
   description, 
   setDescription,
+
   remarks, 
   setRemarks,
 
@@ -109,7 +116,7 @@ const UpdateProjectForm: React.FC<ProjectFormProps> = ({
               const selectedDate = e.target.value ? parseISO(e.target.value) : undefined;
               setDueDate(selectedDate);
             }}
-          />
+          />      
       </div>
     </div>
     <div className="grid auto-rows-min md:grid-cols-3">

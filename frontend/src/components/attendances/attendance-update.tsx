@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { format } from "date-fns";
 
 import MainLayout from "@/components/layout/app-layout";
 import Headers from "@/components/layout/app-header";
@@ -54,9 +55,9 @@ const UpdateAttendance = () => {
       id: id || "",
       status,
       reasonForAbsence,
-      date,
+      date: date ? format(date, "MM-dd-yyyy") : undefined,
       remarks,
-      employee: employeeId,
+      employee : { id : employeeId }
     };
 
     try {

@@ -56,7 +56,7 @@ const handlePageChange = (newPage: number) => {
     <div className="rounded-md border p-5 w-full overflow-x-auto">
       <div className="flex flex-col md:flex-row justify-between items-center pb-5 space-y-2 md:space-y-0 md:space-x-2">
         <Link to={`/projects/add`}>
-            <Button className ="bg-green-500 hover:bg-green-600">Add Project</Button>
+            <Button className ="bg-green-500 hover:bg-green-600">Add New Project</Button>
         </Link>
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
             <Input type="text" placeholder="Search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="p-2 border rounded"/>
