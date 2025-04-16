@@ -45,6 +45,28 @@ const UpdateAttendanceForm: React.FC<AttendanceFormProps> = ({
     <form onSubmit={handleSubmit}>
       <div className="grid auto-rows-min md:grid-cols-3">
         <div className="grid w-full items-center gap-4 p-4">
+          <Label htmlFor="employee">Employee:</Label>
+          <Select value={employeeId ? employeeId.toString() : undefined}
+          onValueChange={(value) => {
+            const parsedValue = parseInt(value);
+            if (!isNaN(parsedValue)) {
+              setEmployeeId(parsedValue);
+            }
+          }}
+        >
+          <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select Employee" />
+          </SelectTrigger>
+          <SelectContent>
+            {employees?.map((employee: Employee) => (
+              <SelectItem key={employee.id} value={employee.id.toString()}>
+                {employee.firstName} {employee.lastName} - {employee.employeeNumber}
+              </SelectItem>
+            ))}
+          </SelectContent>
+          </Select>
+        </div>
+        <div className="grid w-full items-center gap-4 p-4">
           <Label htmlFor="status">Leave Status:</Label>
           <Input
             type="text"
@@ -52,33 +74,8 @@ const UpdateAttendanceForm: React.FC<AttendanceFormProps> = ({
             value={status}
             onChange={(e) => setStatus(e.target.value)}
           />
-
-          <Label htmlFor="employee">Employee:</Label>
-          <Select
-            value={employeeId ? employeeId.toString() : undefined}
-            onValueChange={(value) => {
-              const parsedValue = parseInt(value);
-              if (!isNaN(parsedValue)) {
-                setEmployeeId(parsedValue);
-              }
-            }}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select Employee" />
-            </SelectTrigger>
-            <SelectContent>
-            {employees ? (
-                employees.map((employee: Employee) => (
-                  <SelectItem key={employee.id} value={employee.id.toString()}>
-                    {employee.firstName} {employee.lastName} - {employee.employeeNumber}
-                  </SelectItem>
-                ))
-              ) : (
-                <SelectItem disabled value={""}>Loading employees...</SelectItem>
-              )}
-            </SelectContent>
-          </Select>
-
+        </div>
+        <div className="grid w-full items-center gap-4 p-4">
           <Label htmlFor="date">Date:</Label>
           <Input
             type="date"
@@ -93,13 +90,18 @@ const UpdateAttendanceForm: React.FC<AttendanceFormProps> = ({
               setDate(selectedDate);
             }}
           />
-
+        </div> 
+      </div>
+      <div className="grid auto-rows-min md:grid-cols-3">
+        <div className="grid w-full items-center gap-4 p-4">
           <Label htmlFor="reasonForAbsence">Reason For Absence:</Label>
           <Textarea
             id="reasonForAbsence"
             value={reasonForAbsence}
             onChange={(e) => setReasonForAbsence(e.target.value)}
           />
+        </div>
+        <div className="grid w-full items-center gap-4 p-4">
           <Label htmlFor="remarks">Remarks:</Label>
           <Textarea
             id="remarks"
@@ -108,7 +110,6 @@ const UpdateAttendanceForm: React.FC<AttendanceFormProps> = ({
           />
         </div>
       </div>
-
       <div className="flex pl-4 mt-4">
         <Button type="submit" className="bg-violet-500 hover:bg-violet-600" aria-label="Update Attendance">Update</Button>
         <DeleteAttendanceDialog attendanceId={attendanceId} onDelete={handleDelete} aria-label="Delete Attendance"/>

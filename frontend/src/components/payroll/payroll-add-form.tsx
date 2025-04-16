@@ -72,7 +72,7 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="employee">Employee:</Label>
                   <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
@@ -87,9 +87,9 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
                       ))}
                     </SelectContent>
                   </Select>
-              </div>
+            </div>
           </div>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="payPeriodStartDate">Period Start Date :</Label>
                 <Input type="date" id="payPeriodStartDate" value={payPeriodStartDate ? format(payPeriodStartDate, "yyyy-MM-dd") : ""}
@@ -109,7 +109,7 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
                   />
               </div>
           </div>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="payPeriodEndDate">Period End Date :</Label>
                 <Input type="date" id="payPeriodEndDate" value={payPeriodEndDate ? format(payPeriodEndDate, "yyyy-MM-dd") : ""}
@@ -118,8 +118,8 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
                   setPayPeriodEndDate(selectedDate);
                 }}
               />  
-              </div>
-              <div className="grid w-full items-center gap-4 p-4">
+            </div>
+            <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="deductions">Deductions:</Label>
                   <Input
                     type="text"
@@ -127,9 +127,9 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
                     placeholder="Deductions"
                     onChange={(e) => setDeductions(e.target.value)}
                   />
-              </div>
+            </div>
           </div>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
               <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="paymentDate">Payment Date :</Label>
                 <Input type="date" id="paymentDate" value={paymentDate ? format(paymentDate, "yyyy-MM-dd") : ""}
@@ -150,7 +150,7 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
               </div>
               
           </div>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="remarks">Remarks:</Label>
                 <Textarea id="remarks" placeholder="Remarks" onChange={(e) => setRemarks(e.target.value)}/>

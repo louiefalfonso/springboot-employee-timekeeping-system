@@ -2,7 +2,7 @@ import MainLayout from '@/components/layout/app-layout'
 import Headers from "@/components/layout/app-header";
 import ProjectLists from '@/components/projects/project-list';
 
-const ProjectsPage = () => {
+const Projects = () => {
   return (
     <MainLayout>
         <Headers Title ="Project List"/>
@@ -15,4 +15,4 @@ const ProjectsPage = () => {
   )
 }
 
-export default ProjectsPage
+export default Projects

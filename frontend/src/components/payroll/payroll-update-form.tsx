@@ -58,7 +58,7 @@ const UpdatePayrollForm: React.FC<PayrollFormProps> = ({
 }) => {
   return (
     <form onSubmit={handleSubmit}>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
                   <Label htmlFor="employee">Employee:</Label>
                   <Select
@@ -83,7 +83,7 @@ const UpdatePayrollForm: React.FC<PayrollFormProps> = ({
                   </Select>
             </div>
           </div>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="payPeriodStartDate">Period Start Date :</Label>
                 <Input type="date" id="payPeriodStartDate" value={payPeriodStartDate ? format(payPeriodStartDate, "yyyy-MM-dd") : ""}
@@ -102,7 +102,7 @@ const UpdatePayrollForm: React.FC<PayrollFormProps> = ({
                     />
             </div>
           </div> 
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
               <Label htmlFor="payPeriodEndDate">Period End Date :</Label>
                 <Input type="date" id="payPeriodEndDate" value={payPeriodEndDate ? format(payPeriodEndDate, "yyyy-MM-dd") : ""}
@@ -122,7 +122,7 @@ const UpdatePayrollForm: React.FC<PayrollFormProps> = ({
                 />
             </div>
           </div>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
               <Label htmlFor="paymentDate">Payment Date :</Label>
                 <Input
@@ -145,7 +145,7 @@ const UpdatePayrollForm: React.FC<PayrollFormProps> = ({
                 />
             </div>
           </div>
-          <div className="grid auto-rows-min md:grid-cols-3">
+          <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">
                 <Label htmlFor="remarks">Remarks:</Label>
                 <Textarea id="remarks"  value={remarks} onChange={(e) => setRemarks(e.target.value)}/>

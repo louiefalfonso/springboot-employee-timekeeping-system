@@ -18,29 +18,21 @@ type Employee = {
 type ProjectFormProps = {
   projectName: string;
   setProjectName: (value: string) => void;
-
   status: string;
   setStatus: (value: string) => void;
-
   description: string;
   setDescription:(value: string) => void;
-
   remarks: string;
   setRemarks: (value: string) => void;
-
   projectManager: string; 
   setProjectManager: (value: string) => void;
-
   startDate:  Date | undefined;
   setStartDate: (value: Date | undefined) => void;
-
   dueDate:  Date | undefined;
   setDueDate: (value: Date | undefined) => void;
-
   employeeId: number | null;
   setEmployeeId: (value: number | null) => void;
   employees: Employee[] | undefined;
-
   handleSubmit: (e: React.FormEvent) => void;
   handleDelete: () => void;
   projectId: string;
@@ -49,19 +41,14 @@ type ProjectFormProps = {
 const UpdateProjectForm: React.FC<ProjectFormProps> = ({
   projectName, 
   setProjectName,
-
   status, 
   setStatus,
-
   description, 
   setDescription,
-
   remarks, 
   setRemarks,
-
   projectManager, 
   setProjectManager,
-
   startDate, 
   setStartDate,
   dueDate, 
