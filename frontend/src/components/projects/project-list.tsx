@@ -76,24 +76,24 @@ const handlePageChange = (newPage: number) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-          {paginatedProjects.map((project: Project) => (
-            <TableRow key={project.id}>
-              <TableCell>{format(new Date(project.startDate), 'MM/dd/yyyy')}</TableCell>
-              <TableCell>{format(new Date(project.dueDate), 'MM/dd/yyyy')}</TableCell>
-              <TableCell>{project.projectName}</TableCell>
-              <TableCell>{project.employee?.firstName} {project.employee?.lastName}</TableCell>
-              <TableCell>{project.projectManager}</TableCell>
-              <TableCell>{project.status}</TableCell>
-              <TableCell>
-                <Link to={`/projects/${project.id}`}>
-                    <Button className="mr-2 bg-sky-500 hover:bg-sky-600" aria-label="View Employee">View</Button>
-                </Link>
-                <Link to={`/projects/update/${project.id}`}>
-                    <Button className="mr-2 bg-violet-500 hover:bg-violet-600">Update</Button>
-                </Link>
-              </TableCell>
-            </TableRow>
-          ))}
+            {paginatedProjects.map((project: Project) => (
+              <TableRow key={project.id}>
+                <TableCell>{format(new Date(project.startDate), 'MM/dd/yyyy')}</TableCell>
+                <TableCell>{format(new Date(project.dueDate), 'MM/dd/yyyy')}</TableCell>
+                <TableCell>{project.projectName}</TableCell>
+                <TableCell>{project.employee?.firstName} {project.employee?.lastName}</TableCell>
+                <TableCell>{project.projectManager}</TableCell>
+                <TableCell>{project.status}</TableCell>
+                <TableCell>
+                  <Link to={`/projects/${project.id}`}>
+                      <Button className="mr-2 bg-sky-500 hover:bg-sky-600" aria-label="View Employee">View</Button>
+                  </Link>
+                  <Link to={`/projects/update/${project.id}`}>
+                      <Button className="mr-2 bg-violet-500 hover:bg-violet-600">Update</Button>
+                  </Link>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
       </Table>
       <div className="flex justify-center mt-4">
