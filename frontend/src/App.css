@@ -38,3 +38,9 @@
 .sidebar-content{
   background-color: #fff;
 }
+
+@media (max-width: 768px) {
+  .header-title {
+    display: none;
+  }
+}
