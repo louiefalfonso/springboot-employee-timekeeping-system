@@ -32,7 +32,7 @@ interface AttendanceFormProps {
 const AttendanceForm: React.FC<AttendanceFormProps> = ({ employees, onSubmit }) => {
   const [status, setStatus] = useState("");
   const [reasonForAbsence, setReasonForAbsence] = useState("");
-  const [date, setDate] = useState<Date | undefined>();
+  const [date, setDate] = useState<Date | null>(null);;
   const [remarks, setRemarks] = useState("");
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
@@ -63,16 +63,9 @@ const AttendanceForm: React.FC<AttendanceFormProps> = ({ employees, onSubmit }) 
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="grid auto-rows-min md:grid-cols-3">
+      <div className="grid auto-rows-min md:grid-cols-2">
         <div className="grid w-full items-center gap-4 p-4">
-          <Label htmlFor="Status">Leave Status:</Label>
-          <Input
-            type="text"
-            id="status"
-            placeholder="Status"
-            onChange={(e) => setStatus(e.target.value)}
-          />
-          <Label htmlFor="employee">Employee:</Label>
+        <Label htmlFor="employee">Employee:</Label>
           <Select onValueChange={(value) => handleEmployeeSelect(parseInt(value))}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select Employee" />
@@ -85,26 +78,41 @@ const AttendanceForm: React.FC<AttendanceFormProps> = ({ employees, onSubmit }) 
               ))}
             </SelectContent>
           </Select>
+        </div> 
+      </div>
+      <div className="grid auto-rows-min md:grid-cols-2">
+        <div className="grid w-full items-center gap-4 p-4">
+          <Label htmlFor="Status">Leave Status:</Label>
+            <Input
+              type="text"
+              id="status"
+              placeholder="Status"
+              onChange={(e) => setStatus(e.target.value)}
+            />
+        </div>
+        <div className="grid w-full items-center gap-4 p-4">
           <Label htmlFor="date">Date:</Label>
-          <Input
-            type="date"
-            id="date"
-            value={date ? format(date, "yyyy-MM-dd") : ""}
-            onChange={(e) => {
-              const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
-              if (selectedDate && selectedDate > new Date()) {
-                toast.error("Date of birth cannot be in the future.");
-                return;
-              }
-              setDate(selectedDate);
-            }}
-          />
-          <Label htmlFor="reasonForAbsence">Reason For Absence:</Label>
+            <Input
+              type="date"
+              id="date"
+              value={date ? format(date, "yyyy-MM-dd") : ""}
+              onChange={(e) => {
+                const selectedDate = e.target.value ? new Date(e.target.value) : null;
+                setDate(selectedDate);
+              }}
+            />
+        </div>
+      </div>
+      <div className="grid auto-rows-min md:grid-cols-2">
+        <div className="grid w-full items-center gap-4 p-4">
+        <Label htmlFor="reasonForAbsence">Reason For Absence:</Label>
           <Textarea
             id="reasonForAbsence"
             placeholder="Reason For Absence"
             onChange={(e) => setReasonForAbsence(e.target.value)}
           />
+        </div>
+        <div className="grid w-full items-center gap-4 p-4">
           <Label htmlFor="remarks">Remarks:</Label>
           <Textarea
             id="remarks"
@@ -113,6 +121,7 @@ const AttendanceForm: React.FC<AttendanceFormProps> = ({ employees, onSubmit }) 
           />
         </div>
       </div>
+
       <div className="flex pl-4 mt-4">
         <Button type="submit" className="mr-4 bg-green-500 hover:bg-green-600">
           Add Attendance

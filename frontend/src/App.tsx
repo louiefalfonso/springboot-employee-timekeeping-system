@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Toaster} from "@/components/ui/sonner"
 import Dashboard from "@/pages/dashboard/page";
 
@@ -36,46 +36,56 @@ import Projects from "./pages/projects/page";
 import AddNewProject from "./components/projects/project-add";
 import UpdateProject from "./components/projects/project-update";
 import ProjectPage from "./pages/projects/[...id]/page";
+import Login from "./pages/login/page";
+import ProtectedRoute from "./services/services-protected-route";
 
 function App() {
+
+  const token = localStorage.getItem("token"); 
+  
   return (
     <>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/employees" element={<Employees />} />
-        <Route path="/employees/add" element={<AddEmployee />} />
-        <Route path="/employees/:id" element={<EmployeePage/>} />
-        <Route path="/employees/update/:id" element={<UpdateEmployee/>} />
+        <Route path="/" element={<Navigate to={"/login"} replace/>} />
 
-        <Route path="/departments" element={<Departments/>}/>
-        <Route path="/departments/add" element={<AddDepartment/>}/>
-        <Route path="/departments/:id" element={<DepartmentPage/>}/>
-        <Route path="/departments/update/:id" element={<UpdateDepartment/>}/>
+        <Route path="/dashboard" element={ <ProtectedRoute token={token}> <Dashboard /> </ProtectedRoute> }/>
 
-        <Route path="/attendances" element={<Attendances/>} />
-        <Route path="/attendances/add" element={<AddNewAttendance/>} />  
-        <Route path="/attendances/:id" element={<AttendanceDetails/>} />
-        <Route path="/attendances/update/:id" element={<UpdateAttendance/>} /> 
+        <Route path="/employees" element={ <ProtectedRoute token={token}> <Employees /> </ProtectedRoute>} />
+        <Route path="/employees/add" element={<ProtectedRoute token={token}> <AddEmployee /> </ProtectedRoute>} />
+        <Route path="/employees/:id" element={<ProtectedRoute token={token}> <EmployeePage/> </ProtectedRoute>} />
+        <Route path="/employees/update/:id" element={<ProtectedRoute token={token}> <UpdateEmployee/> </ProtectedRoute>} />
+
+        <Route path="/departments" element={<ProtectedRoute token={token}> <Departments/> </ProtectedRoute>}/>
+        <Route path="/departments/add" element={<ProtectedRoute token={token}> <AddDepartment/> </ProtectedRoute>}/>
+        <Route path="/departments/:id" element={<ProtectedRoute token={token}> <DepartmentPage/> </ProtectedRoute>}/>
+        <Route path="/departments/update/:id" element={<ProtectedRoute token={token}> <UpdateDepartment/> </ProtectedRoute>}/>
+
+        <Route path="/attendances" element={<ProtectedRoute token={token}> <Attendances/> </ProtectedRoute>}/>
+        <Route path="/attendances/add" element={<ProtectedRoute token={token}> <AddNewAttendance/> </ProtectedRoute>} />  
+        <Route path="/attendances/:id" element={<ProtectedRoute token={token}> <AttendanceDetails/> </ProtectedRoute>} />
+        <Route path="/attendances/update/:id" element={<ProtectedRoute token={token}> <UpdateAttendance/> </ProtectedRoute>}/> 
         
-        <Route path="/leave-absences" element={<LeaveAbsences/>} />
-        <Route path="/leave-absences/add" element={<AddNewLeaveAbsence/>}/>
-        <Route path="/leave-absences/:id" element={<LeaveAbsenceDetails/>} />
-        <Route path="/leave-absences/update/:id" element={<UpdateLeaveAbsence/>}/>
+        <Route path="/leave-absences" element={<ProtectedRoute token={token}> <LeaveAbsences/> </ProtectedRoute>} />
+        <Route path="/leave-absences/add" element={<ProtectedRoute token={token}> <AddNewLeaveAbsence/></ProtectedRoute>}/>
+        <Route path="/leave-absences/:id" element={<ProtectedRoute token={token}> <LeaveAbsenceDetails/></ProtectedRoute>} />
+        <Route path="/leave-absences/update/:id" element={<ProtectedRoute token={token}> <UpdateLeaveAbsence/> </ProtectedRoute>}/>
 
-        <Route path="/performance-reviews" element={<PerformanceReviews/>} />
-        <Route path="/performance-reviews/add" element={<AddPerformanceReview/>} />
-        <Route path="/performance-reviews/:id" element={<PerformanceReviewDetails/>} />
+        <Route path="/performance-reviews" element={<ProtectedRoute token={token}> <PerformanceReviews/> </ProtectedRoute>} />
+        <Route path="/performance-reviews/add" element={<ProtectedRoute token={token}> <AddPerformanceReview/> </ProtectedRoute>} />
+        <Route path="/performance-reviews/:id" element={<ProtectedRoute token={token}> <PerformanceReviewDetails/> </ProtectedRoute>} />
         <Route path="/performance-reviews/update/:id" element={<UpdatePerformanceReview/>} />
         
-        <Route path="/payrolls" element={<Payrolls/>} />
-        <Route path="/payrolls/add" element={<AddNewPayroll/>} />
-        <Route path="/payrolls/id" element={<PayrollDetails/>} />
-        <Route path="/payrolls/update/:id" element={<UpdatePayroll/>} />
+        <Route path="/payrolls" element={<ProtectedRoute token={token}> <Payrolls/> </ProtectedRoute>} />
+        <Route path="/payrolls/add" element={<ProtectedRoute token={token}> <AddNewPayroll/> </ProtectedRoute>} />
+        <Route path="/payrolls/id" element={<ProtectedRoute token={token}> <PayrollDetails/> </ProtectedRoute>} />
+        <Route path="/payrolls/update/:id" element={<ProtectedRoute token={token}> <UpdatePayroll/> </ProtectedRoute>} />
 
-        <Route path="/projects" element={<Projects/>} />
-        <Route path="/projects/add" element={<AddNewProject/>} />
-        <Route path="/projects/:id" element={<ProjectPage/>} />
-        <Route path="/projects/update/:id" element={<UpdateProject/>} />
+        <Route path="/projects" element={<ProtectedRoute token={token}> <Projects/> </ProtectedRoute>} />
+        <Route path="/projects/add" element={<ProtectedRoute token={token}> <AddNewProject/></ProtectedRoute>} />
+        <Route path="/projects/:id" element={<ProtectedRoute token={token}> <ProjectPage/> </ProtectedRoute>} />
+        <Route path="/projects/update/:id" element={<ProtectedRoute token={token}> <UpdateProject/></ProtectedRoute>} />
+
+        <Route path="/login" element={<Login/>} />
 
       </Routes>
       <Toaster />
