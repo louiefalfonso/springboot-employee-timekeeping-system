@@ -147,8 +147,7 @@ const AddNewPayrollForm: React.FC<PayrollProps> = ({ employees, onSubmit }) => {
                     placeholder="Net Pay"
                     onChange={(e) => setNetPay(e.target.value)}
                   />
-              </div>
-              
+              </div> 
           </div>
           <div className="grid auto-rows-min md:grid-cols-2">
             <div className="grid w-full items-center gap-4 p-4">

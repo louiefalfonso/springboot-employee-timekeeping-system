@@ -43,7 +43,7 @@ const UpdateAttendanceForm: React.FC<AttendanceFormProps> = ({
 }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div className="grid auto-rows-min md:grid-cols-3">
+      <div className="grid auto-rows-min md:grid-cols-2">
         <div className="grid w-full items-center gap-4 p-4">
           <Label htmlFor="employee">Employee:</Label>
           <Select value={employeeId ? employeeId.toString() : undefined}
@@ -66,6 +66,8 @@ const UpdateAttendanceForm: React.FC<AttendanceFormProps> = ({
           </SelectContent>
           </Select>
         </div>
+      </div>
+      <div className="grid auto-rows-min md:grid-cols-2">
         <div className="grid w-full items-center gap-4 p-4">
           <Label htmlFor="status">Leave Status:</Label>
           <Input
@@ -92,7 +94,7 @@ const UpdateAttendanceForm: React.FC<AttendanceFormProps> = ({
           />
         </div> 
       </div>
-      <div className="grid auto-rows-min md:grid-cols-3">
+      <div className="grid auto-rows-min md:grid-cols-2">
         <div className="grid w-full items-center gap-4 p-4">
           <Label htmlFor="reasonForAbsence">Reason For Absence:</Label>
           <Textarea
