@@ -5,11 +5,12 @@ import '../../App.css';
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+
 // Menu items.
 const items = [
   {
-    title: "Home",
-    url: "/",
+    title: "Dashboard",
+    url: "/dashboard",
     icon: Home,
   },
   {
