@@ -73,12 +73,13 @@ function App() {
         <Route path="/performance-reviews" element={<ProtectedRoute token={token}> <PerformanceReviews/> </ProtectedRoute>} />
         <Route path="/performance-reviews/add" element={<ProtectedRoute token={token}> <AddPerformanceReview/> </ProtectedRoute>} />
         <Route path="/performance-reviews/:id" element={<ProtectedRoute token={token}> <PerformanceReviewDetails/> </ProtectedRoute>} />
-        <Route path="/performance-reviews/update/:id" element={<UpdatePerformanceReview/>} />
+        <Route path="/performance-reviews/update/:id" element={<ProtectedRoute token={token}><UpdatePerformanceReview/> </ProtectedRoute>} />
         
         <Route path="/payrolls" element={<ProtectedRoute token={token}> <Payrolls/> </ProtectedRoute>} />
         <Route path="/payrolls/add" element={<ProtectedRoute token={token}> <AddNewPayroll/> </ProtectedRoute>} />
-        <Route path="/payrolls/id" element={<ProtectedRoute token={token}> <PayrollDetails/> </ProtectedRoute>} />
+        <Route path="/payrolls/:id" element={<ProtectedRoute token={token}> <PayrollDetails/> </ProtectedRoute>} />
         <Route path="/payrolls/update/:id" element={<ProtectedRoute token={token}> <UpdatePayroll/> </ProtectedRoute>} />
+
 
         <Route path="/projects" element={<ProtectedRoute token={token}> <Projects/> </ProtectedRoute>} />
         <Route path="/projects/add" element={<ProtectedRoute token={token}> <AddNewProject/></ProtectedRoute>} />
