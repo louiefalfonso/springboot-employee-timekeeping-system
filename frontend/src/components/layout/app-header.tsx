@@ -4,6 +4,7 @@ import { LogOut } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useCallback } from "react";
 
 interface HeadersProps {
   Title: string;
@@ -14,20 +15,26 @@ const Headers = ({ Title }: HeadersProps) => {
   const API_BASE_URL = import.meta.env.VITE_BASE_URI_AUTH;
   const navigate = useNavigate();
 
-  const handleLogout = async (): Promise<void> => {
+  const handleLogout = useCallback(async (): Promise<void> => {
     try {
       const token = localStorage.getItem("token");
-      if (!token) { toast.error("You are not logged in.");
+      if (!token) {
+        toast.error("You are not logged in.");
         return;
       }
-      await axios.post(`${API_BASE_URL}/logout`, {token,});
+      await axios.post(`${API_BASE_URL}/logout`, {
+        token,
+      });
       localStorage.removeItem("token");
       toast.success("Logout Successful!");
       navigate("/login");
     } catch {
       toast.error("Error logging out.");
+    } finally {
+      localStorage.removeItem("token");
     }
-  };
+    
+  }, [API_BASE_URL, navigate]);
 
   return (
     <header className="flex h-16 shrink-0 items-center gap-2 border-b">
